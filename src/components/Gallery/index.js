@@ -6,21 +6,21 @@ const Gallary = () => {
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+            src="/images/01.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+            src="/images/02.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+            src="/images/03.jpg"
             alt=""
           />
         </div>
@@ -29,21 +29,21 @@ const Gallary = () => {
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+            src="/images/04.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+            src="/images/05.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+            src="/images/06.jpg"
             alt=""
           />
         </div>
