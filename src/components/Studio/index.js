@@ -6,7 +6,7 @@ const Studio = () => {
         <div>
           <img
             className="h-auto max-w-full rounded-lg"
-            src="/images/studio/05.jpg"
+            src="/images/studio/05.png"
             alt=""
           />
         </div>
