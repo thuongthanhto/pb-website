@@ -74,7 +74,7 @@ export default function Home() {
 
           <div className="italic text-center text-sm">
             <p>
-              elow are some representative photo sets of mine over the past 10
+              Below are some representative photo sets of mine over the past 10
               years, they are the works that I have done with dedication and
               passion in my profession. I hope that you will find special
               emotions and experiences when enjoying these works.
@@ -137,7 +137,6 @@ export default function Home() {
                 src="/linh.png"
                 alt="avatar"
                 width={320}
-                height={330}
               />
               <div className="flex flex-col items-center">
                 <h2 className="text-[18px] font-bold uppercase mt-4">Lĩnh</h2>
@@ -149,10 +148,9 @@ export default function Home() {
             <div>
               <img
                 className="rounded-tl-[10px] rounded-tr-[10px]"
-                src="/avatar.jpg"
+                src="/phat.png"
                 alt="avatar"
                 width={320}
-                height={330}
               />
               <div className="flex flex-col items-center">
                 <h2 className="text-[18px] font-bold uppercase mt-4">
@@ -166,10 +164,9 @@ export default function Home() {
             <div>
               <img
                 className="rounded-tl-[10px] rounded-tr-[10px]"
-                src="/tri.jpg"
+                src="/tri.png"
                 alt="avatar"
                 width={320}
-                height={330}
               />
               <div className="flex flex-col items-center">
                 <h2 className="text-[18px] font-bold uppercase mt-4">Trí</h2>
