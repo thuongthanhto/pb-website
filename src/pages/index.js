@@ -8,7 +8,8 @@ import {
   Tab,
   TabPanel,
 } from '@material-tailwind/react';
-import Gallary from '@/components/Gallery';
+import Reportage from '@/components/Reportage';
+import Studio from '@/components/Studio';
 
 export default function Home() {
   return (
@@ -48,19 +49,13 @@ export default function Home() {
               <Tab value="reportage" className="font-bold">
                 Phóng sự
               </Tab>
-              <Tab value="family" className="font-bold">
-                Gia đình
-              </Tab>
             </TabsHeader>
             <TabsBody>
               <TabPanel value="studio">
-                <Gallary />
+                <Studio />
               </TabPanel>
               <TabPanel value="reportage">
-                <Gallary />
-              </TabPanel>
-              <TabPanel value="family">
-                <Gallary />
+                <Reportage />
               </TabPanel>
             </TabsBody>
           </Tabs>
@@ -86,7 +81,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto my-[50px]">
+        <section className="container mx-auto my-[50px] flex flex-col sm:flex-row sm:space-x-4 sm:justify-center">
+          <div className="flex flex-col items-center">
+            <div>
+              <img
+                className="rounded-tl-[10px] rounded-tr-[10px]"
+                src="/linh.png"
+                alt="avatar"
+                width={320}
+                height={330}
+              />
+              <div className="flex flex-col items-center">
+                <h2 className="text-[18px] font-bold uppercase mt-4">Lĩnh</h2>
+                <div className="text-[12px] italic">Videography</div>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col items-center">
             <div>
               <img
@@ -94,12 +104,30 @@ export default function Home() {
                 src="/avatar.jpg"
                 alt="avatar"
                 width={320}
+                height={330}
               />
               <div className="flex flex-col items-center">
                 <h2 className="text-[18px] font-bold uppercase mt-4">
                   Phat Bo
                 </h2>
-                <div className="text-[12px] italic">Photographer</div>
+                <div className="text-[12px] italic">Main Photography</div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div>
+              <img
+                className="rounded-tl-[10px] rounded-tr-[10px]"
+                src="/tri.jpg"
+                alt="avatar"
+                width={320}
+                height={330}
+              />
+              <div className="flex flex-col items-center">
+                <h2 className="text-[18px] font-bold uppercase mt-4">Trí</h2>
+                <div className="text-[12px] italic">
+                  Photography & Support lighting
+                </div>
               </div>
             </div>
           </div>
