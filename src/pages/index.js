@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import Layout from '@/components/Layout';
-import Head from 'next/head';
 import {
   Tabs,
   TabsHeader,
@@ -8,15 +7,35 @@ import {
   Tab,
   TabPanel,
 } from '@material-tailwind/react';
+import { NextSeo } from 'next-seo';
+
 import Reportage from '@/components/Reportage';
 import Studio from '@/components/Studio';
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>PBImages</title>
-      </Head>
+      <NextSeo
+        title="PBImages"
+        titleTemplate="PBImages - Photography Studio"
+        defaultTitle="PBImages - Photography Studio"
+        description="I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!"
+        canonical="https://pbimages.com/"
+        openGraph={{
+          url: 'https://pbimages.com/',
+          title: 'PBImages',
+          description:
+            'I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!',
+          images: [
+            {
+              url: '/avatar.png',
+              width: 200,
+              height: 200,
+              alt: 'PBImages - Photography Studio',
+            },
+          ],
+        }}
+      />
       <Layout>
         <section className="w-1/2 mx-auto py-[50px]">
           <h1 className="text-center text-[30px] font-bold">
