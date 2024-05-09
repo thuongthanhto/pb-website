@@ -7,6 +7,7 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Button,
 } from '@material-tailwind/react';
 import { NextSeo } from 'next-seo';
 import { IconButton } from '@material-tailwind/react';
@@ -15,7 +16,6 @@ import { FaEnvelope, FaFacebook, FaPhone } from 'react-icons/fa';
 import Reportage from '@/components/Reportage';
 import Studio from '@/components/Studio';
 import MakeUp from '@/components/MakeUp';
-import Plan from '@/components/Plan';
 
 export default function Home() {
   return (
@@ -102,9 +102,15 @@ export default function Home() {
             <TabsBody>
               <TabPanel value="studio">
                 <Studio />
+                <div className="flex justify-center mt-8">
+                  <Button variant="outlined" onClick={() => window.open('https://drive.google.com/drive/folders/13fq2lRJF_9jM1INPHwWS0tFcIohpTMXn?usp=drive_link', '_blank')}>View more</Button>
+                </div>
               </TabPanel>
               <TabPanel value="reportage">
                 <Reportage />
+                <div className="flex justify-center mt-8">
+                  <Button variant="outlined" onClick={() => window.open('https://drive.google.com/drive/folders/1DvPVabmIz28TO9mlDqRXlQ0k_XUrJyuG?usp=sharing', '_blank')}>View more</Button>
+                </div>
               </TabPanel>
             </TabsBody>
           </Tabs>
@@ -186,13 +192,6 @@ export default function Home() {
           <hr className="title-break" />
 
           <MakeUp />
-        </section>
-
-        <section className="w-1/2 mx-auto py-[50px]">
-          <h1 className="text-center text-[30px] font-bold uppercase">Plan</h1>
-          <hr className="title-break" />
-
-          <Plan />
         </section>
       </Layout>
     </>
