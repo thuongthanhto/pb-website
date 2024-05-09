@@ -15,6 +15,7 @@ import { FaEnvelope, FaFacebook, FaPhone } from 'react-icons/fa';
 import Reportage from '@/components/Reportage';
 import Studio from '@/components/Studio';
 import MakeUp from '@/components/MakeUp';
+import Plan from '@/components/Plan';
 
 export default function Home() {
   return (
@@ -185,6 +186,13 @@ export default function Home() {
           <hr className="title-break" />
 
           <MakeUp />
+        </section>
+
+        <section className="w-1/2 mx-auto py-[50px]">
+          <h1 className="text-center text-[30px] font-bold uppercase">Plan</h1>
+          <hr className="title-break" />
+
+          <Plan />
         </section>
       </Layout>
     </>
