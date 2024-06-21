@@ -191,12 +191,12 @@ export default function Home() {
             <div>
               <img
                 className="rounded-tl-[10px] rounded-tr-[10px]"
-                src="/tri.png"
+                src="/tuanluong.jpg"
                 alt="avatar"
                 width={320}
               />
               <div className="flex flex-col items-center">
-                <h2 className="text-[18px] font-bold uppercase mt-4">Trí</h2>
+                <h2 className="text-[18px] font-bold uppercase mt-4">Tuan Luong</h2>
                 <div className="text-[12px] italic">
                   Photography & Support lighting
                 </div>
