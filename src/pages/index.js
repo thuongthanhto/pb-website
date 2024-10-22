@@ -107,7 +107,7 @@ export default function Home() {
                     variant="outlined"
                     onClick={() =>
                       window.open(
-                        "https://drive.google.com/drive/folders/13fq2lRJF_9jM1INPHwWS0tFcIohpTMXn?usp=drive_link",
+                        "https://drive.google.com/drive/folders/1kE1oTpzXVX3nMsxYAdJSDBYknWSWD3sW?usp=sharing",
                         "_blank",
                       )
                     }
