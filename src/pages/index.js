@@ -25,9 +25,9 @@ export default function Home() {
         titleTemplate="PBImages - Photography Studio"
         defaultTitle="PBImages - Photography Studio"
         description="I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!"
-        canonical="https://pbimages.com/"
+        canonical="https://phatbo.info"
         openGraph={{
-          url: "https://pbimages.com/",
+          url: "https://phatbo.info",
           title: "PBImages",
           description:
             "I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!",
@@ -196,7 +196,9 @@ export default function Home() {
                 width={320}
               />
               <div className="flex flex-col items-center">
-                <h2 className="text-[18px] font-bold uppercase mt-4">Tuan Luong</h2>
+                <h2 className="text-[18px] font-bold uppercase mt-4">
+                  Tuan Luong
+                </h2>
                 <div className="text-[12px] italic">
                   Photography & Support lighting
                 </div>
@@ -205,7 +207,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-1/2 mx-auto py-[50px]">
+        <section className="container mx-auto py-[50px]">
           <h1 className="text-center text-[30px] font-bold uppercase">
             Make up & Hair
           </h1>
