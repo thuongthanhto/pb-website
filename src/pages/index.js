@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-import Layout from "@/components/Layout";
+import Layout from '@/components/Layout'
 import {
   Tabs,
   TabsHeader,
@@ -8,14 +8,14 @@ import {
   Tab,
   TabPanel,
   Button,
-} from "@material-tailwind/react";
-import { NextSeo } from "next-seo";
-import { IconButton } from "@material-tailwind/react";
-import { FaEnvelope, FaFacebook, FaPhone } from "react-icons/fa";
+} from '@material-tailwind/react'
+import { NextSeo } from 'next-seo'
+import { IconButton } from '@material-tailwind/react'
+import { FaEnvelope, FaFacebook, FaPhone } from 'react-icons/fa'
 
-import Reportage from "@/components/Reportage";
-import Studio from "@/components/Studio";
-import MakeUp from "@/components/MakeUp";
+import Reportage from '@/components/Reportage'
+import Studio from '@/components/Studio'
+import MakeUp from '@/components/MakeUp'
 
 export default function Home() {
   return (
@@ -27,16 +27,16 @@ export default function Home() {
         description="I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!"
         canonical="https://phatbo.info"
         openGraph={{
-          url: "https://phatbo.info",
-          title: "PBImages",
+          url: 'https://phatbo.info',
+          title: 'PBImages',
           description:
-            "I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!",
+            'I am a Photographer with over 10 years of experience. I am passionate about photography and I love to capture the beauty of life through my lens. I specialize in studio photography, portrait photography, and event photography. I am dedicated to providing high-quality images that capture the essence of the moment. Contact me today to book a session!',
           images: [
             {
-              url: "/avatar.png",
+              url: '/avatar.png',
               width: 200,
               height: 200,
-              alt: "PBImages - Photography Studio",
+              alt: 'PBImages - Photography Studio',
             },
           ],
         }}
@@ -48,7 +48,7 @@ export default function Home() {
               variant="outlined"
               className="mx-2"
               onClick={() =>
-                window.open("https://www.facebook.com/PhatBo0905", "_blank")
+                window.open('https://www.facebook.com/PhatBo0905', '_blank')
               }
             >
               <FaFacebook className="text-[18px]" />
@@ -89,7 +89,7 @@ export default function Home() {
               className="bg-transparent"
               indicatorProps={{
                 className:
-                  "border-b-2 border-blue-600 rounded-none shadow-none",
+                  'border-b-2 border-blue-600 rounded-none shadow-none',
               }}
             >
               <Tab value="studio" className="font-bold ">
@@ -107,8 +107,8 @@ export default function Home() {
                     variant="outlined"
                     onClick={() =>
                       window.open(
-                        "https://drive.google.com/drive/folders/1kE1oTpzXVX3nMsxYAdJSDBYknWSWD3sW?usp=sharing",
-                        "_blank",
+                        'https://drive.google.com/drive/folders/1kE1oTpzXVX3nMsxYAdJSDBYknWSWD3sW?usp=sharing',
+                        '_blank'
                       )
                     }
                   >
@@ -123,8 +123,8 @@ export default function Home() {
                     variant="outlined"
                     onClick={() =>
                       window.open(
-                        "https://drive.google.com/drive/folders/1DvPVabmIz28TO9mlDqRXlQ0k_XUrJyuG?usp=sharing",
-                        "_blank",
+                        'https://drive.google.com/drive/folders/1DvPVabmIz28TO9mlDqRXlQ0k_XUrJyuG?usp=sharing',
+                        '_blank'
                       )
                     }
                   >
@@ -216,14 +216,19 @@ export default function Home() {
           <MakeUp />
         </section>
 
+        <h1 className="text-center text-[30px] font-bold uppercase mt-16">
+          Video
+        </h1>
+        <hr className="title-break" />
         <section className="container mx-auto video-container">
           <iframe
             src="https://drive.google.com/file/d/1RuIeOA7cCrhRo_R4FO2KZVRetKNXPCpf/preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            style={{ height: '768px' }}
           ></iframe>
         </section>
       </Layout>
     </>
-  );
+  )
 }
