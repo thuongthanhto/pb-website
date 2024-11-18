@@ -88,7 +88,7 @@ const Studio = () => {
           </PhotoView>
         </div>
         <div className="cursor-pointer">
-          <PhotoView src="/images/studio/02.jpg">
+          <PhotoView src="/images/studio/02.JPG">
             <Image
               className="h-auto max-w-full rounded-lg"
               src="/images/studio/02.jpg"
