@@ -222,7 +222,7 @@ export default function Home() {
         <hr className="title-break" />
         <section className="container mx-auto video-container mb-[200px]">
           <iframe
-            src="https://drive.google.com/file/d/1MkXKYklPJiJaEXVjlzv5gkg7TgUtQOtj/view"
+            src="https://drive.google.com/file/d/1RuIeOA7cCrhRo_R4FO2KZVRetKNXPCpf/preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{ height: '768px' }}
