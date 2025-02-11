@@ -107,7 +107,7 @@ export default function Home() {
                     variant="outlined"
                     onClick={() =>
                       window.open(
-                        'https://drive.google.com/drive/folders/1kE1oTpzXVX3nMsxYAdJSDBYknWSWD3sW?usp=sharing',
+                        'https://drive.google.com/drive/folders/1ybNKbbyrqn_Sd8D92Shyf6-pnxXy1SjW',
                         '_blank'
                       )
                     }
@@ -123,7 +123,7 @@ export default function Home() {
                     variant="outlined"
                     onClick={() =>
                       window.open(
-                        'https://drive.google.com/drive/folders/1DvPVabmIz28TO9mlDqRXlQ0k_XUrJyuG?usp=sharing',
+                        'https://drive.google.com/drive/folders/1MyB2TybBbNyT6s2P6pwvNq1ijbaPGyzU',
                         '_blank'
                       )
                     }
@@ -222,7 +222,7 @@ export default function Home() {
         <hr className="title-break" />
         <section className="container mx-auto video-container">
           <iframe
-            src="https://drive.google.com/file/d/1RuIeOA7cCrhRo_R4FO2KZVRetKNXPCpf/preview"
+            src="https://drive.google.com/file/d/1MhGoaGGvJcEafUR30zKdx3l8gr_Pp5-L/preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{ height: '768px' }}
