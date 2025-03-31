@@ -187,24 +187,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center">
-            <div>
-              <img
-                className="rounded-tl-[10px] rounded-tr-[10px]"
-                src="/tuanluong.jpg"
-                alt="avatar"
-                width={320}
-              />
-              <div className="flex flex-col items-center">
-                <h2 className="text-[18px] font-bold uppercase mt-4">
-                  Tuan Luong
-                </h2>
-                <div className="text-[12px] italic">
-                  Photography & Support lighting
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </section>
 
         <section className="container mx-auto py-[50px]">
