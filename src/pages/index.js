@@ -187,29 +187,59 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
         </section>
 
-        <section className="container mx-auto py-[50px]">
-          <h1 className="text-center text-[30px] font-bold uppercase">
-            Make up & Hair
-          </h1>
-          <hr className="title-break" />
+        <section className="container mx-auto py-[60px] bg-gradient-to-b from-gray-50 to-white">
+          <div className="text-center mb-12">
+            <h1 className="text-center text-[32px] md:text-[36px] font-bold uppercase tracking-wide text-gray-800">
+              Make up & Hair
+            </h1>
+            <hr className="title-break" />
+            <p className="mt-6 text-gray-600 italic max-w-2xl mx-auto px-4">
+              Professional makeup and hair styling services for your special
+              moments. Our experienced team creates stunning looks that enhance
+              your natural beauty.
+            </p>
+          </div>
 
           <MakeUp />
         </section>
 
-        <h1 className="text-center text-[30px] font-bold uppercase mt-16">
-          Video
-        </h1>
-        <hr className="title-break" />
-        <section className="container mx-auto video-container mb-[200px]">
-          <iframe
-            src="https://drive.google.com/file/d/1RuIeOA7cCrhRo_R4FO2KZVRetKNXPCpf/preview"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            style={{ height: '768px' }}
-          ></iframe>
+        <section className="container mx-auto py-[60px] bg-gradient-to-b from-white to-gray-50">
+          <div className="text-center mb-12">
+            <h1 className="text-center text-[32px] md:text-[36px] font-bold uppercase tracking-wide text-gray-800">
+              Video
+            </h1>
+            <hr className="title-break" />
+            <p className="mt-6 text-gray-600 italic max-w-2xl mx-auto px-4">
+              Watch our professional videography work showcasing memorable
+              moments and beautiful stories captured through our lens.
+            </p>
+          </div>
+
+          <div className="px-4 md:px-8 lg:px-16">
+            <div className="relative w-full max-w-6xl mx-auto">
+              {/* Responsive video container with 16:9 aspect ratio - larger size */}
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-xl shadow-2xl bg-black">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-xl"
+                  src="https://drive.google.com/file/d/1RuIeOA7cCrhRo_R4FO2KZVRetKNXPCpf/preview"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  title="PBImages Professional Videography"
+                  loading="eager"
+                ></iframe>
+              </div>
+
+              {/* Video description */}
+              <div className="mt-4 text-center">
+                <p className="text-gray-600 text-sm italic">
+                  Experience the beauty of our videography - capturing emotions,
+                  moments, and stories
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
       </Layout>
     </>
