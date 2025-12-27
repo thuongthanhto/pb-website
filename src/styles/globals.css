@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff6b6b;
+  --color-primary-dark: #e05050;
+  --color-background-light: #ffffff;
+  --color-surface-light: #f9fafb;
+  --color-border-light: #f3f4f6;
+  --color-text-main: #1f2937;
+  --color-text-secondary: #6b7280;
+}
+
+:root {
+  --primary: #ff6b6b;
+  --primary-dark: #e05050;
+  --background-light: #ffffff;
+  --surface-light: #f9fafb;
+  --border-light: #f3f4f6;
+  --text-main: #1f2937;
+  --text-secondary: #6b7280;
+}
 
 .title-break {
   width: 40px;
