@@ -9,7 +9,7 @@ export function FilterButtons({ images = [], onFilterChange }) {
   const folderNames = useMemo(() => {
     const folderMap = {
       'makeup': 'Trang điểm',
-      'studio': 'Studio',
+      'studio': 'Layout cưới',
       'reportage': 'Phóng sự',
     };
 

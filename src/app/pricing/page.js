@@ -1,5 +1,3 @@
-import { Header } from '@/features/layout/header'
-import { Footer } from '@/features/layout/footer'
 import {
   PricingHero,
   PricingCards,
@@ -15,12 +13,7 @@ export const metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-white">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center w-full">
+    <main className="flex-1 flex flex-col items-center w-full">
         {/* Hero Section */}
         <PricingHero />
 
@@ -35,10 +28,6 @@ export default function PricingPage() {
 
         {/* CTA Section */}
         <PricingCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </main>
   )
 }

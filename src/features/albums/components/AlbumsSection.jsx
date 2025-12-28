@@ -45,7 +45,7 @@ export function AlbumsSection({ images = [] }) {
   // Filter images by folder
   const folderMap = {
     'Trang điểm': 'makeup',
-    'Studio': 'studio',
+    'Layout cưới': 'studio',
     'Phóng sự': 'reportage',
   };
 

@@ -1,13 +1,9 @@
-import { Header } from '@/features/layout/header'
-import { Footer } from '@/features/layout/footer'
 import Link from 'next/link'
 
 export default async function Home() {
   // Fetch file list from R2
   return (
-    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-      {/* Header */}
-      <Header />
+    <>
 
       {/* Hero Section */}
       <div className="w-full bg-white">
@@ -281,11 +277,8 @@ export default async function Home() {
               <span className="truncate">Liên hệ tư vấn</span>
             </button>
           </div>
+          </div>
         </div>
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </div>
-  )
-}
+      </>
+    )
+  }
