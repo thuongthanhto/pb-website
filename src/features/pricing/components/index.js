@@ -1,0 +1,5 @@
+export { PricingHero } from './PricingHero'
+export { PricingCards } from './PricingCards'
+export { ComparisonTable } from './ComparisonTable'
+export { Testimonials } from './Testimonials'
+export { PricingCTA } from './PricingCTA'
