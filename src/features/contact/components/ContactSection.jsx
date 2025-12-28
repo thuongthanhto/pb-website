@@ -9,12 +9,12 @@ export function ContactSection() {
     },
     {
       icon: 'mdi:phone',
-      href: 'tel:0988123456',
+      href: 'tel:+84909383332',
       label: 'Hotline',
     },
     {
       icon: 'mdi:email',
-      href: 'mailto:contact@studiolens.vn',
+      href: 'mailto:phatchay95@gmail.com',
       label: 'Email',
     },
   ]
