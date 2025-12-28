@@ -1,88 +1,87 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { FilterButtons, PortfolioGrid, ImageViewer } from '.'
-import { ViewerContext } from './ViewerContext'
+import { useState, useEffect } from 'react';
+import { FilterButtons, PortfolioGrid, ImageViewer } from '.';
 
-const IMAGES_PER_PAGE = 20 // Load 20 images per batch
+const IMAGES_PER_PAGE = 20; // Load 20 images per batch
 
-export function AlbumsSection({ images = [], onViewerStateChange = null }) {
-  const [selectedFolder, setSelectedFolder] = useState('Tất cả')
-  const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE)
-  const [viewerOpen, setViewerOpen] = useState(false)
-  const [selectedImage, setSelectedImage] = useState(null)
-
-  // Notify parent of viewer state changes
-  const handleViewerStateChange = (isOpen) => {
-    setViewerOpen(isOpen)
-    if (onViewerStateChange) {
-      onViewerStateChange(isOpen)
-    }
-  }
+export function AlbumsSection({ images = [] }) {
+  const [selectedFolder, setSelectedFolder] = useState('Tất cả');
+  const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const handleFolderChange = (folder) => {
-    setSelectedFolder(folder)
-    setLoadedCount(IMAGES_PER_PAGE) // Reset pagination when changing folder
-  }
+    setSelectedFolder(folder);
+    setLoadedCount(IMAGES_PER_PAGE); // Reset pagination when changing folder
+  };
 
   const handleLoadMore = () => {
-    setLoadedCount((prev) => prev + IMAGES_PER_PAGE)
-  }
+    setLoadedCount((prev) => prev + IMAGES_PER_PAGE);
+  };
+
+  const handleImageClick = (image) => {
+    setCurrentImage(image);
+    setViewerOpen(true);
+  };
+
+  const handleCloseViewer = () => {
+    setViewerOpen(false);
+  };
+
+  const handleNextImage = () => {
+    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
+    const nextIndex = (currentIndex + 1) % paginatedImages.length;
+    setCurrentImage(paginatedImages[nextIndex]);
+  };
+
+  const handlePrevImage = () => {
+    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
+    const prevIndex = (currentIndex - 1 + paginatedImages.length) % paginatedImages.length;
+    setCurrentImage(paginatedImages[prevIndex]);
+  };
+
 
   // Filter images by folder
   const folderMap = {
-    Makeup: 'makeup',
-    Studio: 'studio',
-    Reportage: 'reportage',
-  }
+    'Trang điểm': 'makeup',
+    'Studio': 'studio',
+    'Phóng sự': 'reportage',
+  };
 
   const filteredImages =
     selectedFolder === 'Tất cả'
       ? images
-      : images.filter((img) => img.folder === folderMap[selectedFolder])
+      : images.filter((img) => img.folder === folderMap[selectedFolder]);
 
-  const paginatedImages = filteredImages.slice(0, loadedCount)
-  const hasMoreImages = paginatedImages.length < filteredImages.length
+  const paginatedImages = filteredImages.slice(0, loadedCount);
+  const hasMoreImages = paginatedImages.length < filteredImages.length;
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image)
-    handleViewerStateChange(true)
-  }
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!viewerOpen) return;
 
-  const handleCloseViewer = () => {
-    handleViewerStateChange(false)
-    setSelectedImage(null)
-  }
+      if (e.key === 'Escape') {
+        handleCloseViewer();
+      } else if (e.key === 'ArrowRight') {
+        handleNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevImage();
+      }
+    };
 
-  const handleNextImage = () => {
-    const currentIndex = filteredImages.indexOf(selectedImage)
-    if (currentIndex < filteredImages.length - 1) {
-      setSelectedImage(filteredImages[currentIndex + 1])
-    }
-  }
-
-  const handlePrevImage = () => {
-    const currentIndex = filteredImages.indexOf(selectedImage)
-    if (currentIndex > 0) {
-      setSelectedImage(filteredImages[currentIndex - 1])
-    }
-  }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [viewerOpen, currentImage, paginatedImages]);
 
   return (
-    <ViewerContext.Provider value={{ viewerOpen, selectedImage }}>
+    <>
       <FilterButtons images={images} onFilterChange={handleFolderChange} />
       <PortfolioGrid
         images={paginatedImages}
         selectedFolder={selectedFolder}
         onImageClick={handleImageClick}
-      />
-      <ImageViewer
-        isOpen={viewerOpen}
-        image={selectedImage}
-        images={filteredImages}
-        onClose={handleCloseViewer}
-        onNext={handleNextImage}
-        onPrev={handlePrevImage}
       />
 
       {hasMoreImages && (
@@ -95,6 +94,15 @@ export function AlbumsSection({ images = [], onViewerStateChange = null }) {
           </button>
         </div>
       )}
-    </ViewerContext.Provider>
-  )
+
+      <ImageViewer
+        isOpen={viewerOpen}
+        image={currentImage}
+        images={paginatedImages}
+        onClose={handleCloseViewer}
+        onNext={handleNextImage}
+        onPrev={handlePrevImage}
+      />
+    </>
+  );
 }

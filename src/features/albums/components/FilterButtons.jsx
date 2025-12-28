@@ -8,9 +8,9 @@ export function FilterButtons({ images = [], onFilterChange }) {
   // Get unique folder names from images
   const folderNames = useMemo(() => {
     const folderMap = {
-      'makeup': 'Makeup',
+      'makeup': 'Trang điểm',
       'studio': 'Studio',
-      'reportage': 'Reportage',
+      'reportage': 'Phóng sự',
     };
 
     const uniqueFolders = [...new Set(images.map((img) => img.folder))];
