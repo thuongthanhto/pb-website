@@ -21,10 +21,10 @@ function isImageFile(key) {
 }
 
 function getFolderFromKey(key) {
-  // Extract folder name from path like "photos/makeup/image.jpg"
+  // Extract folder name from path like "photos/studio/image.jpg" or "photos/T&K/image.jpg"
   const parts = key.split("/");
   if (parts.length >= 3) {
-    return parts[1]; // Return "makeup", "studio", "reportage"
+    return parts[1]; // Return "studio", "outdoor", "T&K", "V&K"
   }
   return null;
 }

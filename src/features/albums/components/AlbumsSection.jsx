@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FilterButtons, PortfolioGrid, ImageViewer } from '.';
 
 const IMAGES_PER_PAGE = 20; // Load 20 images per batch
@@ -29,24 +29,12 @@ export function AlbumsSection({ images = [] }) {
     setViewerOpen(false);
   };
 
-  const handleNextImage = () => {
-    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
-    const nextIndex = (currentIndex + 1) % paginatedImages.length;
-    setCurrentImage(paginatedImages[nextIndex]);
-  };
-
-  const handlePrevImage = () => {
-    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
-    const prevIndex = (currentIndex - 1 + paginatedImages.length) % paginatedImages.length;
-    setCurrentImage(paginatedImages[prevIndex]);
-  };
-
-
   // Filter images by folder
   const folderMap = {
-    'Trang điểm': 'makeup',
-    'Layout cưới': 'studio',
-    'Phóng sự': 'reportage',
+    'Studio': 'studio',
+    'Ngoại cảnh': 'outdoor',
+    'T&K': 'T&K',
+    'V&K': 'V&K',
   };
 
   const filteredImages =
@@ -56,6 +44,18 @@ export function AlbumsSection({ images = [] }) {
 
   const paginatedImages = filteredImages.slice(0, loadedCount);
   const hasMoreImages = paginatedImages.length < filteredImages.length;
+
+  const handleNextImage = useCallback(() => {
+    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
+    const nextIndex = (currentIndex + 1) % paginatedImages.length;
+    setCurrentImage(paginatedImages[nextIndex]);
+  }, [paginatedImages, currentImage]);
+
+  const handlePrevImage = useCallback(() => {
+    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
+    const prevIndex = (currentIndex - 1 + paginatedImages.length) % paginatedImages.length;
+    setCurrentImage(paginatedImages[prevIndex]);
+  }, [paginatedImages, currentImage]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -73,7 +73,7 @@ export function AlbumsSection({ images = [] }) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [viewerOpen, currentImage, paginatedImages]);
+  }, [viewerOpen, handleNextImage, handlePrevImage]);
 
   return (
     <>
