@@ -1,0 +1,63 @@
+{
+  "photos/studio/image1.jpg": {
+    "key": "photos/studio/image1.jpg",
+    "title": "Classic Portrait Studio Session",
+    "description": "Professional studio portrait with dramatic lighting",
+    "photographer": "Phat Bo",
+    "tags": ["portrait", "studio", "professional", "lighting"],
+    "location": "PB Studio, Ho Chi Minh City",
+    "date": "2024-01-15",
+    "camera": "Sony A7III",
+    "lens": "Sony FE 85mm f/1.4 GM",
+    "settings": {
+      "iso": "400",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/200s",
+      "focalLength": "85mm"
+    },
+    "featured": true,
+    "order": 1
+  },
+  "photos/outdoor/image1.jpg": {
+    "key": "photos/outdoor/image1.jpg",
+    "title": "Golden Hour Beach Wedding",
+    "description": "Romantic wedding photo during sunset at the beach",
+    "photographer": "Phat Bo",
+    "tags": ["wedding", "outdoor", "sunset", "beach"],
+    "location": "Vung Tau Beach",
+    "date": "2024-02-20",
+    "camera": "Canon EOS R5",
+    "lens": "Canon RF 70-200mm f/2.8",
+    "settings": {
+      "iso": "800",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/500s",
+      "focalLength": "135mm"
+    },
+    "featured": true,
+    "order": 2
+  },
+  "photos/T&K/image1.jpg": {
+    "key": "photos/T&K/image1.jpg",
+    "title": "T&K Wedding Day - First Look",
+    "description": "Beautiful first look moment captured between T&K",
+    "photographer": "Phat Bo",
+    "tags": ["wedding", "T&K", "first-look", "emotional"],
+    "location": "Saigon Pearl",
+    "date": "2024-03-10",
+    "featured": false,
+    "order": 10
+  },
+  "photos/V&K/image1.jpg": {
+    "key": "photos/V&K/image1.jpg",
+    "title": "V&K Pre-Wedding Session",
+    "description": "Romantic pre-wedding photos in the city",
+    "photographer": "Phat Bo",
+    "tags": ["pre-wedding", "V&K", "city", "romantic"],
+    "location": "District 1, HCMC",
+    "date": "2024-04-05",
+    "featured": false,
+    "order": 20
+  }
+}
+

@@ -1,5 +1,6 @@
 import { r2Client } from "./r2";
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { loadMetadata, enrichImageWithMetadata } from "./metadata";
 
 async function getAllImagesFromPhotos() {
   try {
@@ -30,7 +31,10 @@ function getFolderFromKey(key) {
 }
 
 export async function getAllImages() {
-  const files = await getAllImagesFromPhotos();
+  const [files, metadata] = await Promise.all([
+    getAllImagesFromPhotos(),
+    loadMetadata(),
+  ]);
 
   // Filter only image files and map to structured data
   const images = files
@@ -38,7 +42,7 @@ export async function getAllImages() {
     .map((file) => {
       const folderName = getFolderFromKey(file.Key);
 
-      return {
+      const baseImage = {
         id: file.Key,
         key: file.Key,
         fileName: file.Key.split("/").pop(),
@@ -46,8 +50,18 @@ export async function getAllImages() {
         size: file.Size,
         lastModified: file.LastModified,
       };
+
+      // Enrich with custom metadata
+      return enrichImageWithMetadata(baseImage, metadata);
     })
-    .filter((img) => img.folder !== null); // Remove files not in subfolders
+    .filter((img) => img.folder !== null) // Remove files not in subfolders
+    .sort((a, b) => {
+      // Sort by custom order if available, otherwise by filename
+      if (a.order !== b.order) {
+        return a.order - b.order;
+      }
+      return a.fileName.localeCompare(b.fileName);
+    });
 
   return images;
 }

@@ -59,10 +59,10 @@ export default async function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: 'Lễ Cưới',
+                title: 'Ảnh cưới',
                 subtitle: 'Wedding Photography',
                 image:
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuBvKkq3tPIijKcCWYlheze4EXBkG5sSCp8NKazymuQzHPCcT5z5pmdc7Gk5TbB0yXl-X-Yy5mprKNJdKjT613AZvYUCSt8p05bBxz1MsNna8XL2g3dXJpuQBS--_uecsi6FRRw0p3K_oRLHr_ISbb2rh3qnTCZoM_21F0GgrF_cBZaF3LHxZ4OvY6YxAeaTeuVb0uJAW49MF6I-6NEZlA8QxgY7VVvlQfDz-JRuewtAHM4gqH3ffhrKXnbL3RDAWDEwqVu2OMD7FKI',
+                  'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev/photos/T&K/MOR_6607.jpg',
                 offset: false,
               },
               {
