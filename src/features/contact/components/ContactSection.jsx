@@ -3,6 +3,11 @@ import { Icon } from '@iconify/react'
 export function ContactSection() {
   const contactItems = [
     {
+      icon: 'mdi:instagram',
+      href: 'https://www.instagram.com/scryer_bo',
+      label: 'Instagram',
+    },
+    {
       icon: 'mdi:facebook',
       href: 'https://www.facebook.com/PhatBo0905',
       label: 'Facebook',
