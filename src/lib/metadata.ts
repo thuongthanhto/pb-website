@@ -54,6 +54,13 @@ export function enrichImageWithMetadata(
 ) {
   const meta = metadata[image.key];
 
+  // Convert lastModified Date to ISO string if it exists
+  const formattedDate = image.lastModified
+    ? image.lastModified instanceof Date
+      ? image.lastModified.toISOString().split('T')[0]
+      : new Date(image.lastModified).toISOString().split('T')[0]
+    : "";
+
   return {
     ...image,
     title: meta?.title || image.fileName,
@@ -61,7 +68,7 @@ export function enrichImageWithMetadata(
     photographer: meta?.photographer || "",
     tags: meta?.tags || [],
     location: meta?.location || "",
-    date: meta?.date || image.lastModified,
+    date: meta?.date || formattedDate,
     camera: meta?.camera || "",
     lens: meta?.lens || "",
     settings: meta?.settings || {},

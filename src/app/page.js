@@ -4,7 +4,6 @@ export default async function Home() {
   // Fetch file list from R2
   return (
     <>
-
       {/* Hero Section */}
       <div className="w-full bg-white">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-8 md:py-12">
@@ -65,27 +64,6 @@ export default async function Home() {
                   'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev/photos/T&K/MOR_6607.jpg',
                 offset: false,
               },
-              {
-                title: 'Chân Dung Nghệ Thuật',
-                subtitle: 'Portrait',
-                image:
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuBSyzxzy0HsgJr-Ye9323XicKz5U3mFfdBOhDLS5K8TUgjlNcxbRkxz3ioiiHYjNvNMKtA1dLHF5OeTGtYDjNMC_kMd-zHAf5JzEPnUIVRNQwnpoBYCtcAAnyFEqhhueh9xIQ1zZykKzII0lWyECb-oxN1YX4EHnaGm6XOTw61QoQIkjqyJaUAh2KQLPcvvE4uEAt3RGJTC52OKofekmL9xjOzzwihdHT7ImiH3x2jvReC2S_-A4HpKlpUrSQaTPzMUGe3s2G1PR4E',
-                offset: true,
-              },
-              {
-                title: 'Sự Kiện Tech Summit',
-                subtitle: 'Event',
-                image:
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuBkpc2gwTOMsI_ZGVNp2A3l3q0KAQ0HNHymOH6H5Wqfwk59sMLOBCv4Y9xdwALre84e1yM2Ifc_TrB1V1eqhuJ4dqdiX5dtMQUSsT6P2ifzeGbcNeDAVDRIlmLIlf-ddt0s9TULjNKg1YzD_wF1PJB2X9zXr-99pbq2YhCaJW8-X3RtoJZO-OvBfQsZ2_kXHUgCb9THarM2D5DMk4t6RdqTl8tdLuT6tnLvgW3FxWquexqdnDKH_TUXbT57o6PV3s6gS2A0S6Md_Ks',
-                offset: false,
-              },
-              {
-                title: 'Gia Đình & Bé',
-                subtitle: 'Family',
-                image:
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuDRiGBVoIFJ6V8sCAWyqGq8iICjhmo0tYBDZiivNl8BvrWaT9D6KPsE5stwTqG5hkZx1xqoha3e_Bemdq8kzA7D7tJ5mnvxDW0Qhv18u3jAypC7OhVop693kilO6abRB3wMd8gAmg3D1tBDWAzq3ghzrzInxUSI3y6drdwoYLY37vMVcolinLpGAnH7tDwq21w5v1VcwQpZB5Btk91AKpQk4hvhc5LhV4jnmd_uaMyf2Ng36VJL8xSexhVxkG1LoE0NUPCsla61HJU',
-                offset: true,
-              },
             ].map((item, idx) => (
               <Link
                 href="/albums"
@@ -107,7 +85,10 @@ export default async function Home() {
             ))}
           </div>
           <div className="flex md:hidden justify-center mt-4">
-            <Link href="/albums" className="text-primary font-bold text-sm flex items-center gap-2">
+            <Link
+              href="/albums"
+              className="text-primary font-bold text-sm flex items-center gap-2"
+            >
               Xem tất cả dự án{' '}
               <span className="material-symbols-outlined text-[18px]">
                 arrow_forward
@@ -277,8 +258,8 @@ export default async function Home() {
               <span className="truncate">Liên hệ tư vấn</span>
             </button>
           </div>
-          </div>
         </div>
-      </>
-    )
-  }
+      </div>
+    </>
+  )
+}
