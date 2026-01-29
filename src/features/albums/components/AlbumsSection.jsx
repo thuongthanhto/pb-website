@@ -33,6 +33,7 @@ export function AlbumsSection({ images = [] }) {
   const folderMap = {
     'Studio': 'studio',
     'Ngoại cảnh': 'outdoor',
+    'Chụp couples': 'couples',
     'T&K': 'T&K',
     'V&K': 'V&K',
   };

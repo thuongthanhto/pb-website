@@ -10,6 +10,7 @@ export function FilterButtons({ images = [], onFilterChange }) {
     const folderMap = {
       'studio': 'Studio',
       'outdoor': 'Ngoại cảnh',
+      'couples': 'Chụp couples',
       'T&K': 'T&K',
       'V&K': 'V&K',
     };
