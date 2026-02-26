@@ -76,7 +76,7 @@ export function AlbumsSwiper({ images = [] }) {
       {/* Custom Navigation Buttons */}
       <button
         onClick={() => swiperRef.current?.slidePrev()}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-0 group-hover/nav:opacity-100 transition-all duration-300 cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 md:-translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
         aria-label="Previous"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -85,7 +85,7 @@ export function AlbumsSwiper({ images = [] }) {
       </button>
       <button
         onClick={() => swiperRef.current?.slideNext()}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-0 group-hover/nav:opacity-100 transition-all duration-300 cursor-pointer"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 md:translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
         aria-label="Next"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

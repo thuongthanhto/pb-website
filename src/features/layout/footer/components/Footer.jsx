@@ -37,12 +37,15 @@ export default function Footer() {
         <div className="hidden md:block h-4 w-px bg-gray-200"></div>
 
         {/* Links */}
-        <div className="hidden md:flex gap-6 text-gray-500 text-sm">
-          <a className="hover:text-primary transition-colors" href="/contact">
+        <div className="flex gap-6 text-gray-500 text-sm">
+          <a className="hover:text-primary active:text-primary transition-colors" href="/contact">
             Liên hệ
           </a>
-          <a className="hover:text-primary transition-colors" href="/albums">
+          <a className="hover:text-primary active:text-primary transition-colors" href="/albums">
             Bộ sưu tập
+          </a>
+          <a className="hover:text-primary active:text-primary transition-colors" href="/pricing">
+            Bảng giá
           </a>
         </div>
       </div>
