@@ -1,7 +1,12 @@
 import Link from 'next/link'
+import { AlbumsSwiper } from '@/features/home/components'
+import { getAllImages } from '@/lib/r2-albums'
 
 export default async function Home() {
-  // Fetch file list from R2
+  // Fetch images from R2 and pick up to 10 for the carousel
+  const allImages = await getAllImages();
+  const swiperImages = allImages.slice(0, 10);
+
   return (
     <>
       {/* Hero Section */}
@@ -34,16 +39,11 @@ export default async function Home() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="w-full bg-surface-light py-16" id="portfolio">
+      <div className="w-full bg-surface-light py-8" id="portfolio">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-10">
           <div className="flex justify-between items-end border-b border-gray-200 pb-6">
             <div>
-              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">
-                Portfolio
-              </h2>
-              <h3 className="text-gray-900 text-3xl md:text-4xl font-bold leading-tight">
-                Tác phẩm nổi bật
-              </h3>
+
             </div>
             <a
               className="hidden md:flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm font-medium"
@@ -55,35 +55,7 @@ export default async function Home() {
               </span>
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: 'Ảnh cưới',
-                subtitle: 'Wedding Photography',
-                image:
-                  'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev/photos/T&K/MOR_6607.jpg',
-                offset: false,
-              },
-            ].map((item, idx) => (
-              <Link
-                href="/albums"
-                key={idx}
-                className={`group relative overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${
-                  item.offset ? 'lg:mt-12' : ''
-                }`}
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url("${item.image}")` }}
-                ></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h4 className="text-white font-bold text-lg">{item.title}</h4>
-                  <p className="text-gray-200 text-sm">{item.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <AlbumsSwiper images={swiperImages} />
           <div className="flex md:hidden justify-center mt-4">
             <Link
               href="/albums"

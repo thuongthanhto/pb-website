@@ -38,8 +38,11 @@ export async function loadMetadata(): Promise<Record<string, ImageMetadata>> {
     if (body) {
       return JSON.parse(body);
     }
-  } catch (error) {
-    console.log("No metadata file found or error reading metadata:", error);
+  } catch (error: any) {
+    // Silently handle missing metadata file - it's optional
+    if (error?.Code !== 'NoSuchKey' && error?.name !== 'NoSuchKey') {
+      console.warn("Error reading metadata:", error?.message || error);
+    }
   }
 
   return {};
