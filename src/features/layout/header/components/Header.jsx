@@ -38,11 +38,11 @@ export default function Header() {
             onClick={closeMenu}
           >
             <Image
-              src="/logo.svg"
+              src="/logo-pb.svg"
               alt="PhatBo Studio Logo"
               width={40}
               height={40}
-              className="w-10 h-10"
+              className="w-10 h-10 rounded-lg"
             />
             <h2 className="text-gray-900 text-lg font-bold leading-tight tracking-[-0.015em]">
               PhatBo
