@@ -63,7 +63,7 @@ export function PricingCards() {
   ]
 
   return (
-    <section className="w-full px-4 lg:px-40 pb-20 pt-8 flex justify-center bg-white">
+    <section className="w-full px-4 lg:px-40 pb-20 pt-8 flex justify-center bg-slate-900">
       <div className="w-full max-w-[1200px]">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-4 text-text-main tracking-tight">
@@ -79,8 +79,8 @@ export function PricingCards() {
               key={idx}
               className={`relative flex flex-col gap-6 rounded-3xl p-8 transition-all duration-300 ${
                 pkg.featured
-                  ? 'border-2 border-primary bg-white shadow-xl shadow-primary/5 hover:-translate-y-1'
-                  : 'border border-border-light bg-white hover:shadow-hover hover:-translate-y-1'
+                  ? 'border-2 border-primary bg-slate-800/50 shadow-xl shadow-primary/5 hover:-translate-y-1'
+                  : 'border border-border-light bg-slate-800/30 hover:shadow-hover hover:-translate-y-1'
               }`}
             >
               {pkg.featured && (
@@ -115,7 +115,7 @@ export function PricingCards() {
                 className={`w-full h-12 rounded-xl text-base font-bold transition-all mt-auto ${
                   pkg.featured
                     ? 'bg-primary text-white h-14 hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/30'
-                    : 'bg-background-alt border border-border-light text-text-main hover:bg-border-light hover:text-text-main'
+                    : 'bg-slate-700 border border-slate-600 text-slate-200 hover:bg-slate-600 hover:text-white'
                 }`}
               >
                 {pkg.buttonText}

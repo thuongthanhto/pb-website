@@ -15,7 +15,7 @@ export function TeamPersonnel() {
   ]
 
   return (
-    <div className="px-6 md:px-10 lg:px-40 flex justify-center py-20 bg-white">
+    <div className="px-6 md:px-10 lg:px-40 flex justify-center py-20 bg-slate-900">
       <div className="max-w-[1024px] w-full flex flex-col items-center gap-12">
         <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-6">
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight text-text-main">

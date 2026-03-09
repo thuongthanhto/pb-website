@@ -1,6 +1,6 @@
 export function PricingHero() {
   return (
-    <section className="w-full px-4 lg:px-40 py-8 lg:py-12 flex justify-center bg-white">
+    <section className="w-full px-4 lg:px-40 py-8 lg:py-12 flex justify-center bg-slate-900">
       <div className="flex w-full max-w-[1200px] flex-col">
         <div className="@container">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl">
@@ -24,7 +24,7 @@ export function PricingHero() {
                 </p>
               </div>
               <div className="flex gap-4 mt-2">
-                <button className="flex h-12 px-8 cursor-pointer items-center justify-center rounded-full bg-white text-primary text-base font-bold transition-all hover:bg-gray-100 shadow-lg">
+                <button className="flex h-12 px-8 cursor-pointer items-center justify-center rounded-full bg-slate-800 text-primary text-base font-bold transition-all hover:bg-slate-700 shadow-lg">
                   <span>Tư vấn ngay</span>
                 </button>
                 <a href="/albums" className="flex h-12 px-8 cursor-pointer items-center justify-center rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-base font-bold transition-all hover:bg-black/50 hover:border-white/50">

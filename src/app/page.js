@@ -10,10 +10,10 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="w-full bg-white">
+      <div className="w-full bg-slate-900">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-8 md:py-12">
           <div className="@container">
-            <div className="flex min-h-[420px] md:min-h-[600px] flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-gray-200">
+            <div className="flex min-h-[420px] md:min-h-[600px] flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-black/30">
               <iframe
                 className="absolute inset-0 w-full h-full object-cover hidden md:block"
                 src="https://www.youtube.com/embed/D4xpVntBzek?autoplay=1&mute=1&loop=1&playlist=D4xpVntBzek&controls=0"
@@ -55,9 +55,9 @@ export default async function Home() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="w-full bg-surface-light py-8" id="portfolio">
+      <div className="w-full bg-slate-900 py-8" id="portfolio">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-10">
-          <div className="flex justify-between items-end border-b border-gray-200 pb-6">
+          <div className="flex justify-between items-end border-b border-slate-800 pb-6">
             <div>
 
             </div>
@@ -87,14 +87,14 @@ export default async function Home() {
       </div>
 
       {/* Services Section */}
-      <div className="w-full bg-white py-10 md:py-24" id="services">
+      <div className="w-full bg-slate-900 py-10 md:py-24" id="services">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-3 md:gap-4 text-center items-center">
               <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full">
                 Dịch Vụ Của Chúng Tôi
               </h2>
-              <h1 className="text-gray-900 text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
+              <h1 className="text-slate-100 text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
                 Gói chụp ảnh đa dạng
               </h1>
               <p className="text-text-secondary text-base md:text-lg font-normal leading-relaxed max-w-[600px]">
@@ -125,7 +125,7 @@ export default async function Home() {
               ].map((service, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-gray-100 bg-white p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group active:border-primary/30"
+                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-slate-800 bg-slate-800/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group active:border-primary/30"
                 >
                   <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <span className="material-symbols-outlined text-[36px]">
@@ -133,7 +133,7 @@ export default async function Home() {
                     </span>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-gray-900 text-xl font-bold">
+                    <h3 className="text-slate-100 text-xl font-bold">
                       {service.title}
                     </h3>
                     <p className="text-text-secondary text-base leading-relaxed">
@@ -157,9 +157,9 @@ export default async function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="w-full bg-surface-light py-10 md:py-24 border-t border-gray-100">
+      <div className="w-full bg-slate-900 py-10 md:py-24 border-t border-slate-800">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
-          <h2 className="text-gray-900 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
+          <h2 className="text-slate-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
             Khách hàng nói gì về chúng tôi?
           </h2>
           <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
@@ -188,9 +188,9 @@ export default async function Home() {
             ].map((testimonial, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-gray-100 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink"
+                className="bg-slate-800/50 border border-slate-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink"
               >
-                <div className="absolute top-6 right-6 text-gray-100">
+                <div className="absolute top-6 right-6 text-slate-700">
                   <span className="material-symbols-outlined text-[48px]">
                     format_quote
                   </span>
@@ -205,16 +205,16 @@ export default async function Home() {
                     </span>
                   ))}
                 </div>
-                <p className="text-gray-600 italic leading-relaxed relative z-10">
+                <p className="text-slate-300 italic leading-relaxed relative z-10">
                   {testimonial.text}
                 </p>
-                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-gray-50">
+                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-slate-700">
                   <div
                     className="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/20"
                     style={{ backgroundImage: `url('${testimonial.avatar}')` }}
                   ></div>
                   <div>
-                    <h4 className="text-gray-900 font-bold text-sm">
+                    <h4 className="text-slate-100 font-bold text-sm">
                       {testimonial.name}
                     </h4>
                     <p className="text-primary text-xs font-medium">
@@ -229,12 +229,12 @@ export default async function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full bg-white pt-12 md:pt-20 pb-10 border-t border-gray-100">
+      <div className="w-full bg-slate-900 pt-12 md:pt-20 pb-10 border-t border-slate-800">
         <div className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
-          <h2 className="text-gray-900 text-2xl md:text-5xl font-black tracking-tight">
+          <h2 className="text-slate-100 text-2xl md:text-5xl font-black tracking-tight">
             Sẵn sàng để tỏa sáng?
           </h2>
-          <p className="text-gray-500 text-base md:text-lg max-w-[600px] leading-relaxed">
+          <p className="text-slate-400 text-base md:text-lg max-w-[600px] leading-relaxed">
             Hãy để chúng tôi giúp bạn lưu giữ những khoảnh khắc đẹp nhất ngay
             hôm nay với phong cách tinh tế và hiện đại.
           </p>
@@ -247,7 +247,7 @@ export default async function Home() {
             </Link>
             <Link
               href="/contact"
-              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-white border border-gray-200 hover:border-primary hover:text-primary transition-all text-gray-700 text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
+              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-slate-800 border border-slate-700 hover:border-primary hover:text-primary transition-all text-slate-300 text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
             >
               Liên hệ tư vấn
             </Link>

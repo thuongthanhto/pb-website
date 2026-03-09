@@ -33,15 +33,15 @@ export function ContactSection() {
               Liên hệ với chúng tôi
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-5">
             {contactItems.map((item, idx) => (
               <a
                 key={idx}
                 href={item.href}
-                className="w-24 h-24 rounded-3xl border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
+                className="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                 title={item.label}
               >
-                <Icon icon={item.icon} width="32" height="32" />
+                <Icon icon={item.icon} width="22" height="22" />
               </a>
             ))}
           </div>

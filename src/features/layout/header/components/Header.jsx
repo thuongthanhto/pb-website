@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+      <div className="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div className="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
           <Link
             href="/"
@@ -44,7 +44,7 @@ export default function Header() {
               height={40}
               className="w-10 h-10 rounded-lg"
             />
-            <h2 className="text-gray-900 text-lg font-bold leading-tight tracking-[-0.015em]">
+            <h2 className="text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
               PhatBo
             </h2>
           </Link>
@@ -59,7 +59,7 @@ export default function Header() {
                   className={`text-sm font-medium transition-colors ${
                     isActive(link.href)
                       ? 'text-primary border-b-2 border-primary pb-1'
-                      : 'text-gray-600 hover:text-primary'
+                      : 'text-slate-200 hover:text-primary'
                   }`}
                 >
                   {link.label}
@@ -70,7 +70,7 @@ export default function Header() {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 text-gray-600 hover:text-primary transition-colors"
+              className="md:hidden p-2 text-slate-400 hover:text-primary transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -117,18 +117,18 @@ export default function Header() {
         onClick={closeMenu}
       >
         <div
-          className={`fixed right-0 top-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 h-full w-64 bg-slate-900 shadow-xl transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col h-full">
             {/* Drawer Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-100">
-              <h3 className="text-lg font-bold text-gray-900">Menu</h3>
+            <div className="flex items-center justify-between p-4 border-b border-slate-800">
+              <h3 className="text-lg font-bold text-slate-100">Menu</h3>
               <button
                 onClick={closeMenu}
-                className="p-2 text-gray-600 hover:text-primary transition-colors"
+                className="p-2 text-slate-400 hover:text-primary transition-colors"
                 aria-label="Close menu"
               >
                 <svg
@@ -155,7 +155,7 @@ export default function Header() {
                 className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                   isActive('/')
                     ? 'bg-primary/10 text-primary'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    : 'text-slate-200 hover:bg-slate-800'
                 }`}
               >
                 Trang chủ
@@ -168,7 +168,7 @@ export default function Header() {
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive(link.href)
                       ? 'bg-primary/10 text-primary'
-                      : 'text-gray-700 hover:bg-gray-50'
+                      : 'text-slate-200 hover:bg-slate-800'
                   }`}
                 >
                   {link.label}

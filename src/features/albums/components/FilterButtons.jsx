@@ -36,7 +36,7 @@ export function FilterButtons({ images = [], onFilterChange }) {
             className={`flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 transition-all whitespace-nowrap ${
               activeFolder === folder
                 ? 'bg-primary text-white hover:shadow-lg hover:shadow-primary/30 font-bold'
-                : 'bg-surface-alt border border-transparent hover:border-primary/20 hover:bg-white text-gray-600 hover:text-primary font-semibold'
+                : 'bg-slate-800 border border-slate-700 hover:border-primary/40 hover:bg-slate-700 text-slate-300 hover:text-white font-semibold'
             }`}
           >
             {folder}

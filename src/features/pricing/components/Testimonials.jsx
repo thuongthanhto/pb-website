@@ -32,14 +32,14 @@ export function Testimonials() {
   }
 
   return (
-    <section className="w-full px-4 lg:px-40 py-20 bg-white border-t border-border-light flex justify-center">
+    <section className="w-full px-4 lg:px-40 py-20 bg-slate-900 border-t border-border-light flex justify-center">
       <div className="w-full max-w-[1200px] flex flex-col items-center">
         <h2 className="text-3xl font-extrabold text-center mb-10 text-text-main">Khách hàng nói gì về chúng tôi?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {testimonials.map((testimonial, idx) => (
             <div
               key={idx}
-              className="bg-background-alt p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow"
+              className="bg-slate-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow"
             >
               <div className="flex items-center gap-1 mb-4">
                 {renderStars(testimonial.rating)}

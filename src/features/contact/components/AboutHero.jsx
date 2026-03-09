@@ -1,6 +1,6 @@
 export function AboutHero() {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-slate-900">
       <div className="px-4 md:px-10 lg:px-40 flex justify-center py-8">
         <div className="w-full max-w-[1024px]">
           <div
@@ -17,7 +17,7 @@ export function AboutHero() {
                 Chụp ảnh chuyên nghiệp kể câu chuyện độc đáo của bạn thông qua những hình ảnh chân thực và vượt thời gian.
               </h2>
             </div>
-            <a href="/albums" className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-white hover:bg-gray-50 text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg">
+            <a href="/albums" className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-slate-800 hover:bg-slate-700 text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg">
               Xem bộ sưu tập
             </a>
           </div>
