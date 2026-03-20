@@ -35,7 +35,7 @@ export function AlbumsSection({ images = [] }) {
     'Ngoại cảnh': 'outdoor',
     'Chụp couples': 'couples',
     'T&K': 'T&K',
-    'V&K': 'V&K',
+    'Phóng sự ngày cưới': 'V&K',
   };
 
   const filteredImages =

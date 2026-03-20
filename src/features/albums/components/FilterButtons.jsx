@@ -12,7 +12,7 @@ export function FilterButtons({ images = [], onFilterChange }) {
       'outdoor': 'Ngoại cảnh',
       'couples': 'Chụp couples',
       'T&K': 'T&K',
-      'V&K': 'V&K',
+      'V&K': 'Phóng sự ngày cưới',
     };
 
     const uniqueFolders = [...new Set(images.map((img) => img.folder))];
