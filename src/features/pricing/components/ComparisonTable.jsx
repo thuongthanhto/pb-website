@@ -26,6 +26,13 @@ export function ComparisonTable() {
               </thead>
               <tbody className="divide-y divide-border-light">
                 <tr className="hover:bg-slate-700/30 transition-colors">
+                  <td className="p-5 px-6 text-text-main font-medium text-sm">Trang phục</td>
+                  <td className="p-5 px-6 text-text-muted text-sm">2 váy chụp Luxury, 2 Vest</td>
+                  <td className="p-5 px-6 text-text-main font-bold text-sm bg-primary-light/30">
+                    2 váy chụp Luxury, 2 Vest
+                  </td>
+                </tr>
+                <tr className="hover:bg-slate-700/30 transition-colors">
                   <td className="p-5 px-6 text-text-main font-medium text-sm">Địa điểm chụp</td>
                   <td className="p-5 px-6 text-text-muted text-sm">Studio (Indoor)</td>
                   <td className="p-5 px-6 text-text-main font-bold text-sm bg-primary-light/30">

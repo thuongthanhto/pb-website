@@ -6,6 +6,7 @@ export function PricingCards() {
       description: '2 Layouts chụp tại Studio. Tinh tế và nghệ thuật.',
       featured: false,
       features: [
+        'Bao gồm 2 váy chụp Luxury, 2 Vest',
         'Hoa tươi, Make up & Hair',
         'Retouch 30 ảnh hoàn chỉnh',
         'Album 30x30 (30 trang) & Hộp đựng',
@@ -22,6 +23,7 @@ export function PricingCards() {
       featured: true,
       badge: 'Được yêu thích nhất',
       features: [
+        'Bao gồm 2 váy chụp Luxury, 2 Vest',
         'Bối cảnh Studio & Streetstyle Sài Gòn',
         'Hoa tươi, Make up & Hair thay đổi',
         'Retouch 35 ảnh cao cấp',
