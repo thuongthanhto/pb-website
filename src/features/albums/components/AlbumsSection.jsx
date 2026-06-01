@@ -1,15 +1,81 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { FilterButtons, PortfolioGrid, ImageViewer } from '.';
 
 const IMAGES_PER_PAGE = 20; // Load 20 images per batch
+
+// Map display label <-> URL slug for the ?category= param
+const folderMap = {
+  'Studio': 'studio',
+  'Ngoại cảnh': 'outdoor',
+  'Chụp couples': 'couples',
+  'T&K': 'T&K',
+  'Phóng sự ngày cưới': 'V&K',
+};
+const slugToFolder = Object.fromEntries(
+  Object.entries(folderMap).map(([label, slug]) => [slug, label])
+);
 
 export function AlbumsSection({ images = [] }) {
   const [selectedFolder, setSelectedFolder] = useState('Tất cả');
   const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+  const didInit = useRef(false);
+
+  // Read the selected tab + opened photo from the URL on mount (and on back/forward)
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+
+      const slug = params.get('category');
+      setSelectedFolder(slug && slugToFolder[slug] ? slugToFolder[slug] : 'Tất cả');
+
+      const photo = params.get('photo');
+      const img = photo ? images.find((i) => i.fileName === photo) : null;
+      if (img) {
+        setCurrentImage(img);
+        setViewerOpen(true);
+
+        // Make sure the opened photo is within the paginated slice so next/prev work
+        const folderLabel = slug && slugToFolder[slug] ? slugToFolder[slug] : 'Tất cả';
+        const list =
+          folderLabel === 'Tất cả'
+            ? images
+            : images.filter((i) => i.folder === folderMap[folderLabel]);
+        const idx = list.findIndex((i) => i.id === img.id);
+        if (idx >= 0) {
+          setLoadedCount((prev) =>
+            Math.max(prev, Math.ceil((idx + 1) / IMAGES_PER_PAGE) * IMAGES_PER_PAGE)
+          );
+        }
+      } else {
+        setViewerOpen(false);
+      }
+    };
+    syncFromUrl();
+    window.addEventListener('popstate', syncFromUrl);
+    return () => window.removeEventListener('popstate', syncFromUrl);
+  }, [images]);
+
+  // Mirror the selected tab + opened photo into the URL so it can be reloaded/shared
+  useEffect(() => {
+    if (!didInit.current) {
+      didInit.current = true; // skip first run so we don't overwrite the URL before reading it
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+
+    if (selectedFolder === 'Tất cả') params.delete('category');
+    else params.set('category', folderMap[selectedFolder]);
+
+    if (viewerOpen && currentImage) params.set('photo', currentImage.fileName);
+    else params.delete('photo');
+
+    const query = params.toString();
+    window.history.replaceState(null, '', query ? `?${query}` : window.location.pathname);
+  }, [selectedFolder, viewerOpen, currentImage]);
 
   const handleFolderChange = (folder) => {
     setSelectedFolder(folder);
@@ -30,14 +96,6 @@ export function AlbumsSection({ images = [] }) {
   };
 
   // Filter images by folder
-  const folderMap = {
-    'Studio': 'studio',
-    'Ngoại cảnh': 'outdoor',
-    'Chụp couples': 'couples',
-    'T&K': 'T&K',
-    'Phóng sự ngày cưới': 'V&K',
-  };
-
   const filteredImages =
     selectedFolder === 'Tất cả'
       ? images
@@ -78,7 +136,11 @@ export function AlbumsSection({ images = [] }) {
 
   return (
     <>
-      <FilterButtons images={images} onFilterChange={handleFolderChange} />
+      <FilterButtons
+        images={images}
+        activeFolder={selectedFolder}
+        onFilterChange={handleFolderChange}
+      />
       <PortfolioGrid
         images={paginatedImages}
         selectedFolder={selectedFolder}

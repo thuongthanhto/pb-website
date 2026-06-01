@@ -1,10 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 
-export function FilterButtons({ images = [], onFilterChange }) {
-  const [activeFolder, setActiveFolder] = useState('Tất cả');
-
+export function FilterButtons({ images = [], activeFolder = 'Tất cả', onFilterChange }) {
   // Get unique folder names from images
   const folderNames = useMemo(() => {
     const folderMap = {
@@ -22,7 +20,6 @@ export function FilterButtons({ images = [], onFilterChange }) {
   }, [images]);
 
   const handleFolderClick = (folder) => {
-    setActiveFolder(folder);
     onFilterChange(folder);
   };
 
