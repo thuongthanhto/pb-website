@@ -38,15 +38,12 @@ export default function Header() {
             onClick={closeMenu}
           >
             <Image
-              src="/logo-pb.svg"
+              src="/logo-pb.png"
               alt="PhatBo Studio Logo"
-              width={40}
-              height={40}
-              className="w-10 h-10 rounded-lg"
+              width={56}
+              height={56}
+              className="w-12 h-12 rounded-lg"
             />
-            <h2 className="text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
-              PhatBo
-            </h2>
           </Link>
           
           {/* Desktop Navigation */}

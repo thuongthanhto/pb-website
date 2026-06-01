@@ -6,8 +6,7 @@ export default function Footer() {
   return (
     <div className="max-w-[1280px] mx-auto px-4 md:px-10 border-t border-slate-800 pt-8 pb-6 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="flex items-center gap-2 text-slate-100">
-        <img src="/logo-pb.svg" alt="PhatBo Logo" className="w-7 h-7 rounded-md" />
-        <span className="font-bold text-lg">PhatBo</span>
+        <img src="/logo-pb.png" alt="PhatBo Logo" className="w-12 h-12 rounded-md" />
       </div>
 
       <div className="flex items-center gap-6">
