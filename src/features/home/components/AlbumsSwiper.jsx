@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -60,11 +61,14 @@ export function AlbumsSwiper({ images = [] }) {
                 href="/albums"
                 className="group relative block overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
               >
-                <img
+                <Image
                   src={imageUrl}
                   alt={image.title || image.folder || `Ảnh ${idx + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 300px"
+                  quality={85}
+                  priority={idx < 4}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
