@@ -56,9 +56,11 @@ export async function getAllImages() {
     })
     .filter((img) => img.folder !== null) // Remove files not in subfolders
     .sort((a, b) => {
-      // Sort by custom order if available, otherwise by filename
-      if (a.order !== b.order) {
-        return a.order - b.order;
+      // Sort by last modified date, newest first
+      const dateA = a.lastModified ? new Date(a.lastModified).getTime() : 0;
+      const dateB = b.lastModified ? new Date(b.lastModified).getTime() : 0;
+      if (dateA !== dateB) {
+        return dateB - dateA;
       }
       return a.fileName.localeCompare(b.fileName);
     });
