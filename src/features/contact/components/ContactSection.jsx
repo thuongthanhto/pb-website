@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import { Reveal } from '@/components/motion/Reveal'
 
 export function ContactSection() {
   const contactItems = [
@@ -27,7 +28,7 @@ export function ContactSection() {
   return (
     <section className="w-full py-12 md:py-16 flex justify-center">
       <div className="w-full max-w-[1280px] px-4 md:px-10">
-        <div className="flex flex-col items-center gap-8">
+        <Reveal className="flex flex-col items-center gap-8">
           <div className="text-center">
             <p className="text-text-muted text-sm font-medium mb-2">
               Liên hệ với chúng tôi
@@ -45,7 +46,7 @@ export function ContactSection() {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

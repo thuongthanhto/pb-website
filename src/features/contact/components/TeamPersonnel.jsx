@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/motion/Reveal'
+
 export function TeamPersonnel() {
   const teamMembers = [
     {
@@ -17,7 +19,7 @@ export function TeamPersonnel() {
   return (
     <div className="flex justify-center py-20 bg-slate-900">
       <div className="max-w-[1280px] w-full px-4 md:px-10 flex flex-col items-center gap-12">
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-6">
+        <Reveal className="text-center max-w-4xl mx-auto flex flex-col items-center gap-6">
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight text-text-main">
             Đội ngũ của chúng tôi
           </h2>
@@ -36,11 +38,12 @@ export function TeamPersonnel() {
               mục.
             </p>
           </div>
-        </div>
+        </Reveal>
         <div className="flex flex-col md:flex-row justify-center items-start gap-16 mt-8 w-full">
-          {teamMembers.map((member) => (
-            <div
+          {teamMembers.map((member, idx) => (
+            <Reveal
               key={member.name}
+              delay={idx * 0.12}
               className="flex flex-col items-center gap-5 w-full md:w-1/2 max-w-md"
             >
               <div
@@ -57,7 +60,7 @@ export function TeamPersonnel() {
                   {member.role}
                 </p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

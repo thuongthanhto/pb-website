@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/motion/Reveal'
+
 export function PricingCards() {
   const packages = [
     {
@@ -67,18 +69,19 @@ export function PricingCards() {
   return (
     <section className="w-full pb-20 pt-8 flex justify-center bg-slate-900">
       <div className="w-full max-w-[1280px] px-4 md:px-10">
-        <div className="text-center mb-12">
+        <Reveal className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-4 text-text-main tracking-tight">
             Lựa chọn gói phù hợp
           </h2>
           <p className="text-text-muted text-lg max-w-2xl mx-auto">
             Đa dạng lựa chọn từ Pre-Wedding đến ngày trọng đại với những gói dịch vụ chuyên nghiệp nhất.
           </p>
-        </div>
+        </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-stretch">
           {packages.map((pkg, idx) => (
-            <div
+            <Reveal
               key={idx}
+              delay={idx * 0.1}
               className={`relative flex flex-col gap-6 rounded-3xl p-8 transition-all duration-300 ${
                 pkg.featured
                   ? 'border-2 border-primary bg-slate-800/50 shadow-xl shadow-primary/5 hover:-translate-y-1'
@@ -122,7 +125,7 @@ export function PricingCards() {
               >
                 {pkg.buttonText}
               </button>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

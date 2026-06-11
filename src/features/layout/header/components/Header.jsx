@@ -44,6 +44,14 @@ export default function Header() {
               height={56}
               className="w-12 h-12 rounded-lg"
             />
+            <div className="flex flex-col leading-tight">
+              <span className="text-base md:text-lg font-extrabold tracking-tight text-text-main">
+                PhatBo Studio
+              </span>
+              <span className="hidden sm:block text-[11px] md:text-xs font-medium tracking-wide text-text-muted">
+                Lưu giữ khoảnh khắc · Kiến tạo ký ức
+              </span>
+            </div>
           </Link>
           
           {/* Desktop Navigation */}

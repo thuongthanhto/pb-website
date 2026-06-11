@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/motion/Reveal'
+
 export function Testimonials() {
   const testimonials = [
     {
@@ -37,8 +39,9 @@ export function Testimonials() {
         <h2 className="text-3xl font-extrabold text-center mb-10 text-text-main">Khách hàng nói gì về chúng tôi?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {testimonials.map((testimonial, idx) => (
-            <div
+            <Reveal
               key={idx}
+              delay={idx * 0.1}
               className="bg-slate-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow"
             >
               <div className="flex items-center gap-1 mb-4">
@@ -59,7 +62,7 @@ export function Testimonials() {
                   <p className="text-xs text-text-muted font-medium">{testimonial.role}</p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

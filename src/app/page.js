@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { AlbumsSwiper } from '@/features/home/components'
 import { getAllImages } from '@/lib/r2-albums'
+import { Reveal } from '@/components/motion/Reveal'
 
 // Re-fetch from R2 at most every 60s so newly uploaded photos show up
 // without needing a redeploy.
@@ -17,7 +18,7 @@ export default async function Home() {
       <div className="w-full bg-slate-900">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-8 md:py-12">
           <div className="@container">
-            <div className="flex min-h-[420px] md:min-h-[600px] flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-black/30">
+            <div className="flex min-h-[420px] md:min-h-0 md:aspect-video flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-black/30">
               <iframe
                 className="absolute inset-0 w-full h-full object-cover hidden md:block"
                 src="https://www.youtube.com/embed/D4xpVntBzek?autoplay=1&mute=1&loop=1&playlist=D4xpVntBzek&controls=0"
@@ -29,7 +30,7 @@ export default async function Home() {
               <div className="absolute inset-0 md:hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
               <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-0"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 z-0"></div>
-              <div className="flex flex-col gap-4 text-center z-10 max-w-[800px]">
+              <Reveal className="flex flex-col gap-4 text-center z-10 max-w-[800px]">
                 <h1 className="text-white text-3xl md:text-6xl font-black leading-tight tracking-[-0.033em] drop-shadow-xl">
                   Lưu giữ từng khoảnh khắc <br />{' '}
                   <span className="text-primary">vô giá</span> của bạn
@@ -52,7 +53,7 @@ export default async function Home() {
                     Xem bộ sưu tập
                   </Link>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -94,7 +95,7 @@ export default async function Home() {
       <div className="w-full bg-slate-900 py-10 md:py-24" id="services">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <div className="flex flex-col gap-8 md:gap-12">
-            <div className="flex flex-col gap-3 md:gap-4 text-center items-center">
+            <Reveal className="flex flex-col gap-3 md:gap-4 text-center items-center">
               <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full">
                 Dịch Vụ Của Chúng Tôi
               </h2>
@@ -105,7 +106,7 @@ export default async function Home() {
                 Chúng tôi cung cấp các gói chụp ảnh chuyên nghiệp được thiết kế
                 riêng để đáp ứng mọi nhu cầu của bạn.
               </p>
-            </div>
+            </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               {[
                 {
@@ -127,8 +128,9 @@ export default async function Home() {
                     'Bắt trọn không khí sôi động và những điểm nhấn quan trọng trong các sự kiện công ty, hội nghị hay tiệc tất niên.',
                 },
               ].map((service, idx) => (
-                <div
+                <Reveal
                   key={idx}
+                  delay={idx * 0.1}
                   className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-slate-800 bg-slate-800/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group active:border-primary/30"
                 >
                   <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
@@ -153,7 +155,7 @@ export default async function Home() {
                       chevron_right
                     </span>
                   </a>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -163,9 +165,9 @@ export default async function Home() {
       {/* Testimonials Section */}
       <div className="w-full bg-slate-900 py-10 md:py-24 border-t border-slate-800">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
-          <h2 className="text-slate-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
+          <Reveal as="h2" className="text-slate-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
             Khách hàng nói gì về chúng tôi?
-          </h2>
+          </Reveal>
           <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
             {[
               {
@@ -190,8 +192,9 @@ export default async function Home() {
                   'https://lh3.googleusercontent.com/aida-public/AB6AXuAAbwghWN5JKuS9col-X56CleCAWG8N1CoFNNArgYcAo2OE68PqIT0Zad_5EBGeq7qQklo_aHoLE3KnadYCCFMV1_U0olwtmpjHJF6wC-wwyXIRa--LDIvaf7w7JPZopM5WfBBzpDv-MzVY51A0ngLLBDnrgkAMoWic7o3Pp5MnJfZImEtgSbn1-OrJiIJ6iIfC67a9_nQ0oHgal5p5x59DzA4PUEpj5KgH0tQlt3kIH1rnsMeza_0r19fbi2qhtGBkfwNGuF3SHuM',
               },
             ].map((testimonial, idx) => (
-              <div
+              <Reveal
                 key={idx}
+                delay={idx * 0.1}
                 className="bg-slate-800/50 border border-slate-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink"
               >
                 <div className="absolute top-6 right-6 text-slate-700">
@@ -226,7 +229,7 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -234,7 +237,7 @@ export default async function Home() {
 
       {/* CTA Section */}
       <div className="w-full bg-slate-900 pt-12 md:pt-20 pb-10 border-t border-slate-800">
-        <div className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
+        <Reveal className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
           <h2 className="text-slate-100 text-2xl md:text-5xl font-black tracking-tight">
             Sẵn sàng để tỏa sáng?
           </h2>
@@ -256,7 +259,7 @@ export default async function Home() {
               Liên hệ tư vấn
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </>
   )
