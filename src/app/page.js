@@ -2,6 +2,10 @@ import Link from 'next/link'
 import { AlbumsSwiper } from '@/features/home/components'
 import { getAllImages } from '@/lib/r2-albums'
 
+// Re-fetch from R2 at most every 60s so newly uploaded photos show up
+// without needing a redeploy.
+export const revalidate = 60
+
 export default async function Home() {
   // Fetch images from R2 and pick up to 10 for the carousel
   const allImages = await getAllImages();

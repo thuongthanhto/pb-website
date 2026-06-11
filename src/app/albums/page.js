@@ -2,6 +2,10 @@ import { AlbumsHero, AlbumsSection } from '@/features/albums/components'
 import { getAllImages } from '@/lib/r2-albums'
 import { generateSEOMetadata, generateImageGalleryStructuredData } from '@/lib/seo-metadata'
 
+// Re-fetch from R2 at most every 60s so newly uploaded photos show up
+// without needing a redeploy.
+export const revalidate = 60
+
 export async function generateMetadata() {
   const images = await getAllImages();
   const totalImages = images.length;
