@@ -1,8 +1,8 @@
 export function AboutHero() {
   return (
     <div className="w-full bg-slate-900">
-      <div className="px-4 md:px-10 lg:px-40 flex justify-center py-8">
-        <div className="w-full max-w-[1024px]">
+      <div className="flex justify-center py-8">
+        <div className="w-full max-w-[1280px] px-4 md:px-10">
           <div
             className="flex min-h-[500px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 relative overflow-hidden group shadow-soft"
             style={{

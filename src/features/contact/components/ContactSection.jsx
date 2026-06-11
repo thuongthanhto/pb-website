@@ -25,8 +25,8 @@ export function ContactSection() {
   ]
 
   return (
-    <section className="w-full px-4 md:px-10 py-12 md:py-16 flex justify-center">
-      <div className="w-full max-w-[1280px]">
+    <section className="w-full py-12 md:py-16 flex justify-center">
+      <div className="w-full max-w-[1280px] px-4 md:px-10">
         <div className="flex flex-col items-center gap-8">
           <div className="text-center">
             <p className="text-text-muted text-sm font-medium mb-2">

@@ -32,8 +32,8 @@ export function Testimonials() {
   }
 
   return (
-    <section className="w-full px-4 lg:px-40 py-20 bg-slate-900 border-t border-border-light flex justify-center">
-      <div className="w-full max-w-[1200px] flex flex-col items-center">
+    <section className="w-full py-20 bg-slate-900 border-t border-border-light flex justify-center">
+      <div className="w-full max-w-[1280px] px-4 md:px-10 flex flex-col items-center">
         <h2 className="text-3xl font-extrabold text-center mb-10 text-text-main">Khách hàng nói gì về chúng tôi?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {testimonials.map((testimonial, idx) => (

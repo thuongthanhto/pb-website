@@ -24,7 +24,7 @@ export function FilterButtons({ images = [], activeFolder = 'Tất cả', onFilt
   };
 
   return (
-    <div className="w-full max-w-[1200px] px-4 pb-10 mx-auto">
+    <div className="w-full max-w-[1280px] px-4 md:px-10 pb-10 mx-auto">
       <div className="flex gap-3 overflow-x-auto hide-scrollbar justify-center py-2 px-2">
         {folderNames.map((folder) => (
           <button

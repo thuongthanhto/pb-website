@@ -14,14 +14,14 @@ export function PortfolioGrid({
   // No filtering needed here - AlbumsSection already filters the images
   if (!images || images.length === 0) {
     return (
-      <div className="w-full max-w-[1440px] px-4 md:px-10 pb-24 mx-auto">
+      <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
         <p className="text-gray-500 text-center">Không tìm thấy ảnh nào.</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-[1440px] px-4 md:px-10 pb-24 mx-auto">
+    <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
         {images.map((image) => {
           const imageUrl = `${publicDomain}/${image.key}`;

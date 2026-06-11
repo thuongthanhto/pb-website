@@ -65,8 +65,8 @@ export function PricingCards() {
   ]
 
   return (
-    <section className="w-full px-4 lg:px-40 pb-20 pt-8 flex justify-center bg-slate-900">
-      <div className="w-full max-w-[1200px]">
+    <section className="w-full pb-20 pt-8 flex justify-center bg-slate-900">
+      <div className="w-full max-w-[1280px] px-4 md:px-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-4 text-text-main tracking-tight">
             Lựa chọn gói phù hợp
