@@ -14,6 +14,18 @@ export function TeamPersonnel() {
       image: '/avatar.jpg',
       hasGrayscale: false,
     },
+    {
+      name: 'Photography truyền thống',
+      role: 'Phóng sự ngày cưới',
+      image: '/phototruyenthong.jpeg',
+      hasGrayscale: false,
+    },
+    {
+      name: 'Support',
+      role: 'Phóng sự ngày cưới',
+      image: '/phongsusuppot.jpeg',
+      hasGrayscale: false,
+    },
   ]
 
   return (
@@ -53,10 +65,10 @@ export function TeamPersonnel() {
                 style={{ backgroundImage: `url("${member.image}")` }}
               ></div>
               <div className="text-center">
-                <h3 className="text-2xl font-display font-bold uppercase tracking-wide text-text-main">
+                <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-wide text-text-main min-h-[3.5rem] flex items-center justify-center">
                   {member.name}
                 </h3>
-                <p className="text-lg text-text-body font-serif italic mt-1">
+                <p className="text-base text-text-body font-serif italic mt-1">
                   {member.role}
                 </p>
               </div>

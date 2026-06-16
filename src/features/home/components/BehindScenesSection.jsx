@@ -28,8 +28,8 @@ const SHOTS = [
 
 const STATS = [
   { value: '500+', label: 'Buổi chụp đã thực hiện' },
-  { value: '8 năm', label: 'Kinh nghiệm trong nghề' },
-  { value: 'Studio', label: 'Thiết bị & ánh sáng chuyên nghiệp' },
+  { value: '15 năm', label: 'Kinh nghiệm trong nghề' },
+  { value: 'Gu ảnh sang trọng', label: 'Chi tiết từng bức ảnh' },
 ];
 
 export function BehindScenesSection() {
@@ -63,7 +63,7 @@ export function BehindScenesSection() {
                   delay={idx * 0.1}
                   className="flex flex-col gap-1 rounded-2xl border border-slate-800 bg-slate-800/50 p-3 md:p-5"
                 >
-                  <span className="text-primary text-xl md:text-3xl font-black leading-none">
+                  <span className="text-primary text-lg md:text-2xl font-black leading-tight text-balance">
                     {stat.value}
                   </span>
                   <span className="text-text-secondary text-[11px] md:text-sm leading-snug">
