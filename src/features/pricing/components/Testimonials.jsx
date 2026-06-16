@@ -37,12 +37,12 @@ export function Testimonials() {
     <section className="w-full py-20 bg-slate-900 border-t border-border-light flex justify-center">
       <div className="w-full max-w-[1280px] px-4 md:px-10 flex flex-col items-center">
         <h2 className="text-3xl font-extrabold text-center mb-10 text-text-main">Khách hàng nói gì về chúng tôi?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+        <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
           {testimonials.map((testimonial, idx) => (
             <Reveal
               key={idx}
               delay={idx * 0.1}
-              className="bg-slate-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow"
+              className="bg-slate-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
             >
               <div className="flex items-center gap-1 mb-4">
                 {renderStars(testimonial.rating)}

@@ -195,7 +195,7 @@ export default async function Home() {
               <Reveal
                 key={idx}
                 delay={idx * 0.1}
-                className="bg-slate-800/50 border border-slate-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink"
+                className="bg-slate-800/50 border border-slate-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
               >
                 <div className="absolute top-6 right-6 text-slate-700">
                   <span className="material-symbols-outlined text-[48px]">
