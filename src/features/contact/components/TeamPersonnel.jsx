@@ -15,14 +15,14 @@ export function TeamPersonnel() {
       hasGrayscale: false,
     },
     {
-      name: 'Photography truyền thống',
-      role: 'Phóng sự ngày cưới',
+      name: 'Photography',
+      role: 'Truyền thống - Phóng sự ngày cưới',
       image: '/phototruyenthong.jpeg',
       hasGrayscale: false,
     },
     {
-      name: 'Support',
-      role: 'Phóng sự ngày cưới',
+      name: 'Photography',
+      role: 'Truyền thống - Phóng sự ngày cưới',
       image: '/phongsusuppot.jpeg',
       hasGrayscale: false,
     },
