@@ -21,7 +21,7 @@ export function PricingCards() {
     {
       name: 'Pre-Wedding Studio & Street',
       price: '19.000.000đ',
-      description: '3 Layouts (Indoor & Outdoor Sài Gòn). Đa dạng phong cách.',
+      description: '2 Layouts (Indoor & Outdoor Sài Gòn). Đa dạng phong cách.',
       featured: true,
       badge: 'Được yêu thích nhất',
       features: [
@@ -41,7 +41,7 @@ export function PricingCards() {
       description: 'Ghi lại khoảnh khắc chân thực ngày trọng đại.',
       featured: false,
       features: [
-        '2 Máy phóng sự + 1 Máy truyền thống',
+        '1 Máy phóng sự + 1 Máy truyền thống',
         'Thời gian: Full Day (Cả ngày)',
         'Chụp 2 bên nhà (Lễ gia tiên & Đón khách)',
         'Hỗ trợ hướng dẫn làm lễ gia tiên',
