@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { AlbumsSwiper } from '@/features/home/components'
+import { AlbumsSwiper, BehindScenesSection } from '@/features/home/components'
 import { getAllImages } from '@/lib/r2-albums'
 import { Reveal } from '@/components/motion/Reveal'
 
@@ -161,6 +161,9 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      {/* Behind The Scenes Section */}
+      <BehindScenesSection />
 
       {/* Testimonials Section */}
       <div className="w-full bg-slate-900 py-10 md:py-24 border-t border-slate-800">
