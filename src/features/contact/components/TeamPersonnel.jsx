@@ -68,7 +68,7 @@ export function TeamPersonnel() {
                 <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-wide text-text-main min-h-[3.5rem] flex items-center justify-center">
                   {member.name}
                 </h3>
-                <p className="text-base text-text-body font-serif italic mt-1">
+                <p className="text-base text-text-body font-body italic mt-1">
                   {member.role}
                 </p>
               </div>
