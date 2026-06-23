@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-background-light font-display text-text-main antialiased selection:bg-primary selection:text-white">
         <BokehBackground />
-        <FallingEffect variant="petals" />
+        <FallingEffect variant="snow" />
         <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
           <Header />
           {children}

@@ -62,6 +62,31 @@ function Blossom({ color }) {
   )
 }
 
+// Một nhánh tuyết hướng lên: trục chính + 2 cặp nhánh con.
+const FLAKE_ARM = 'M12 12 L12 2 M12 4.6 L9.6 2.2 M12 4.6 L14.4 2.2 M12 7.5 L10.2 5.7 M12 7.5 L13.8 5.7'
+// 6 nhánh xoay đều quanh tâm -> bông tuyết.
+const FLAKE_ANGLES = [0, 60, 120, 180, 240, 300]
+
+function Snowflake() {
+  return (
+    <svg
+      className="leaf"
+      viewBox="0 0 24 24"
+      width="100%"
+      height="100%"
+      fill="none"
+      stroke="#ffffff"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+    >
+      {FLAKE_ANGLES.map((a) => (
+        <path key={a} d={FLAKE_ARM} transform={`rotate(${a} 12 12)`} />
+      ))}
+      <circle cx="12" cy="12" r="1.1" fill="#ffffff" stroke="none" />
+    </svg>
+  )
+}
+
 export default function FallingEffect({ variant = 'petals', count = 28 }) {
   const isSnow = variant === 'snow'
   const seeds = SEEDS.slice(0, Math.min(count, SEEDS.length))
@@ -90,10 +115,10 @@ export default function FallingEffect({ variant = 'petals', count = 28 }) {
             }}
           >
             <span
-              className="falling-leaf"
+              className={`falling-leaf${isSnow ? ' is-snow' : ''}`}
               style={{
-                width: isSnow ? Math.round(s.size * 0.55) : s.size,
-                height: isSnow ? Math.round(s.size * 0.55) : s.size,
+                width: isSnow ? Math.round(s.size * 0.7) : s.size,
+                height: isSnow ? Math.round(s.size * 0.7) : s.size,
                 opacity: s.opacity,
                 '--spin-duration': `${s.spin}s`,
                 // Mỗi hạt lật quanh một trục 3D riêng -> không đồng bộ.
@@ -103,7 +128,7 @@ export default function FallingEffect({ variant = 'petals', count = 28 }) {
               }}
             >
               {isSnow ? (
-                <span className="snow-dot" />
+                <Snowflake />
               ) : (
                 <Blossom color={FLOWER_COLORS[i % FLOWER_COLORS.length]} />
               )}
