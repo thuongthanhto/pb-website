@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import { Header } from '@/features/layout/header'
 import { Footer } from '@/features/layout/footer'
 import BokehBackground from '@/components/background/BokehBackground'
+import FallingEffect from '@/components/background/FallingEffect'
 
 export const metadata = {
   title: 'Studio Ảnh Nghệ Thuật - Trang chủ',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-background-light font-display text-text-main antialiased selection:bg-primary selection:text-white">
         <BokehBackground />
+        <FallingEffect variant="petals" />
         <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
           <Header />
           {children}

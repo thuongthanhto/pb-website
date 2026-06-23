@@ -44,10 +44,89 @@
   }
 }
 
+/* Hiệu ứng rơi (tuyết & hoa) — 3 lớp lồng nhau, mỗi lớp một chu kỳ riêng:
+   .falling-col (rơi dọc) > .falling-sway (dạt ngang) > .falling-leaf (xoay/lật).
+   Vì 3 chu kỳ lệch nhau nên đường bay không lặp đồng bộ -> trông ngẫu nhiên. */
+
+/* Lớp 1: rơi thẳng từ trên đỉnh xuống quá đáy màn hình. */
+.falling-col {
+  position: absolute;
+  top: -12%;
+  will-change: transform;
+  animation: falling-fall var(--fall-duration, 12s) linear var(--fall-delay, 0s) infinite;
+}
+
+/* Lớp 2: dạt ngang qua lại, chu kỳ độc lập với tốc độ rơi. */
+.falling-sway {
+  display: block;
+  will-change: transform;
+  animation: falling-sway var(--sway-duration, 5s) ease-in-out var(--sway-delay, 0s) infinite alternate;
+}
+
+/* Lớp 3: bông hoa/bông tuyết, tự xoay-lật quanh trục riêng. */
+.falling-leaf {
+  display: block;
+  perspective: 240px;
+  will-change: transform;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+  animation: falling-tumble var(--spin-duration, 9s) linear infinite;
+}
+
+.falling-leaf .leaf {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Bông tuyết: tròn, trắng, mờ nhẹ. */
+.snow-dot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: #ffffff;
+  filter: blur(0.4px);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.65);
+}
+
+@keyframes falling-fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(118vh);
+  }
+}
+
+@keyframes falling-sway {
+  from {
+    transform: translateX(calc(var(--sway-x, 40px) * -1));
+  }
+  to {
+    transform: translateX(var(--sway-x, 40px));
+  }
+}
+
+/* Lật quanh một trục riêng cho mỗi hạt -> mỗi hạt xoay một kiểu. */
+@keyframes falling-tumble {
+  from {
+    transform: rotate3d(var(--ax, 1), var(--ay, 1), var(--az, 0), 0deg);
+  }
+  to {
+    transform: rotate3d(var(--ax, 1), var(--ay, 1), var(--az, 0), 360deg);
+  }
+}
+
 /* Tắt chuyển động cho người dùng ưu tiên giảm hiệu ứng */
 @media (prefers-reduced-motion: reduce) {
-  .bokeh-dot {
+  .bokeh-dot,
+  .falling-col,
+  .falling-sway,
+  .falling-leaf {
     animation: none;
+  }
+  .falling-bg {
+    display: none;
   }
 }
 
