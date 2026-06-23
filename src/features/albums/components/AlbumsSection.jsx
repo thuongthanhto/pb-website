@@ -23,6 +23,7 @@ export function AlbumsSection({ images = [] }) {
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const didInit = useRef(false);
+  const loadMoreRef = useRef(null);
 
   // Read the selected tab + opened photo from the URL on mount (and on back/forward)
   useEffect(() => {
@@ -82,10 +83,6 @@ export function AlbumsSection({ images = [] }) {
     setLoadedCount(IMAGES_PER_PAGE); // Reset pagination when changing folder
   };
 
-  const handleLoadMore = () => {
-    setLoadedCount((prev) => prev + IMAGES_PER_PAGE);
-  };
-
   const handleImageClick = (image) => {
     setCurrentImage(image);
     setViewerOpen(true);
@@ -134,6 +131,25 @@ export function AlbumsSection({ images = [] }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [viewerOpen, handleNextImage, handlePrevImage]);
 
+  // Infinite scroll (Instagram-style): auto-load the next batch when the
+  // sentinel near the bottom of the grid scrolls into view.
+  useEffect(() => {
+    if (!hasMoreImages) return;
+    const el = loadMoreRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setLoadedCount((prev) => prev + IMAGES_PER_PAGE);
+        }
+      },
+      { rootMargin: '600px' } // start loading before the user hits the bottom
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasMoreImages, loadedCount, filteredImages.length]);
+
   return (
     <>
       <FilterButtons
@@ -148,13 +164,12 @@ export function AlbumsSection({ images = [] }) {
       />
 
       {hasMoreImages && (
-        <div className="w-full flex justify-center py-8 pb-12">
-          <button
-            onClick={handleLoadMore}
-            className="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-primary hover:bg-primary-dark transition-all text-white text-base font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40"
-          >
-            <span>Xem thêm ảnh</span>
-          </button>
+        <div
+          ref={loadMoreRef}
+          className="w-full flex justify-center py-10 pb-14"
+          aria-hidden="true"
+        >
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary/30 border-t-primary" />
         </div>
       )}
 
