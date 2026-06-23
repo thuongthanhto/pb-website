@@ -190,11 +190,13 @@
 }
 
 /* Hide scrollbar for horizontal scroll containers on mobile */
-.snap-x {
+.snap-x,
+.hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.snap-x::-webkit-scrollbar {
+.snap-x::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 

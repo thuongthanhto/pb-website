@@ -193,7 +193,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
 
         {/* Navigation and Info */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center gap-6">
             {/* Left: Prev button */}
             <button
               onClick={onPrev}
@@ -204,15 +204,10 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
               <Icon icon="mdi:chevron-left" width="32" height="32" className="text-white" />
             </button>
 
-            {/* Center: Info */}
-            <div className="text-center flex-1">
-              <p className="text-sm font-semibold mb-1">
-                {(image.title && image.title !== image.fileName) ? image.title : image.fileName}
-              </p>
-              <p className="text-xs text-gray-300">
-                {images.findIndex(img => img.id === image.id) + 1} / {images.length}
-              </p>
-            </div>
+            {/* Center: counter */}
+            <p className="text-xs text-gray-300 tabular-nums min-w-[64px] text-center">
+              {images.findIndex(img => img.id === image.id) + 1} / {images.length}
+            </p>
 
             {/* Right: Next button */}
             <button

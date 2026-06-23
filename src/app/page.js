@@ -61,8 +61,8 @@ export default async function Home() {
 
       {/* Portfolio Section */}
       <div className="w-full py-8" id="portfolio">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-10">
-          <div className="flex justify-between items-end border-b border-slate-800 pb-6">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-6 md:gap-10">
+          <div className="hidden md:flex justify-between items-end border-b border-slate-800 pb-6">
             <div>
 
             </div>

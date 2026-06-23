@@ -23,15 +23,15 @@ function PhotoTile({ image, imageUrl, index, onImageClick }) {
         delay: (index % 4) * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="break-inside-avoid mb-6 group relative rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
+      className="break-inside-avoid sm:mb-6 group relative rounded-none sm:rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
     >
-      <div className="w-full bg-slate-800 relative overflow-hidden">
+      <div className="w-full h-full bg-slate-800 relative overflow-hidden aspect-square sm:aspect-auto">
         <img
           ref={imgRef}
           src={imageUrl}
           alt={image.fileName}
           onLoad={() => setLoaded(true)}
-          className={`w-full h-auto object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+          className={`w-full h-full sm:h-auto object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
             loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105'
           }`}
           loading="lazy"
@@ -67,8 +67,8 @@ export function PortfolioGrid({
   }
 
   return (
-    <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
+    <div className="w-full max-w-[1280px] px-1 sm:px-4 md:px-10 pb-24 mx-auto">
+      <div className="grid grid-cols-3 gap-1 sm:block sm:columns-2 lg:columns-3 xl:columns-4 sm:gap-6">
         {images.map((image, index) => (
           <PhotoTile
             key={image.id}
