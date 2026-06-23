@@ -1,6 +1,6 @@
 export function PricingCTA() {
   return (
-    <section className="w-full py-20 flex justify-center bg-slate-900 border-t border-slate-800">
+    <section className="w-full py-20 flex justify-center border-t border-slate-800">
       <div className="w-full max-w-[800px] px-4 md:px-10 text-center flex flex-col items-center gap-6">
         <h2 className="text-3xl lg:text-4xl font-extrabold text-text-main">Vẫn chưa tìm thấy gói phù hợp?</h2>
         <p className="text-text-secondary text-lg font-medium max-w-2xl">

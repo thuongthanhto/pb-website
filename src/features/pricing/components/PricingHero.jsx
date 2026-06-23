@@ -1,6 +1,6 @@
 export function PricingHero() {
   return (
-    <section className="w-full py-8 lg:py-12 flex justify-center bg-slate-900">
+    <section className="w-full py-8 lg:py-12 flex justify-center">
       <div className="flex w-full max-w-[1280px] flex-col px-4 md:px-10">
         <div className="@container">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl">

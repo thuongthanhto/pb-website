@@ -1,6 +1,6 @@
 export function AboutHero() {
   return (
-    <div className="w-full bg-slate-900">
+    <div className="w-full">
       <div className="flex justify-center py-8">
         <div className="w-full max-w-[1280px] px-4 md:px-10">
           <div

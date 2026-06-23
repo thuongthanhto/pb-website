@@ -42,7 +42,7 @@ export default async function AlbumsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="flex-1 flex flex-col items-center w-full bg-slate-900">
+      <main className="flex-1 flex flex-col items-center w-full">
         {/* Hero Section */}
         <AlbumsHero />
 

@@ -20,6 +20,37 @@
   --text-secondary: #94a3b8;
 }
 
+/* Hiệu ứng nền bokeh: các đốm sáng mờ trôi nhẹ */
+.bokeh-dot {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(20px);
+  will-change: transform;
+  animation-name: bokeh-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bokeh-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, -40px, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-20px, 25px, 0) scale(0.95);
+  }
+}
+
+/* Tắt chuyển động cho người dùng ưu tiên giảm hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+  .bokeh-dot {
+    animation: none;
+  }
+}
+
 .title-break {
   width: 40px;
   display: block;

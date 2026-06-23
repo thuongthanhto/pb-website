@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="w-full bg-slate-900">
+      <div className="w-full">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-8 md:py-12">
           <div className="@container">
             <div className="flex min-h-[420px] md:min-h-0 md:aspect-video flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-black/30">
@@ -60,7 +60,7 @@ export default async function Home() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="w-full bg-slate-900 py-8" id="portfolio">
+      <div className="w-full py-8" id="portfolio">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-10">
           <div className="flex justify-between items-end border-b border-slate-800 pb-6">
             <div>
@@ -92,7 +92,7 @@ export default async function Home() {
       </div>
 
       {/* Services Section */}
-      <div className="w-full bg-slate-900 py-10 md:py-24" id="services">
+      <div className="w-full py-10 md:py-24" id="services">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <div className="flex flex-col gap-8 md:gap-12">
             <Reveal className="flex flex-col gap-3 md:gap-4 text-center items-center">
@@ -166,7 +166,7 @@ export default async function Home() {
       <BehindScenesSection />
 
       {/* Testimonials Section */}
-      <div className="w-full bg-slate-900 py-10 md:py-24 border-t border-slate-800">
+      <div className="w-full py-10 md:py-24 border-t border-slate-800">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <Reveal as="h2" className="text-slate-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
             Khách hàng nói gì về chúng tôi?
@@ -239,7 +239,7 @@ export default async function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full bg-slate-900 pt-12 md:pt-20 pb-10 border-t border-slate-800">
+      <div className="w-full pt-12 md:pt-20 pb-10 border-t border-slate-800">
         <Reveal className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
           <h2 className="text-slate-100 text-2xl md:text-5xl font-black tracking-tight">
             Sẵn sàng để tỏa sáng?

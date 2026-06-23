@@ -35,7 +35,7 @@ const STATS = [
 export function BehindScenesSection() {
   return (
     <div
-      className="w-full bg-slate-900 py-10 md:py-24 border-t border-slate-800"
+      className="w-full py-10 md:py-24 border-t border-slate-800"
       id="behind-the-scenes"
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-10">

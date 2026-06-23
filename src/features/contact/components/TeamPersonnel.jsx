@@ -29,7 +29,7 @@ export function TeamPersonnel() {
   ]
 
   return (
-    <div className="flex justify-center py-20 bg-slate-900">
+    <div className="flex justify-center py-20">
       <div className="max-w-[1280px] w-full px-4 md:px-10 flex flex-col items-center gap-12">
         <Reveal className="text-center max-w-4xl mx-auto flex flex-col items-center gap-6">
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight text-text-main">

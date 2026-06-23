@@ -1,7 +1,7 @@
 export function ComparisonTable() {
   return (
     <>
-      <section className="w-full pt-10 pb-4 flex justify-center bg-slate-900">
+      <section className="w-full pt-10 pb-4 flex justify-center">
         <div className="w-full max-w-[1280px] px-4 md:px-10 text-center">
           <h2 className="text-text-main text-2xl lg:text-3xl font-bold leading-tight">
             So Sánh Chi Tiết Các Gói Pre-Wedding
@@ -11,7 +11,7 @@ export function ComparisonTable() {
           </p>
         </div>
       </section>
-      <section className="w-full pb-16 flex justify-center bg-slate-900">
+      <section className="w-full pb-16 flex justify-center">
         <div className="w-full max-w-[1280px] px-4 md:px-10">
           <div className="w-full overflow-x-auto rounded-2xl border border-border-light bg-slate-800 shadow-soft">
             <table className="w-full min-w-[800px] text-left border-collapse">

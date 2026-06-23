@@ -1,7 +1,7 @@
 export function FileListSection({ files }) {
   if (!files || files.length === 0) {
     return (
-      <div className="w-full bg-slate-900 py-16">
+      <div className="w-full py-16">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <h2 className="text-3xl font-bold mb-8">File từ R2</h2>
           <p className="text-gray-500">Không tìm thấy file nào trong R2 bucket.</p>
@@ -11,7 +11,7 @@ export function FileListSection({ files }) {
   }
 
   return (
-    <div className="w-full bg-slate-900 py-16">
+    <div className="w-full py-16">
       <div className="max-w-[1280px] mx-auto px-4 md:px-10">
         <h2 className="text-3xl font-bold mb-8">Danh sách file từ R2</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
