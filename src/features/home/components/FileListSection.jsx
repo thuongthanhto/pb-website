@@ -4,7 +4,7 @@ export function FileListSection({ files }) {
       <div className="w-full py-16">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <h2 className="text-3xl font-bold mb-8">File từ R2</h2>
-          <p className="text-gray-500">Không tìm thấy file nào trong R2 bucket.</p>
+          <p className="text-stone-500">Không tìm thấy file nào trong R2 bucket.</p>
         </div>
       </div>
     );
@@ -18,15 +18,15 @@ export function FileListSection({ files }) {
           {files.map((file) => (
             <div
               key={file.Key}
-              className="border border-slate-700 p-4 rounded-lg hover:shadow-lg transition-shadow bg-slate-800"
+              className="border border-stone-700 p-4 rounded-lg hover:shadow-lg transition-shadow bg-stone-800"
             >
-              <p className="font-semibold text-sm text-slate-200 truncate mb-2">
+              <p className="font-semibold text-sm text-stone-200 truncate mb-2">
                 {file.Key}
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-stone-500">
                 Kích thước: {(file.Size / 1024).toFixed(2)} KB
               </p>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-stone-500 mt-2">
                 Cập nhật: {new Date(file.LastModified).toLocaleDateString('vi-VN')}
               </p>
             </div>

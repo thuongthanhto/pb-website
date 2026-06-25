@@ -30,7 +30,7 @@ export function ContactSection() {
       <div className="w-full max-w-[1280px] px-4 md:px-10">
         <Reveal className="flex flex-col items-center gap-8">
           <div className="text-center">
-            <p className="text-text-muted text-sm font-medium mb-2">
+            <p className="text-text-secondary text-sm font-medium mb-2">
               Liên hệ với chúng tôi
             </p>
           </div>
@@ -39,7 +39,7 @@ export function ContactSection() {
               <a
                 key={idx}
                 href={item.href}
-                className="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                className="w-14 h-14 rounded-full bg-stone-800 border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                 title={item.label}
               >
                 <Icon icon={item.icon} width="22" height="22" />

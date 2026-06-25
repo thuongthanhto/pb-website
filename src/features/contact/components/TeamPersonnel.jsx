@@ -36,7 +36,7 @@ export function TeamPersonnel() {
             Đội ngũ của chúng tôi
           </h2>
           <div className="w-16 h-1 bg-text-main rounded-full"></div>
-          <div className="text-text-body text-lg leading-relaxed font-light italic flex flex-col gap-4">
+          <div className="text-text-secondary text-lg leading-relaxed font-light italic flex flex-col gap-4">
             <p>
               Tôi xin giới thiệu với bạn các thành viên trong đội ngũ của tôi -
               một nhóm các nhiếp ảnh gia chuyên nghiệp và nhiệt tình, sẵn sàng
@@ -59,7 +59,7 @@ export function TeamPersonnel() {
               className="flex flex-col items-center gap-5 w-full md:w-1/2 max-w-md"
             >
               <div
-                className={`aspect-square w-full rounded-3xl bg-cover bg-center shadow-lg hover:shadow-soft transition-all duration-500 hover:-translate-y-2 ${
+                className={`aspect-square w-full rounded-3xl bg-cover bg-center shadow-lg hover:shadow-lg transition-all duration-500 hover:-translate-y-2 ${
                   member.hasGrayscale ? 'grayscale hover:grayscale-0' : ''
                 }`}
                 style={{ backgroundImage: `url("${member.image}")` }}
@@ -68,7 +68,7 @@ export function TeamPersonnel() {
                 <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-wide text-text-main min-h-[3.5rem] flex items-center justify-center">
                   {member.name}
                 </h3>
-                <p className="text-base text-text-body font-body italic mt-1">
+                <p className="text-base text-text-secondary font-body italic mt-1">
                   {member.role}
                 </p>
               </div>

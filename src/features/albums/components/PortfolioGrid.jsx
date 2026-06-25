@@ -25,7 +25,7 @@ function PhotoTile({ image, imageUrl, index, onImageClick }) {
       }}
       className="break-inside-avoid sm:mb-6 group relative rounded-none sm:rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
     >
-      <div className="w-full h-full bg-slate-800 relative overflow-hidden aspect-square sm:aspect-auto">
+      <div className="w-full h-full bg-stone-800 relative overflow-hidden aspect-square sm:aspect-auto">
         <img
           ref={imgRef}
           src={imageUrl}
@@ -61,7 +61,7 @@ export function PortfolioGrid({
   if (!images || images.length === 0) {
     return (
       <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
-        <p className="text-gray-500 text-center">Không tìm thấy ảnh nào.</p>
+        <p className="text-stone-500 text-center">Không tìm thấy ảnh nào.</p>
       </div>
     );
   }

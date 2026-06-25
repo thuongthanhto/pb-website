@@ -5,9 +5,9 @@ import {
 } from '@/features/contact/components'
 
 export const metadata = {
-  title: 'Giới thiệu - Studio Lens',
+  title: 'Giới thiệu - PhatBo Studio',
   description:
-    'Tìm hiểu về nhiếp ảnh gia đứng sau Studio Lens. Tìm hiểu về hành trình, đội ngũ và niềm đam mê ghi lại những khoảnh khắc vượt thời gian của tôi.',
+    'Tìm hiểu về nhiếp ảnh gia đứng sau PhatBo Studio. Hành trình, đội ngũ và niềm đam mê ghi lại những khoảnh khắc vượt thời gian.',
 }
 
 export default function ContactPage() {

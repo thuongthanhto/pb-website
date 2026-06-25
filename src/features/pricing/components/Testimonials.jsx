@@ -42,7 +42,7 @@ export function Testimonials() {
             <Reveal
               key={idx}
               delay={idx * 0.1}
-              className="bg-slate-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-soft transition-shadow w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
+              className="bg-stone-800/50 p-8 rounded-2xl border border-border-light shadow-sm hover:shadow-lg transition-shadow w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
             >
               <div className="flex items-center gap-1 mb-4">
                 {renderStars(testimonial.rating)}
@@ -52,14 +52,14 @@ export function Testimonials() {
               </p>
               <div className="flex items-center gap-4 border-t border-border-light pt-4">
                 <div
-                  className="size-12 rounded-full bg-gray-200 bg-cover bg-center shadow-inner"
+                  className="size-12 rounded-full bg-stone-200 bg-cover bg-center shadow-inner"
                   style={{
                     backgroundImage: `url("${testimonial.image}")`,
                   }}
                 ></div>
                 <div>
                   <p className="font-bold text-text-main text-sm">{testimonial.name}</p>
-                  <p className="text-xs text-text-muted font-medium">{testimonial.role}</p>
+                  <p className="text-xs text-text-secondary font-medium">{testimonial.role}</p>
                 </div>
               </div>
             </Reveal>

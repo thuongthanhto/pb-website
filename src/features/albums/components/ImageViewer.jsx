@@ -85,14 +85,14 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
 
             {image.title && image.title !== image.fileName && (
               <div className="mb-4">
-                <p className="text-xs text-gray-400 mb-1">Title</p>
+                <p className="text-xs text-stone-400 mb-1">Title</p>
                 <p className="text-sm font-semibold">{image.title}</p>
               </div>
             )}
 
             {image.description && (
               <div className="mb-4">
-                <p className="text-xs text-gray-400 mb-1">Description</p>
+                <p className="text-xs text-stone-400 mb-1">Description</p>
                 <p className="text-sm">{image.description}</p>
               </div>
             )}
@@ -101,7 +101,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
               <div className="mb-4 flex items-center gap-2">
                 <Icon icon="mdi:camera" width="16" height="16" className="text-primary" />
                 <div>
-                  <p className="text-xs text-gray-400">Photographer</p>
+                  <p className="text-xs text-stone-400">Photographer</p>
                   <p className="text-sm font-medium">{image.photographer}</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
               <div className="mb-4 flex items-center gap-2">
                 <Icon icon="mdi:map-marker" width="16" height="16" className="text-primary" />
                 <div>
-                  <p className="text-xs text-gray-400">Location</p>
+                  <p className="text-xs text-stone-400">Location</p>
                   <p className="text-sm">{image.location}</p>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
               <div className="mb-4 flex items-center gap-2">
                 <Icon icon="mdi:calendar" width="16" height="16" className="text-primary" />
                 <div>
-                  <p className="text-xs text-gray-400">Date</p>
+                  <p className="text-xs text-stone-400">Date</p>
                   <p className="text-sm">{image.date}</p>
                 </div>
               </div>
@@ -129,16 +129,16 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
 
             {(image.camera || image.lens) && (
               <div className="mb-4">
-                <p className="text-xs text-gray-400 mb-2">Equipment</p>
+                <p className="text-xs text-stone-400 mb-2">Equipment</p>
                 {image.camera && (
                   <div className="flex items-center gap-2 mb-1">
-                    <Icon icon="mdi:camera-iris" width="16" height="16" className="text-gray-400" />
+                    <Icon icon="mdi:camera-iris" width="16" height="16" className="text-stone-400" />
                     <p className="text-sm">{image.camera}</p>
                   </div>
                 )}
                 {image.lens && (
                   <div className="flex items-center gap-2">
-                    <Icon icon="mdi:circle-outline" width="16" height="16" className="text-gray-400" />
+                    <Icon icon="mdi:circle-outline" width="16" height="16" className="text-stone-400" />
                     <p className="text-sm">{image.lens}</p>
                   </div>
                 )}
@@ -147,26 +147,26 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
 
             {image.settings && Object.keys(image.settings).length > 0 && (
               <div className="mb-4">
-                <p className="text-xs text-gray-400 mb-2">Camera Settings</p>
+                <p className="text-xs text-stone-400 mb-2">Camera Settings</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   {image.settings.iso && (
                     <div>
-                      <span className="text-gray-400">ISO:</span> {image.settings.iso}
+                      <span className="text-stone-400">ISO:</span> {image.settings.iso}
                     </div>
                   )}
                   {image.settings.aperture && (
                     <div>
-                      <span className="text-gray-400">Aperture:</span> {image.settings.aperture}
+                      <span className="text-stone-400">Aperture:</span> {image.settings.aperture}
                     </div>
                   )}
                   {image.settings.shutterSpeed && (
                     <div>
-                      <span className="text-gray-400">Shutter:</span> {image.settings.shutterSpeed}
+                      <span className="text-stone-400">Shutter:</span> {image.settings.shutterSpeed}
                     </div>
                   )}
                   {image.settings.focalLength && (
                     <div>
-                      <span className="text-gray-400">Focal:</span> {image.settings.focalLength}
+                      <span className="text-stone-400">Focal:</span> {image.settings.focalLength}
                     </div>
                   )}
                 </div>
@@ -175,7 +175,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
 
             {image.tags && image.tags.length > 0 && (
               <div className="mb-4">
-                <p className="text-xs text-gray-400 mb-2">Tags</p>
+                <p className="text-xs text-stone-400 mb-2">Tags</p>
                 <div className="flex flex-wrap gap-2">
                   {image.tags.map((tag, index) => (
                     <span
@@ -205,7 +205,7 @@ export function ImageViewer({ isOpen, image, images, onClose, onNext, onPrev }) 
             </button>
 
             {/* Center: counter */}
-            <p className="text-xs text-gray-300 tabular-nums min-w-[64px] text-center">
+            <p className="text-xs text-stone-300 tabular-nums min-w-[64px] text-center">
               {images.findIndex(img => img.id === image.id) + 1} / {images.length}
             </p>
 

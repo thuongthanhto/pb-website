@@ -3,21 +3,46 @@
 @theme {
   --color-primary: #ff6b6b;
   --color-primary-dark: #e05050;
-  --color-background-light: #0f172a;
-  --color-surface-light: #1e293b;
-  --color-border-light: #334155;
-  --color-text-main: #f1f5f9;
-  --color-text-secondary: #94a3b8;
+  --color-background-light: #161210;
+  --color-surface-light: #221c19;
+  --color-border-light: #3a322d;
+  --color-text-main: #f5f0ec;
+  --color-text-secondary: #a8a29e;
 }
 
 :root {
   --primary: #ff6b6b;
   --primary-dark: #e05050;
-  --background-light: #0f172a;
-  --surface-light: #1e293b;
-  --border-light: #334155;
-  --text-main: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --background-light: #161210;
+  --surface-light: #221c19;
+  --border-light: #3a322d;
+  --text-main: #f5f0ec;
+  --text-secondary: #a8a29e;
+}
+
+/* Cuộn mượt khi click anchor trong trang */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus ring rõ ràng cho điều hướng bằng bàn phím (yêu cầu a11y) */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Tránh chữ mồ côi (orphan) ở tiêu đề và đoạn văn */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* Số liệu căn đều cột trong bảng giá/so sánh */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Hiệu ứng nền bokeh: các đốm sáng mờ trôi nhẹ */
@@ -130,8 +155,8 @@
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-top: 2px solid #64748b;
-  border-color: #64748b;
+  border-top: 2px solid #78716c;
+  border-color: #78716c;
 }
 
 /* Enhanced responsive video styles */
@@ -161,16 +186,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #221c19;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: #57534e;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #78716c;
 }
 
 /* Smooth loading animation */
@@ -187,6 +212,18 @@
 
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out;
+}
+
+/* Vào trang trượt lên + mờ dần (dùng ở hero album & nút nổi) */
+.animate-fade-in-up {
+  animation: fadeIn 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up {
+    animation: none;
+  }
 }
 
 /* Hide scrollbar for horizontal scroll containers on mobile */

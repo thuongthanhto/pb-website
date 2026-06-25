@@ -73,7 +73,7 @@ export function PricingCards() {
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-4 text-text-main tracking-tight">
             Lựa chọn gói phù hợp
           </h2>
-          <p className="text-text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             Đa dạng lựa chọn từ Pre-Wedding đến ngày trọng đại với những gói dịch vụ chuyên nghiệp nhất.
           </p>
         </Reveal>
@@ -84,8 +84,8 @@ export function PricingCards() {
               delay={idx * 0.1}
               className={`relative flex flex-col gap-6 rounded-3xl p-8 transition-all duration-300 ${
                 pkg.featured
-                  ? 'border-2 border-primary bg-slate-800/50 shadow-xl shadow-primary/5 hover:-translate-y-1'
-                  : 'border border-border-light bg-slate-800/30 hover:shadow-hover hover:-translate-y-1'
+                  ? 'border-2 border-primary bg-stone-800/50 shadow-xl shadow-primary/10 hover:-translate-y-1'
+                  : 'border border-border-light bg-stone-800/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1'
               }`}
             >
               {pkg.featured && (
@@ -94,14 +94,14 @@ export function PricingCards() {
                   {pkg.badge}
                 </div>
               )}
-              <div className="flex flex-col gap-2 mt={pkg.featured ? 2 : 0}">
-                <h3 className={`text-xl font-bold ${pkg.featured ? 'text-primary' : 'text-text-main'}`}>
+              <div className={`flex flex-col gap-2 ${pkg.featured ? 'mt-2' : ''}`}>
+                <h3 className={`text-xl font-bold min-h-[3.5rem] flex items-end ${pkg.featured ? 'text-primary' : 'text-text-main'}`}>
                   {pkg.name}
                 </h3>
                 <div className="flex items-baseline gap-1 text-text-main">
-                  <span className="text-4xl font-extrabold tracking-tighter">{pkg.price}</span>
+                  <span className="text-4xl font-extrabold tracking-tighter tabular-nums">{pkg.price}</span>
                 </div>
-                <p className={`text-sm mt-2 leading-relaxed font-medium ${pkg.featured ? 'text-text-secondary' : 'text-text-muted'}`}>
+                <p className={`text-sm mt-2 leading-relaxed font-medium ${pkg.featured ? 'text-text-secondary' : 'text-stone-400'}`}>
                   {pkg.description}
                 </p>
               </div>
@@ -110,7 +110,7 @@ export function PricingCards() {
                 {pkg.features.map((feature, i) => (
                   <li key={i} className={`flex items-start gap-3 text-sm ${pkg.featured ? 'text-text-main font-semibold' : 'text-text-secondary'}`}>
                     <span className="material-symbols-outlined text-primary text-[20px]">
-                      {pkg.featured ? 'check_circle' : 'check_circle'}
+                      check_circle
                     </span>
                     <span>{feature}</span>
                   </li>
@@ -119,8 +119,8 @@ export function PricingCards() {
               <button
                 className={`w-full h-12 rounded-xl text-base font-bold transition-all mt-auto ${
                   pkg.featured
-                    ? 'bg-primary text-white h-14 hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/30'
-                    : 'bg-slate-700 border border-slate-600 text-slate-200 hover:bg-slate-600 hover:text-white'
+                    ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
+                    : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
                 }`}
               >
                 {pkg.buttonText}

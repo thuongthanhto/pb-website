@@ -18,7 +18,7 @@ export default async function Home() {
       <div className="w-full">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-8 md:py-12">
           <div className="@container">
-            <div className="flex min-h-[420px] md:min-h-0 md:aspect-video flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-black/30">
+            <div className="flex min-h-[420px] md:min-h-0 md:aspect-video flex-col gap-5 md:gap-6 rounded-2xl items-center justify-center p-6 md:p-8 relative overflow-hidden group shadow-2xl shadow-primary/10">
               <iframe
                 className="absolute inset-0 w-full h-full object-cover hidden md:block"
                 src="https://www.youtube.com/embed/D4xpVntBzek?autoplay=1&mute=1&loop=1&playlist=D4xpVntBzek&controls=0"
@@ -27,7 +27,7 @@ export default async function Home() {
                 title="Studio Video Background"
               ></iframe>
               {/* Mobile fallback background */}
-              <div className="absolute inset-0 md:hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
+              <div className="absolute inset-0 md:hidden bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900"></div>
               <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-0"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 z-0"></div>
               <Reveal className="flex flex-col gap-4 text-center z-10 max-w-[800px]">
@@ -35,7 +35,7 @@ export default async function Home() {
                   Lưu giữ từng khoảnh khắc <br />{' '}
                   <span className="text-primary">vô giá</span> của bạn
                 </h1>
-                <h2 className="text-gray-100 text-base md:text-xl font-normal leading-relaxed drop-shadow-md max-w-[600px] mx-auto">
+                <h2 className="text-stone-100 text-base md:text-xl font-normal leading-relaxed drop-shadow-md max-w-[600px] mx-auto">
                   Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật. Đội
                   ngũ nhiếp ảnh chuyên nghiệp sẵn sàng cho mọi dịp đặc biệt.
                 </h2>
@@ -62,9 +62,14 @@ export default async function Home() {
       {/* Portfolio Section */}
       <div className="w-full py-8" id="portfolio">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-6 md:gap-10">
-          <div className="hidden md:flex justify-between items-end border-b border-slate-800 pb-6">
-            <div>
-
+          <div className="hidden md:flex justify-between items-end border-b border-stone-800 pb-6">
+            <div className="flex flex-col gap-2">
+              <span className="text-primary font-bold tracking-widest uppercase text-xs">
+                Portfolio
+              </span>
+              <h2 className="text-text-main text-3xl font-bold leading-tight">
+                Dự án nổi bật
+              </h2>
             </div>
             <a
               className="hidden md:flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm font-medium"
@@ -99,7 +104,7 @@ export default async function Home() {
               <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full">
                 Dịch Vụ Của Chúng Tôi
               </h2>
-              <h1 className="text-slate-100 text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
+              <h1 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
                 Gói chụp ảnh đa dạng
               </h1>
               <p className="text-text-secondary text-base md:text-lg font-normal leading-relaxed max-w-[600px]">
@@ -131,15 +136,20 @@ export default async function Home() {
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
-                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-slate-800 bg-slate-800/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group active:border-primary/30"
+                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-stone-800 bg-stone-800/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 group active:border-primary/30"
                 >
-                  <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <span className="material-symbols-outlined text-[36px]">
-                      {service.icon}
+                  <div className="flex items-start justify-between">
+                    <div className="size-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <span className="material-symbols-outlined text-[36px]">
+                        {service.icon}
+                      </span>
+                    </div>
+                    <span className="tabular-nums text-5xl font-black leading-none text-stone-100/5 group-hover:text-primary/15 transition-colors duration-300 select-none">
+                      0{idx + 1}
                     </span>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-slate-100 text-xl font-bold">
+                    <h3 className="text-stone-100 text-xl font-bold">
                       {service.title}
                     </h3>
                     <p className="text-text-secondary text-base leading-relaxed">
@@ -147,7 +157,7 @@ export default async function Home() {
                     </p>
                   </div>
                   <a
-                    className="text-primary text-sm font-bold mt-2 hover:text-primary-dark transition-colors flex items-center gap-1"
+                    className="text-primary text-sm font-bold mt-auto pt-2 hover:text-primary-dark transition-colors flex items-center gap-1"
                     href="/pricing"
                   >
                     Xem chi tiết{' '}
@@ -166,9 +176,9 @@ export default async function Home() {
       <BehindScenesSection />
 
       {/* Testimonials Section */}
-      <div className="w-full py-10 md:py-24 border-t border-slate-800">
+      <div className="w-full py-10 md:py-24 border-t border-stone-800">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
-          <Reveal as="h2" className="text-slate-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
+          <Reveal as="h2" className="text-stone-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
             Khách hàng nói gì về chúng tôi?
           </Reveal>
           <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
@@ -198,9 +208,9 @@ export default async function Home() {
               <Reveal
                 key={idx}
                 delay={idx * 0.1}
-                className="bg-slate-800/50 border border-slate-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
+                className="bg-stone-800/50 border border-stone-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
               >
-                <div className="absolute top-6 right-6 text-slate-700">
+                <div className="absolute top-6 right-6 text-stone-700">
                   <span className="material-symbols-outlined text-[48px]">
                     format_quote
                   </span>
@@ -215,16 +225,16 @@ export default async function Home() {
                     </span>
                   ))}
                 </div>
-                <p className="text-slate-300 italic leading-relaxed relative z-10">
+                <p className="text-stone-300 italic leading-relaxed relative z-10">
                   {testimonial.text}
                 </p>
-                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-slate-700">
+                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-stone-700">
                   <div
                     className="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/20"
                     style={{ backgroundImage: `url('${testimonial.avatar}')` }}
                   ></div>
                   <div>
-                    <h4 className="text-slate-100 font-bold text-sm">
+                    <h4 className="text-stone-100 font-bold text-sm">
                       {testimonial.name}
                     </h4>
                     <p className="text-primary text-xs font-medium">
@@ -239,12 +249,12 @@ export default async function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full pt-12 md:pt-20 pb-10 border-t border-slate-800">
+      <div className="w-full pt-12 md:pt-20 pb-10 border-t border-stone-800">
         <Reveal className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
-          <h2 className="text-slate-100 text-2xl md:text-5xl font-black tracking-tight">
+          <h2 className="text-stone-100 text-2xl md:text-5xl font-black tracking-tight">
             Sẵn sàng để tỏa sáng?
           </h2>
-          <p className="text-slate-400 text-base md:text-lg max-w-[600px] leading-relaxed">
+          <p className="text-stone-400 text-base md:text-lg max-w-[600px] leading-relaxed">
             Hãy để chúng tôi giúp bạn lưu giữ những khoảnh khắc đẹp nhất ngay
             hôm nay với phong cách tinh tế và hiện đại.
           </p>
@@ -257,7 +267,7 @@ export default async function Home() {
             </Link>
             <Link
               href="/contact"
-              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-slate-800 border border-slate-700 hover:border-primary hover:text-primary transition-all text-slate-300 text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
+              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-stone-800 border border-stone-700 hover:border-primary hover:text-primary transition-all text-stone-300 text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
             >
               Liên hệ tư vấn
             </Link>

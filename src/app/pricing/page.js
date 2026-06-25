@@ -7,7 +7,7 @@ import {
 } from '@/features/pricing/components'
 
 export const metadata = {
-  title: 'Dịch vụ & Giá - Studio Ảnh Nghệ Thuật',
+  title: 'Dịch vụ & Giá - PhatBo Studio',
   description: 'Khám phá các gói chụp ảnh và bảng giá của chúng tôi. Từ Pre-Wedding đến phóng sự cưới, chúng tôi có những gói dịch vụ phù hợp với bạn.',
 }
 

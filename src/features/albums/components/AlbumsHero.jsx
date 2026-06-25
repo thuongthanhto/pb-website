@@ -7,7 +7,7 @@ export function AlbumsHero() {
           Kiến tạo ký ức
         </span>
       </h1>
-      <p className="text-text-muted text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
+      <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
         Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật tinh tế.{' '}
         <br className="hidden sm:block" />
         Từ những cái nhìn thoáng qua đến những sự kiện trọng đại nhất.

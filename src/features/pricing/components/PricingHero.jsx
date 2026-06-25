@@ -19,12 +19,12 @@ export function PricingHero() {
                 <h1 className="text-white text-4xl lg:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-sm">
                   Gói Chụp &amp; Bảng Giá
                 </h1>
-                <p className="text-gray-100 text-base lg:text-lg font-medium leading-relaxed max-w-lg text-shadow-sm">
+                <p className="text-stone-100 text-base lg:text-lg font-medium leading-relaxed max-w-lg text-shadow-sm">
                   Chất lượng chuyên nghiệp, chi phí minh bạch. Chúng tôi giúp bạn lưu giữ những khoảnh khắc vô giá bằng ngôn ngữ của ánh sáng và cảm xúc.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 mt-2">
-                <button className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-slate-800 text-primary text-base font-bold transition-all hover:bg-slate-700 shadow-lg">
+                <button className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-stone-800 text-primary text-base font-bold transition-all hover:bg-stone-700 shadow-lg">
                   <span>Tư vấn ngay</span>
                 </button>
                 <a href="/albums" className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-base font-bold transition-all hover:bg-black/50 hover:border-white/50">

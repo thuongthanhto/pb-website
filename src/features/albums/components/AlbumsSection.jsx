@@ -133,6 +133,12 @@ export function AlbumsSection({ images = [] }) {
 
   // Infinite scroll (Instagram-style): auto-load the next batch when the
   // sentinel near the bottom of the grid scrolls into view.
+  //
+  // QUAN TRỌNG: KHÔNG đưa `loadedCount` vào deps. Nếu có, mỗi lần load thêm sẽ
+  // tạo lại observer; cú observe() mới bắn callback ngay với trạng thái hiện tại,
+  // mà ảnh mới (lazy) chưa có chiều cao nên sentinel vẫn nằm trong vùng 600px ->
+  // fire liên tục -> load sạch 1 lần. Giữ observer ổn định: nó chỉ bắn khi
+  // sentinel thực sự cross vào vùng lúc người dùng cuộn.
   useEffect(() => {
     if (!hasMoreImages) return;
     const el = loadMoreRef.current;
@@ -148,7 +154,7 @@ export function AlbumsSection({ images = [] }) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [hasMoreImages, loadedCount, filteredImages.length]);
+  }, [hasMoreImages, selectedFolder]);
 
   return (
     <>

@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+      <div className="w-full bg-stone-900/90 backdrop-blur-md border-b border-stone-800 sticky top-0 z-50">
         <div className="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
           <Link
             href="/"
@@ -48,7 +48,7 @@ export default function Header() {
               <span className="text-base md:text-lg font-extrabold tracking-tight text-text-main">
                 PhatBo Studio
               </span>
-              <span className="hidden sm:block text-[11px] md:text-xs font-medium tracking-wide text-text-muted">
+              <span className="hidden sm:block text-[11px] md:text-xs font-medium tracking-wide text-text-secondary">
                 Lưu giữ khoảnh khắc · Kiến tạo ký ức
               </span>
             </div>
@@ -64,7 +64,7 @@ export default function Header() {
                   className={`text-sm font-medium transition-colors ${
                     isActive(link.href)
                       ? 'text-primary border-b-2 border-primary pb-1'
-                      : 'text-slate-200 hover:text-primary'
+                      : 'text-stone-200 hover:text-primary'
                   }`}
                 >
                   {link.label}
@@ -75,7 +75,7 @@ export default function Header() {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 text-slate-400 hover:text-primary transition-colors"
+              className="md:hidden p-2 text-stone-400 hover:text-primary transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -122,18 +122,18 @@ export default function Header() {
         onClick={closeMenu}
       >
         <div
-          className={`fixed right-0 top-0 h-full w-64 bg-slate-900 shadow-xl transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 h-full w-64 bg-stone-900 shadow-xl transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col h-full">
             {/* Drawer Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-800">
-              <h3 className="text-lg font-bold text-slate-100">Menu</h3>
+            <div className="flex items-center justify-between p-4 border-b border-stone-800">
+              <h3 className="text-lg font-bold text-stone-100">Menu</h3>
               <button
                 onClick={closeMenu}
-                className="p-2 text-slate-400 hover:text-primary transition-colors"
+                className="p-2 text-stone-400 hover:text-primary transition-colors"
                 aria-label="Close menu"
               >
                 <svg
@@ -160,7 +160,7 @@ export default function Header() {
                 className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                   isActive('/')
                     ? 'bg-primary/10 text-primary'
-                    : 'text-slate-200 hover:bg-slate-800'
+                    : 'text-stone-200 hover:bg-stone-800'
                 }`}
               >
                 Trang chủ
@@ -173,7 +173,7 @@ export default function Header() {
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive(link.href)
                       ? 'bg-primary/10 text-primary'
-                      : 'text-slate-200 hover:bg-slate-800'
+                      : 'text-stone-200 hover:bg-stone-800'
                   }`}
                 >
                   {link.label}

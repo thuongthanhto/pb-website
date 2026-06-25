@@ -35,7 +35,7 @@ const STATS = [
 export function BehindScenesSection() {
   return (
     <div
-      className="w-full py-10 md:py-24 border-t border-slate-800"
+      className="w-full py-10 md:py-24 border-t border-stone-800"
       id="behind-the-scenes"
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-10">
@@ -45,7 +45,7 @@ export function BehindScenesSection() {
             <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full self-start">
               Hậu Trường
             </h2>
-            <h3 className="text-slate-100 text-2xl md:text-5xl font-bold leading-tight">
+            <h3 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight">
               Sự tận tâm phía sau <br className="hidden md:block" />
               mỗi khung hình
             </h3>
@@ -61,7 +61,7 @@ export function BehindScenesSection() {
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
-                  className="flex flex-col gap-1 rounded-2xl border border-slate-800 bg-slate-800/50 p-3 md:p-5"
+                  className="flex flex-col gap-1 rounded-2xl border border-stone-800 bg-stone-800/50 p-3 md:p-5"
                 >
                   <span className="text-primary text-lg md:text-2xl font-black leading-tight text-balance">
                     {stat.value}
