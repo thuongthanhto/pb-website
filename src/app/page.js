@@ -26,8 +26,11 @@ export default async function Home() {
                 allowFullScreen
                 title="Studio Video Background"
               ></iframe>
-              {/* Mobile fallback background */}
-              <div className="absolute inset-0 md:hidden bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900"></div>
+              {/* Mobile background image (optimized webp ~55KB) */}
+              <div
+                className="absolute inset-0 md:hidden bg-cover bg-[position:35%_center] grayscale"
+                style={{ backgroundImage: "url('/cover-mobile.webp')" }}
+              ></div>
               <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-0"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 z-0"></div>
               <Reveal className="flex flex-col gap-4 text-center z-10 max-w-[800px]">
