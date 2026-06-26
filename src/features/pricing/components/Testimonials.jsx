@@ -34,7 +34,7 @@ export function Testimonials() {
   }
 
   return (
-    <section className="w-full py-20 border-t border-border-light flex justify-center">
+    <section className="w-full py-20 flex justify-center relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-stone-700/60 before:to-transparent">
       <div className="w-full max-w-[1280px] px-4 md:px-10 flex flex-col items-center">
         <h2 className="text-3xl font-extrabold text-center mb-10 text-text-main">Khách hàng nói gì về chúng tôi?</h2>
         <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">

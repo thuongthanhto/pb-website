@@ -4,7 +4,8 @@ import { Icon } from '@iconify/react'
 
 export default function Footer() {
   return (
-    <div className="max-w-[1280px] mx-auto px-4 md:px-10 border-t border-stone-800 pt-8 pb-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div className="w-full border-t border-stone-800">
+    <div className="max-w-[1280px] mx-auto px-4 md:px-10 pt-8 pb-6 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="flex items-center gap-2 text-stone-100">
         <img src="/logo-pb.png" alt="PhatBo Logo" className="w-12 h-12 rounded-md" />
       </div>
@@ -50,6 +51,7 @@ export default function Footer() {
       </div>
 
       <p className="text-stone-400 text-sm">© 2025 PhatBo Studio. All rights reserved.</p>
+    </div>
     </div>
   )
 }

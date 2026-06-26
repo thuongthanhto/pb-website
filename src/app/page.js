@@ -26,10 +26,10 @@ export default async function Home() {
                 allowFullScreen
                 title="Studio Video Background"
               ></iframe>
-              {/* Mobile background image (optimized webp ~55KB) */}
+              {/* Mobile hero fallback — cover photo (optimized webp ~55KB) */}
               <div
                 className="absolute inset-0 md:hidden bg-cover bg-[position:35%_center] grayscale"
-                style={{ backgroundImage: "url('/cover-mobile.webp')" }}
+                style={{ backgroundImage: "url('/cover.webp')" }}
               ></div>
               <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-0"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 z-0"></div>
@@ -179,7 +179,7 @@ export default async function Home() {
       <BehindScenesSection />
 
       {/* Testimonials Section */}
-      <div className="w-full py-10 md:py-24 border-t border-stone-800">
+      <div className="w-full py-10 md:py-24 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-stone-700/60 before:to-transparent">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <Reveal as="h2" className="text-stone-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16">
             Khách hàng nói gì về chúng tôi?
@@ -252,12 +252,25 @@ export default async function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full pt-12 md:pt-20 pb-10 border-t border-stone-800">
-        <Reveal className="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 mb-12 md:mb-20">
-          <h2 className="text-stone-100 text-2xl md:text-5xl font-black tracking-tight">
+      <div className="w-full relative overflow-hidden">
+        {/* Showcase cover photo as a full-width banner background.
+            On large screens, zoom in slightly so the couple sits nearer the
+            center behind the text; smaller screens keep plain cover. */}
+        <div
+          className="absolute inset-0 bg-no-repeat bg-cover lg:bg-[length:130%_auto] bg-[position:40%_30%] scale-105"
+          style={{ backgroundImage: "url('/cover.webp')" }}
+        ></div>
+        <div className="absolute inset-0 bg-stone-950/40"></div>
+        {/* Center-weighted darkening so text stays legible while photo edges show through */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_75%_at_center,rgba(12,10,9,0.72),transparent_72%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/30"></div>
+        {/* Soft fade at the very top so the banner blends into the section above */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-stone-950 to-transparent"></div>
+        <Reveal className="relative z-10 max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 pt-16 pb-12 md:pt-28 md:pb-20 mb-12 md:mb-20">
+          <h2 className="text-white text-2xl md:text-5xl font-black tracking-tight drop-shadow-xl">
             Sẵn sàng để tỏa sáng?
           </h2>
-          <p className="text-stone-400 text-base md:text-lg max-w-[600px] leading-relaxed">
+          <p className="text-stone-200 text-base md:text-lg max-w-[600px] leading-relaxed drop-shadow-md">
             Hãy để chúng tôi giúp bạn lưu giữ những khoảnh khắc đẹp nhất ngay
             hôm nay với phong cách tinh tế và hiện đại.
           </p>

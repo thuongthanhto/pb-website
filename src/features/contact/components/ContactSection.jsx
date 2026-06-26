@@ -35,16 +35,24 @@ export function ContactSection() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-5">
-            {contactItems.map((item, idx) => (
+            {contactItems.map((item, idx) => {
+              // Open web links (social) in a new tab; keep tel:/mailto: in place
+              const isExternal = item.href.startsWith('http')
+              return (
               <a
                 key={idx}
                 href={item.href}
+                {...(isExternal && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className="w-14 h-14 rounded-full bg-stone-800 border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                 title={item.label}
               >
                 <Icon icon={item.icon} width="22" height="22" />
               </a>
-            ))}
+              )
+            })}
           </div>
         </Reveal>
       </div>
