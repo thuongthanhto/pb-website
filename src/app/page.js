@@ -266,7 +266,7 @@ export default async function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/30"></div>
         {/* Soft fade at the very top so the banner blends into the section above */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-stone-950 to-transparent"></div>
-        <Reveal className="relative z-10 max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 pt-16 pb-12 md:pt-28 md:pb-20 mb-12 md:mb-20">
+        <Reveal className="relative z-10 max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 pt-32 pb-10 md:pt-52 md:pb-16 mb-12 md:mb-20">
           <h2 className="text-white text-2xl md:text-5xl font-black tracking-tight drop-shadow-xl">
             Sẵn sàng để tỏa sáng?
           </h2>
