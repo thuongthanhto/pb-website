@@ -12,27 +12,32 @@ function PhotoTile({ image, imageUrl, index, onImageClick }) {
     if (imgRef.current?.complete) setLoaded(true);
   }, []);
 
+  // Reserve the exact space before the image loads so the masonry columns don't
+  // reflow/jump. Uses the real ratio measured on the server; falls back to 3:4.
+  const ratio =
+    image.width && image.height ? `${image.width} / ${image.height}` : '3 / 4';
+
   return (
     <motion.div
       onClick={() => onImageClick(image)}
-      initial={{ opacity: 0, y: 24 }}
+      style={{ '--ar': ratio }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{
-        duration: 0.5,
-        delay: (index % 4) * 0.08,
-        ease: [0.22, 1, 0.36, 1],
+        opacity: { duration: 0.8, delay: (index % 4) * 0.05, ease: 'easeOut' },
+        y: { duration: 0.9, delay: (index % 4) * 0.05, ease: [0.16, 1, 0.3, 1] },
       }}
       className="break-inside-avoid sm:mb-6 group relative rounded-none sm:rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
     >
-      <div className="w-full h-full bg-stone-800 relative overflow-hidden aspect-square sm:aspect-auto">
+      <div className="w-full h-full bg-stone-800 relative overflow-hidden aspect-square sm:aspect-[var(--ar)]">
         <img
           ref={imgRef}
           src={imageUrl}
           alt={image.fileName}
           onLoad={() => setLoaded(true)}
-          className={`w-full h-full sm:h-auto object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
-            loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105'
+          className={`w-full h-full object-cover transition-[opacity,filter,transform] duration-700 ease-out group-hover:scale-105 ${
+            loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
           }`}
           loading="lazy"
         />
