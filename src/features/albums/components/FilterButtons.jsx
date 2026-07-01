@@ -11,6 +11,7 @@ export function FilterButtons({ images = [], activeFolder = 'Tất cả', onFilt
       'couples': 'Chụp couples',
       'T&K': 'T&K',
       'V&K': 'Phóng sự ngày cưới',
+      'LindaNgo&PhongDat': 'Linda Ngo & Phong Đạt'
     };
 
     const uniqueFolders = [...new Set(images.map((img) => img.folder))];

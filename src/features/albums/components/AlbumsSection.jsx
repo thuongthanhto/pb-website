@@ -12,10 +12,16 @@ const folderMap = {
   'Chụp couples': 'couples',
   'T&K': 'T&K',
   'Phóng sự ngày cưới': 'V&K',
+  'Linda Ngo & Phong Đạt': 'LindaNgo&PhongDat'
 };
 const slugToFolder = Object.fromEntries(
   Object.entries(folderMap).map(([label, slug]) => [slug, label])
 );
+
+// Fall back to identity so newly added R2 folders (e.g. "LindaNgo&PhongDat")
+// work without having to be listed in folderMap.
+const labelToSlug = (label) => folderMap[label] || label;
+const slugToLabel = (slug) => slugToFolder[slug] || slug;
 
 export function AlbumsSection({ images = [] }) {
   const [selectedFolder, setSelectedFolder] = useState('Tất cả');
@@ -31,7 +37,7 @@ export function AlbumsSection({ images = [] }) {
       const params = new URLSearchParams(window.location.search);
 
       const slug = params.get('category');
-      setSelectedFolder(slug && slugToFolder[slug] ? slugToFolder[slug] : 'Tất cả');
+      setSelectedFolder(slug ? slugToLabel(slug) : 'Tất cả');
 
       const photo = params.get('photo');
       const img = photo ? images.find((i) => i.fileName === photo) : null;
@@ -40,11 +46,11 @@ export function AlbumsSection({ images = [] }) {
         setViewerOpen(true);
 
         // Make sure the opened photo is within the paginated slice so next/prev work
-        const folderLabel = slug && slugToFolder[slug] ? slugToFolder[slug] : 'Tất cả';
+        const folderLabel = slug ? slugToLabel(slug) : 'Tất cả';
         const list =
           folderLabel === 'Tất cả'
             ? images
-            : images.filter((i) => i.folder === folderMap[folderLabel]);
+            : images.filter((i) => i.folder === labelToSlug(folderLabel));
         const idx = list.findIndex((i) => i.id === img.id);
         if (idx >= 0) {
           setLoadedCount((prev) =>
@@ -69,7 +75,7 @@ export function AlbumsSection({ images = [] }) {
     const params = new URLSearchParams(window.location.search);
 
     if (selectedFolder === 'Tất cả') params.delete('category');
-    else params.set('category', folderMap[selectedFolder]);
+    else params.set('category', labelToSlug(selectedFolder));
 
     if (viewerOpen && currentImage) params.set('photo', currentImage.fileName);
     else params.delete('photo');
@@ -96,7 +102,7 @@ export function AlbumsSection({ images = [] }) {
   const filteredImages =
     selectedFolder === 'Tất cả'
       ? images
-      : images.filter((img) => img.folder === folderMap[selectedFolder]);
+      : images.filter((img) => img.folder === labelToSlug(selectedFolder));
 
   const paginatedImages = filteredImages.slice(0, loadedCount);
   const hasMoreImages = paginatedImages.length < filteredImages.length;
