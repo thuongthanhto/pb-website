@@ -5,25 +5,25 @@ export function TeamPersonnel() {
     {
       name: 'Lĩnh',
       role: 'Quay phim',
-      image: '/linh.png',
+      image: '/teams/linh.webp',
       hasGrayscale: true,
     },
     {
       name: 'Phat Bo',
       role: 'Nhiếp ảnh chính',
-      image: '/avatar.jpg',
+      image: '/teams/avatar.webp',
       hasGrayscale: false,
     },
     {
       name: 'Photography',
       role: 'Truyền thống - Phóng sự ngày cưới',
-      image: '/phototruyenthong.jpeg',
+      image: '/teams/phototruyenthong.jpeg',
       hasGrayscale: false,
     },
     {
       name: 'Photography',
       role: 'Truyền thống - Phóng sự ngày cưới',
-      image: '/phongsusuppot.jpeg',
+      image: '/teams/phongsusuppot.webp',
       hasGrayscale: false,
     },
   ]

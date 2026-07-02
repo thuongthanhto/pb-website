@@ -1,30 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Reveal } from '@/components/motion/Reveal';
-
-// Ảnh tác nghiệp (hậu trường) — đặt trong /public/work
-const SHOTS = [
-  {
-    src: '/work/work01.jpeg',
-    caption: 'Set up ánh sáng tại studio',
-    span: 'md:col-span-2 md:row-span-2', // ảnh lớn
-  },
-  {
-    src: '/work/work02.jpeg',
-    caption: 'Ekip tác nghiệp tại hiện trường',
-    span: '',
-  },
-  {
-    src: '/work/work03.jpeg',
-    caption: 'Canh khung & chỉ đạo tạo dáng',
-    span: '',
-  },
-  {
-    src: '/work/work04.jpeg',
-    caption: 'Hậu kỳ & chọn ảnh cùng khách',
-    span: 'md:col-span-2', // ảnh ngang trải rộng
-  },
-];
+import { BehindScenesGallery } from './BehindScenesGallery';
 
 const STATS = [
   { value: '500+', label: 'Buổi chụp đã thực hiện' },
@@ -39,7 +15,7 @@ export function BehindScenesSection() {
       id="behind-the-scenes"
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,440px)_1fr] gap-8 lg:gap-14 items-center">
           {/* Nội dung */}
           <Reveal className="flex flex-col gap-5 md:gap-6 order-1">
             <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full self-start">
@@ -84,31 +60,8 @@ export function BehindScenesSection() {
             </Link>
           </Reveal>
 
-          {/* Collage ảnh tác nghiệp */}
-          <Reveal
-            delay={0.15}
-            className="order-2 grid grid-cols-2 md:grid-cols-3 auto-rows-[140px] md:auto-rows-[150px] gap-3 md:gap-4"
-          >
-            {SHOTS.map((shot, idx) => (
-              <div
-                key={idx}
-                className={`group relative overflow-hidden rounded-2xl shadow-md ${shot.span}`}
-              >
-                <Image
-                  src={shot.src}
-                  alt={shot.caption}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  quality={80}
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                <p className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white text-xs md:text-sm font-semibold translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  {shot.caption}
-                </p>
-              </div>
-            ))}
-          </Reveal>
+          {/* Dải ảnh hậu trường (client component: click mở full 9:16) */}
+          <BehindScenesGallery />
         </div>
       </div>
     </div>

@@ -1,7 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { FilterButtons, PortfolioGrid, ImageViewer } from '.';
+import { useState, useEffect, useRef } from 'react';
+import { FilterButtons, PortfolioGrid } from '.';
+import { Lightbox } from '@/components/Lightbox';
+
+const publicDomain =
+  process.env.NEXT_PUBLIC_R2_DOMAIN ||
+  'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev';
 
 const IMAGES_PER_PAGE = 20; // Load 20 images per batch
 
@@ -107,35 +112,18 @@ export function AlbumsSection({ images = [] }) {
   const paginatedImages = filteredImages.slice(0, loadedCount);
   const hasMoreImages = paginatedImages.length < filteredImages.length;
 
-  const handleNextImage = useCallback(() => {
-    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
-    const nextIndex = (currentIndex + 1) % paginatedImages.length;
-    setCurrentImage(paginatedImages[nextIndex]);
-  }, [paginatedImages, currentImage]);
-
-  const handlePrevImage = useCallback(() => {
-    const currentIndex = paginatedImages.findIndex((img) => img.id === currentImage.id);
-    const prevIndex = (currentIndex - 1 + paginatedImages.length) % paginatedImages.length;
-    setCurrentImage(paginatedImages[prevIndex]);
-  }, [paginatedImages, currentImage]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!viewerOpen) return;
-
-      if (e.key === 'Escape') {
-        handleCloseViewer();
-      } else if (e.key === 'ArrowRight') {
-        handleNextImage();
-      } else if (e.key === 'ArrowLeft') {
-        handlePrevImage();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [viewerOpen, handleNextImage, handlePrevImage]);
+  // Dữ liệu cho Lightbox dùng chung (điều hướng + phím tắt do Lightbox lo)
+  const viewerItems = paginatedImages.map((img) => ({
+    src: `${publicDomain}/${img.key}`,
+    alt: img.fileName,
+    caption:
+      img.location ||
+      (img.title && img.title !== img.fileName ? img.title : undefined),
+  }));
+  const viewerIndex =
+    viewerOpen && currentImage
+      ? paginatedImages.findIndex((img) => img.id === currentImage.id)
+      : null;
 
   // Infinite scroll (Instagram-style): auto-load the next batch when the
   // sentinel near the bottom of the grid scrolls into view.
@@ -185,13 +173,11 @@ export function AlbumsSection({ images = [] }) {
         </div>
       )}
 
-      <ImageViewer
-        isOpen={viewerOpen}
-        image={currentImage}
-        images={paginatedImages}
+      <Lightbox
+        items={viewerItems}
+        index={viewerIndex}
         onClose={handleCloseViewer}
-        onNext={handleNextImage}
-        onPrev={handlePrevImage}
+        onNavigate={(n) => setCurrentImage(paginatedImages[n])}
       />
     </>
   );

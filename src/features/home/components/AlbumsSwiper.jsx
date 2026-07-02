@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import Link from 'next/link';
 import Image from 'next/image';
+import { Lightbox } from '@/components/Lightbox';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -16,9 +16,25 @@ export function AlbumsSwiper({ images = [] }) {
   const swiperRef = useRef(null);
   const [ready, setReady] = useState(false);
 
+  // Lightbox: click 1 ảnh mở viewer ngay (không redirect — đã có "Xem tất cả")
+  const [openIdx, setOpenIdx] = useState(null);
+  const isOpen = openIdx !== null;
+
+  // Tạm dừng autoplay khi mở viewer, chạy lại khi đóng
+  useEffect(() => {
+    if (!isOpen) return;
+    swiperRef.current?.autoplay?.stop();
+    return () => swiperRef.current?.autoplay?.start();
+  }, [isOpen]);
+
   if (!images || images.length === 0) {
     return null;
   }
+
+  const viewerItems = images.map((img, i) => ({
+    src: `${publicDomain}/${img.key}`,
+    alt: img.title || img.folder || `Ảnh ${i + 1}`,
+  }));
 
   return (
     <div className={`albums-swiper-wrapper relative group/nav transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}>
@@ -57,9 +73,11 @@ export function AlbumsSwiper({ images = [] }) {
           const imageUrl = `${publicDomain}/${image.key}`;
           return (
             <SwiperSlide key={image.id || idx}>
-              <Link
-                href="/albums"
-                className="group relative block overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
+              <button
+                type="button"
+                onClick={() => setOpenIdx(idx)}
+                aria-label={`Xem ảnh ${idx + 1}`}
+                className="group relative block w-full overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
               >
                 <Image
                   src={imageUrl}
@@ -71,7 +89,11 @@ export function AlbumsSwiper({ images = [] }) {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </Link>
+                {/* Gợi ý click để xem */}
+                <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/30 opacity-0 scale-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100">
+                  <span className="material-symbols-outlined text-[20px]">fullscreen</span>
+                </span>
+              </button>
             </SwiperSlide>
           );
         })}
@@ -96,6 +118,14 @@ export function AlbumsSwiper({ images = [] }) {
           <polyline points="9 6 15 12 9 18"></polyline>
         </svg>
       </button>
+
+      {/* Viewer toàn màn hình — dùng chung Lightbox với Hậu trường & Albums */}
+      <Lightbox
+        items={viewerItems}
+        index={openIdx}
+        onClose={() => setOpenIdx(null)}
+        onNavigate={setOpenIdx}
+      />
 
       <style jsx global>{`
         .albums-swiper-wrapper .swiper:not(.swiper-initialized) {
