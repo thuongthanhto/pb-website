@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { Icon } from '@/components/Icon'
 
 export function PricingCards() {
   const packages = [
@@ -90,7 +91,7 @@ export function PricingCards() {
             >
               {pkg.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-lg shadow-primary/20 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[16px]">stars</span>
+                  <Icon name="stars" className="text-[16px]" />
                   {pkg.badge}
                 </div>
               )}
@@ -109,9 +110,7 @@ export function PricingCards() {
               <ul className="flex flex-col gap-3 flex-1">
                 {pkg.features.map((feature, i) => (
                   <li key={i} className={`flex items-start gap-3 text-sm ${pkg.featured ? 'text-text-main font-semibold' : 'text-text-secondary'}`}>
-                    <span className="material-symbols-outlined text-primary text-[20px]">
-                      check_circle
-                    </span>
+                    <Icon name="check_circle" className="text-primary text-[20px] shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}

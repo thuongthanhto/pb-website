@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useCallback } from 'react';
+import { Icon } from '@/components/Icon';
 
 /**
  * Viewer ảnh toàn màn hình dùng chung (style giống phần Hậu trường).
@@ -56,7 +57,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
         aria-label="Đóng"
         className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
       >
-        <span className="material-symbols-outlined">close</span>
+        <Icon name="close" className="text-[24px]" />
       </button>
 
       {many && (
@@ -69,7 +70,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
           aria-label="Ảnh trước"
           className="absolute left-2 sm:left-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
         >
-          <span className="material-symbols-outlined">chevron_left</span>
+          <Icon name="chevron_left" className="text-[24px]" />
         </button>
       )}
 
@@ -101,7 +102,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
           aria-label="Ảnh tiếp theo"
           className="absolute right-2 sm:right-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
         >
-          <span className="material-symbols-outlined">chevron_right</span>
+          <Icon name="chevron_right" className="text-[24px]" />
         </button>
       )}
 

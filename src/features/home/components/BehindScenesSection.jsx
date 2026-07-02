@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/motion/Reveal';
+import { Icon } from '@/components/Icon';
 import { BehindScenesGallery } from './BehindScenesGallery';
 
 const STATS = [
@@ -54,9 +55,7 @@ export function BehindScenesSection() {
               className="inline-flex items-center justify-center self-start rounded-full h-12 md:h-14 px-7 md:px-8 mt-2 bg-primary hover:bg-primary-dark transition-all text-white text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
             >
               Đặt lịch ngay
-              <span className="material-symbols-outlined text-[20px] ml-1">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" className="text-[20px] ml-1" />
             </Link>
           </Reveal>
 

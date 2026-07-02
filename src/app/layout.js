@@ -1,8 +1,22 @@
 import '@/styles/globals.css'
+import { Plus_Jakarta_Sans, Noto_Sans } from 'next/font/google'
 import { Header } from '@/features/layout/header'
 import { Footer } from '@/features/layout/footer'
 import BokehBackground from '@/components/background/BokehBackground'
 import FallingEffect from '@/components/background/FallingEffect'
+
+// Self-host fonts qua next/font: tự tải, subset (kèm tiếng Việt), preload,
+// và loại bỏ request CSS render-blocking từ Google Fonts.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin', 'vietnamese'],
+  display: 'swap',
+  variable: '--font-jakarta',
+})
+const noto = Noto_Sans({
+  subsets: ['latin', 'vietnamese'],
+  display: 'swap',
+  variable: '--font-noto',
+})
 
 export const metadata = {
   title: 'PhatBo Studio - Lưu giữ khoảnh khắc, kiến tạo ký ức',
@@ -11,13 +25,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi">
+    <html lang="vi" className={`${jakarta.variable} ${noto.variable}`}>
       <head>
         <link rel="icon" href="/logo-pb.png" type="image/png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-background-light font-display text-text-main antialiased selection:bg-primary selection:text-white">
         <BokehBackground />

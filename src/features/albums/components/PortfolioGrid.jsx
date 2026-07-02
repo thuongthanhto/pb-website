@@ -1,31 +1,50 @@
 'use client';
 
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { Icon } from '@/components/Icon';
 
 function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
   const [loaded, setLoaded] = useState(false);
+  const [shown, setShown] = useState(false);
   const imgRef = useRef(null);
+  const tileRef = useRef(null);
 
   // Ảnh đã cache có thể "complete" ngay khi mount -> onLoad không bắn, xử lý ở đây.
   useEffect(() => {
     if (imgRef.current?.complete) setLoaded(true);
   }, []);
 
+  // Reveal khi cuộn tới (thay framer-motion whileInView bằng IntersectionObserver)
+  useEffect(() => {
+    const el = tileRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   // Reserve the exact space before the image loads so tiles never resize on
   // load. Uses the real ratio measured on the server; falls back to 3:4.
   const ratio =
     image.width && image.height ? `${image.width} / ${image.height}` : '3 / 4';
+  const revealDelay = (index % 4) * 0.05;
 
   return (
-    <motion.div
+    <div
+      ref={tileRef}
       onClick={() => onImageClick(image)}
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{
-        opacity: { duration: 0.8, delay: (index % 4) * 0.05, ease: 'easeOut' },
-        y: { duration: 0.9, delay: (index % 4) * 0.05, ease: [0.16, 1, 0.3, 1] },
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? 'none' : 'translateY(10px)',
+        transition: `opacity 0.8s ease-out ${revealDelay}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${revealDelay}s`,
       }}
       className={`group relative overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 ${
         square ? 'rounded-none' : 'rounded-2xl'
@@ -51,11 +70,11 @@ function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
         {/* Overlay hiện khi hover: lớp tối + icon phóng to gợi ý click */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/30 scale-90 transition-transform duration-300 group-hover:scale-100">
-            <span className="material-symbols-outlined text-[26px]">zoom_in</span>
+            <Icon name="zoom_in" className="text-[26px]" />
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

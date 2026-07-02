@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import { Lightbox } from '@/components/Lightbox';
+import { Icon } from '@/components/Icon';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -91,7 +92,7 @@ export function AlbumsSwiper({ images = [] }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {/* Gợi ý click để xem */}
                 <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/30 opacity-0 scale-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100">
-                  <span className="material-symbols-outlined text-[20px]">fullscreen</span>
+                  <Icon name="fullscreen" className="text-[20px]" />
                 </span>
               </button>
             </SwiperSlide>

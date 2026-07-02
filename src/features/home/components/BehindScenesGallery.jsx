@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Reveal } from '@/components/motion/Reveal';
 import { Lightbox } from '@/components/Lightbox';
+import { Icon } from '@/components/Icon';
 
 // Ảnh tác nghiệp (hậu trường) — đặt trong /public/work. Đều là ảnh dọc 9:16.
 const SHOTS = [
@@ -46,9 +47,7 @@ export function BehindScenesGallery() {
 
             {/* Gợi ý click để xem full */}
             <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/30 opacity-0 scale-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100">
-              <span className="material-symbols-outlined text-[20px]">
-                fullscreen
-              </span>
+              <Icon name="fullscreen" className="text-[20px]" />
             </span>
 
             <p className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-left text-white text-xs md:text-sm font-semibold translate-y-1 group-hover:translate-y-0 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">

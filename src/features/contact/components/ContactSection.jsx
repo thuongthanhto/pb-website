@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react'
+import { Icon } from '@/components/Icon'
 import { Reveal } from '@/components/motion/Reveal'
 
 export function ContactSection() {
@@ -49,7 +49,7 @@ export function ContactSection() {
                 className="w-14 h-14 rounded-full bg-stone-800 border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                 title={item.label}
               >
-                <Icon icon={item.icon} width="22" height="22" />
+                <Icon name={item.icon} className="text-[22px]" />
               </a>
               )
             })}

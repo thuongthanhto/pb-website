@@ -1,6 +1,6 @@
 'use client'
 
-import { Icon } from '@iconify/react'
+import { Icon } from '@/components/Icon'
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
             className="text-stone-300 hover:text-primary transition-colors"
             aria-label="Instagram"
           >
-            <Icon icon="mdi:instagram" width="24" height="24" />
+            <Icon name="mdi:instagram" className="text-[24px]" />
           </a>
           <a
             href="https://www.facebook.com/PhatBo0905"
@@ -29,7 +29,7 @@ export default function Footer() {
             className="text-stone-300 hover:text-primary transition-colors"
             aria-label="Facebook"
           >
-            <Icon icon="mdi:facebook" width="24" height="24" />
+            <Icon name="mdi:facebook" className="text-[24px]" />
           </a>
         </div>
 

@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { Icon } from '@/components/Icon'
 
 export function Testimonials() {
   const testimonials = [
@@ -27,9 +28,11 @@ export function Testimonials() {
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, i) => (
-      <span key={i} className="material-symbols-outlined text-[22px] fill-current text-yellow-400">
-        {i < Math.floor(rating) ? 'star' : i < rating ? 'star_half' : 'star_outline'}
-      </span>
+      <Icon
+        key={i}
+        name={i < Math.floor(rating) ? 'star' : i < rating ? 'star_half' : 'star_outline'}
+        className="text-[22px] text-yellow-400"
+      />
     ))
   }
 

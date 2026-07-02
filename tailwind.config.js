@@ -2,8 +2,8 @@
 export default {
   theme: {
     fontFamily: {
-      display: ['"Plus Jakarta Sans"', 'sans-serif'],
-      body: ['"Noto Sans"', 'sans-serif'],
+      display: ['var(--font-jakarta)', '"Plus Jakarta Sans"', 'sans-serif'],
+      body: ['var(--font-noto)', '"Noto Sans"', 'sans-serif'],
     },
     borderRadius: {
       DEFAULT: '0.25rem',

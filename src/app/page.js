@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { AlbumsSwiper, BehindScenesSection } from '@/features/home/components'
+import { AlbumsSwiperLazy, BehindScenesSection } from '@/features/home/components'
 import { getAllImages } from '@/lib/r2-albums'
 import { Reveal } from '@/components/motion/Reveal'
+import { Icon } from '@/components/Icon'
 
 // Re-fetch from R2 at most every 60s so newly uploaded photos show up
 // without needing a redeploy.
@@ -79,21 +80,17 @@ export default async function Home() {
               href="/albums"
             >
               Xem tất cả{' '}
-              <span className="material-symbols-outlined text-[18px]">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" className="text-[18px]" />
             </a>
           </div>
-          <AlbumsSwiper images={swiperImages} />
+          <AlbumsSwiperLazy images={swiperImages} />
           <div className="flex md:hidden justify-center mt-4">
             <Link
               href="/albums"
               className="text-primary font-bold text-sm flex items-center gap-2"
             >
               Xem tất cả dự án{' '}
-              <span className="material-symbols-outlined text-[18px]">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" className="text-[18px]" />
             </Link>
           </div>
         </div>
@@ -143,9 +140,7 @@ export default async function Home() {
                 >
                   <div className="flex items-start justify-between">
                     <div className="size-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                      <span className="material-symbols-outlined text-[36px]">
-                        {service.icon}
-                      </span>
+                      <Icon name={service.icon} className="text-[36px]" />
                     </div>
                     <span className="tabular-nums text-5xl font-black leading-none text-stone-100/5 group-hover:text-primary/15 transition-colors duration-300 select-none">
                       0{idx + 1}
@@ -164,9 +159,7 @@ export default async function Home() {
                     href="/pricing"
                   >
                     Xem chi tiết{' '}
-                    <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
-                      chevron_right
-                    </span>
+                    <Icon name="chevron_right" className="text-[16px] group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Reveal>
               ))}
@@ -214,18 +207,11 @@ export default async function Home() {
                 className="bg-stone-800/50 border border-stone-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
               >
                 <div className="absolute top-6 right-6 text-stone-700">
-                  <span className="material-symbols-outlined text-[48px]">
-                    format_quote
-                  </span>
+                  <Icon name="format_quote" className="text-[48px]" />
                 </div>
                 <div className="flex gap-1 text-yellow-400">
                   {[...Array(5)].map((_, i) => (
-                    <span
-                      key={i}
-                      className="material-symbols-outlined fill-current text-[20px]"
-                    >
-                      star
-                    </span>
+                    <Icon key={i} name="star" className="text-[20px]" />
                   ))}
                 </div>
                 <p className="text-stone-300 italic leading-relaxed relative z-10">

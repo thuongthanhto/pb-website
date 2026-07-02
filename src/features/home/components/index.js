@@ -1,3 +1,3 @@
 export { FileListSection } from './FileListSection';
-export { AlbumsSwiper } from './AlbumsSwiper';
+export { AlbumsSwiperLazy } from './AlbumsSwiperLazy';
 export { BehindScenesSection } from './BehindScenesSection';
