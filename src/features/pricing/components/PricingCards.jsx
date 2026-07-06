@@ -115,15 +115,16 @@ export function PricingCards() {
                   </li>
                 ))}
               </ul>
-              <button
-                className={`w-full h-12 rounded-xl text-base font-bold transition-all mt-auto ${
+              <a
+                href="tel:+84909383332"
+                className={`w-full h-12 flex items-center justify-center rounded-xl text-base font-bold transition-all mt-auto ${
                   pkg.featured
                     ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
                     : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
                 }`}
               >
                 {pkg.buttonText}
-              </button>
+              </a>
             </Reveal>
           ))}
         </div>

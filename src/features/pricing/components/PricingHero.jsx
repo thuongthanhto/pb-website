@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function PricingHero() {
   return (
     <section className="w-full py-8 lg:py-12 flex justify-center">
@@ -24,12 +26,12 @@ export function PricingHero() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 mt-2">
-                <button className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-stone-800 text-primary text-base font-bold transition-all hover:bg-stone-700 shadow-lg">
+                <a href="tel:+84909383332" className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-stone-800 text-primary text-base font-bold transition-all hover:bg-stone-700 shadow-lg">
                   <span>Tư vấn ngay</span>
-                </button>
-                <a href="/albums" className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-base font-bold transition-all hover:bg-black/50 hover:border-white/50">
-                  <span>Xem Portfolio</span>
                 </a>
+                <Link href="/albums" className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-base font-bold transition-all hover:bg-black/50 hover:border-white/50">
+                  <span>Xem Portfolio</span>
+                </Link>
               </div>
             </div>
           </div>

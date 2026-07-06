@@ -6,9 +6,9 @@ export function PricingCTA() {
         <p className="text-text-secondary text-lg font-medium max-w-2xl">
           Chúng tôi luôn sẵn sàng lắng nghe và thiết kế gói chụp riêng theo nhu cầu và ngân sách của bạn.
         </p>
-        <button className="mt-4 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-xl shadow-primary/20 hover:bg-primary-dark hover:scale-105 transition-all">
+        <a href="tel:+84909383332" className="mt-4 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-xl shadow-primary/20 hover:bg-primary-dark hover:scale-105 transition-all">
           <span className="truncate">Liên hệ tư vấn riêng</span>
-        </button>
+        </a>
       </div>
     </section>
   )

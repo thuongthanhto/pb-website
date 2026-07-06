@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { FilterButtons, PortfolioGrid } from '.';
+import { FloatingCTA } from './FloatingCTA';
+import { ViewerContext } from './ViewerContext';
 import { Lightbox } from '@/components/Lightbox';
 
 const publicDomain =
@@ -151,7 +153,7 @@ export function AlbumsSection({ images = [] }) {
   }, [hasMoreImages, selectedFolder]);
 
   return (
-    <>
+    <ViewerContext.Provider value={{ viewerOpen }}>
       <FilterButtons
         images={images}
         activeFolder={selectedFolder}
@@ -179,6 +181,8 @@ export function AlbumsSection({ images = [] }) {
         onClose={handleCloseViewer}
         onNavigate={(n) => setCurrentImage(paginatedImages[n])}
       />
-    </>
+
+      <FloatingCTA />
+    </ViewerContext.Provider>
   );
 }
