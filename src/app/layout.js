@@ -4,6 +4,8 @@ import { Header } from '@/features/layout/header'
 import { Footer } from '@/features/layout/footer'
 import BokehBackground from '@/components/background/BokehBackground'
 import FallingEffect from '@/components/background/FallingEffect'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 // Self-host fonts qua next/font: tự tải, subset (kèm tiếng Việt), preload,
 // và loại bỏ request CSS render-blocking từ Google Fonts.
@@ -37,6 +39,8 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </div>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
