@@ -20,9 +20,35 @@ const noto = Noto_Sans({
   variable: '--font-noto',
 })
 
+const siteTitle = 'PhatBo Studio - Lưu giữ khoảnh khắc, kiến tạo ký ức'
+const siteDescription = 'Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật. Đội ngũ nhiếp ảnh chuyên nghiệp sẵn sàng cho mọi dịp đặc biệt.'
+
 export const metadata = {
-  title: 'PhatBo Studio - Lưu giữ khoảnh khắc, kiến tạo ký ức',
-  description: 'Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật. Đội ngũ nhiếp ảnh chuyên nghiệp sẵn sàng cho mọi dịp đặc biệt.',
+  metadataBase: new URL('https://phatbo.info'),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: 'website',
+    locale: 'vi_VN',
+    url: 'https://phatbo.info',
+    siteName: 'PhatBo Studio',
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: '/logo-pb.png',
+        width: 1200,
+        height: 630,
+        alt: 'PhatBo Studio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: ['/logo-pb.png'],
+  },
 }
 
 export default function RootLayout({ children }) {

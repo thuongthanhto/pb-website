@@ -14,7 +14,7 @@ export interface SEOConfig {
 const siteConfig = {
   siteName: 'PB Studio - Nhiếp Ảnh Chuyên Nghiệp',
   siteUrl: 'https://phatbo.info',
-  defaultImage: '/logo.png',
+  defaultImage: '/logo-pb.png',
   locale: 'vi_VN',
   author: 'Phat Bo',
 };
