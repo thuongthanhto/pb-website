@@ -36,9 +36,9 @@ export const metadata = {
     description: siteDescription,
     images: [
       {
-        url: '/logo-pb.png',
-        width: 1200,
-        height: 630,
+        url: '/cover.jpg',
+        width: 1600,
+        height: 814,
         alt: 'PhatBo Studio',
       },
     ],
@@ -47,7 +47,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: ['/logo-pb.png'],
+    images: ['/cover.jpg'],
   },
 }
 
