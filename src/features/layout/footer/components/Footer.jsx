@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="text-stone-400 text-sm">© 2025 PhatBo Studio. All rights reserved.</p>
+      <p className="text-stone-400 text-sm">© 2025 PhatBo Photography. All rights reserved.</p>
     </div>
     </div>
   )

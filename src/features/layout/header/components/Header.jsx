@@ -39,14 +39,14 @@ export default function Header() {
           >
             <Image
               src="/logo-pb.png"
-              alt="PhatBo Studio Logo"
+              alt="PhatBo Photography Logo"
               width={56}
               height={56}
               className="w-12 h-12 rounded-lg"
             />
             <div className="flex flex-col leading-tight">
               <span className="text-base md:text-lg font-extrabold tracking-tight text-text-main">
-                PhatBo Studio
+                PhatBo Photography
               </span>
               <span className="hidden sm:block text-[11px] md:text-xs font-medium tracking-wide text-text-secondary">
                 Lưu giữ khoảnh khắc · Kiến tạo ký ức

@@ -1,0 +1,14 @@
+import { siteConfig } from '@/lib/seo-metadata'
+
+export default function robots() {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+      },
+    ],
+    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+    host: siteConfig.siteUrl,
+  }
+}

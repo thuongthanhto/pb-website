@@ -3,11 +3,17 @@ import {
   TeamPersonnel,
   ContactSection,
 } from '@/features/contact/components'
+import { defaultOgImages } from '@/lib/seo-metadata'
+
+const title = 'Giới thiệu - PhatBo Photography'
+const description =
+  'Tìm hiểu về nhiếp ảnh gia đứng sau PhatBo Photography. Hành trình, đội ngũ và niềm đam mê ghi lại những khoảnh khắc vượt thời gian.'
 
 export const metadata = {
-  title: 'Giới thiệu - PhatBo Studio',
-  description:
-    'Tìm hiểu về nhiếp ảnh gia đứng sau PhatBo Studio. Hành trình, đội ngũ và niềm đam mê ghi lại những khoảnh khắc vượt thời gian.',
+  title,
+  description,
+  alternates: { canonical: '/contact' },
+  openGraph: { url: '/contact', title, description, images: defaultOgImages },
 }
 
 export default function ContactPage() {

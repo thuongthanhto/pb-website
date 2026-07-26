@@ -11,13 +11,27 @@ export interface SEOConfig {
   publishedTime?: string;
 }
 
-const siteConfig = {
-  siteName: 'PB Studio - Nhiếp Ảnh Chuyên Nghiệp',
-  siteUrl: 'https://phatbo.info',
-  defaultImage: '/logo-pb.png',
+export const siteConfig = {
+  siteName: 'PhatBo Photography - Nhiếp Ảnh Chuyên Nghiệp',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://phatbo.photography',
+  defaultImage: '/cover.webp',
   locale: 'vi_VN',
   author: 'Phat Bo',
 };
+
+/**
+ * Ảnh OG mặc định, dùng lại cho các page tự khai `openGraph` — Next thay thế
+ * cả object openGraph của layout cha chứ không merge sâu, nên page nào override
+ * cũng phải tự khai lại images.
+ */
+export const defaultOgImages = [
+  {
+    url: siteConfig.defaultImage,
+    width: 1600,
+    height: 814,
+    alt: siteConfig.siteName,
+  },
+];
 
 /**
  * Generate comprehensive SEO metadata for pages
@@ -39,6 +53,7 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
   const fullUrl = url.startsWith('http') ? url : `${siteConfig.siteUrl}${url}`;
 
   return {
+    metadataBase: new URL(siteConfig.siteUrl),
     title: fullTitle,
     description,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
@@ -57,8 +72,8 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          width: 1600,
+          height: 814,
           alt: title,
         },
       ],
@@ -117,7 +132,7 @@ export function generateImageGalleryStructuredData(images: any[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
-    name: 'PB Studio Photo Gallery',
+    name: 'PhatBo Photography Photo Gallery',
     description: 'Professional photography portfolio',
     author: {
       '@type': 'Person',

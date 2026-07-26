@@ -6,6 +6,7 @@ import BokehBackground from '@/components/background/BokehBackground'
 import FallingEffect from '@/components/background/FallingEffect'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { siteConfig, defaultOgImages } from '@/lib/seo-metadata'
 
 // Self-host fonts qua next/font: tự tải, subset (kèm tiếng Việt), preload,
 // và loại bỏ request CSS render-blocking từ Google Fonts.
@@ -20,34 +21,32 @@ const noto = Noto_Sans({
   variable: '--font-noto',
 })
 
-const siteTitle = 'PhatBo Studio - Lưu giữ khoảnh khắc, kiến tạo ký ức'
-const siteDescription = 'Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật. Đội ngũ nhiếp ảnh chuyên nghiệp sẵn sàng cho mọi dịp đặc biệt.'
+const title = 'PhatBo Photography - Lưu giữ khoảnh khắc, kiến tạo ký ức'
+const description = 'Chúng tôi kể câu chuyện của bạn qua lăng kính nghệ thuật. Đội ngũ nhiếp ảnh chuyên nghiệp sẵn sàng cho mọi dịp đặc biệt.'
 
+// metadataBase để Next resolve các URL tương đối (canonical, ảnh OG) thành
+// absolute URL — thiếu nó thì thẻ og:image build ra sẽ không có domain.
 export const metadata = {
-  metadataBase: new URL('https://phatbo.info'),
-  title: siteTitle,
-  description: siteDescription,
+  metadataBase: new URL(siteConfig.siteUrl),
+  title,
+  description,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
-    locale: 'vi_VN',
-    url: 'https://phatbo.info',
-    siteName: 'PhatBo Studio',
-    title: siteTitle,
-    description: siteDescription,
-    images: [
-      {
-        url: '/cover.jpg',
-        width: 1600,
-        height: 814,
-        alt: 'PhatBo Studio',
-      },
-    ],
+    locale: siteConfig.locale,
+    url: '/',
+    siteName: siteConfig.siteName,
+    title,
+    description,
+    images: defaultOgImages,
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteTitle,
-    description: siteDescription,
-    images: ['/cover.jpg'],
+    title,
+    description,
+    images: [siteConfig.defaultImage],
   },
 }
 
