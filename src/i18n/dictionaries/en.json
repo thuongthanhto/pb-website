@@ -1,0 +1,410 @@
+{
+  "common": {
+    "brand": "PhatBo Photography",
+    "tagline": "Capturing Moments · Preserving Memories",
+    "nav": {
+      "home": "Home",
+      "albums": "Albums",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    },
+    "menu": {
+      "label": "Menu",
+      "open": "Open Menu",
+      "close": "Close menu"
+    },
+    "language": {
+      "label": "Language",
+      "vi": "Tiếng Việt",
+      "en": "English",
+      "viShort": "VI",
+      "enShort": "EN"
+    },
+    "cta": {
+      "book": "Book Now",
+      "bookShoot": "Book a Session",
+      "viewCollection": "View Collection",
+      "viewPortfolio": "View Portfolio",
+      "consult": "Get a Quote",
+      "consultNow": "Consult Now",
+      "viewAll": "View All",
+      "viewAllProjects": "View all projects",
+      "viewDetails": "View details"
+    },
+    "lightbox": {
+      "close": "Close",
+      "prev": "Previous",
+      "next": "Next",
+      "image": "Image",
+      "viewImage": "View image"
+    },
+    "footer": {
+      "rights": "© 2025 PhatBo Photography. All rights reserved."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Vietnam Wedding Photographer in Saigon | PhatBo",
+      "description": "Saigon-based wedding photographer for couples from Singapore, Malaysia and the US. Pre-wedding, destination weddings and cinematic wedding films in Vietnam.",
+      "keywords": [
+        "vietnam wedding photographer",
+        "wedding photographer saigon",
+        "wedding photographer ho chi minh",
+        "destination wedding vietnam",
+        "pre wedding photoshoot vietnam",
+        "saigon photographer",
+        "cinematic wedding film vietnam",
+        "vietnam elopement"
+      ]
+    },
+    "hero": {
+      "titlePre": "Wedding photography in",
+      "titleHighlight": "Saigon",
+      "titlePost": "for couples from anywhere",
+      "subtitle": "A Vietnam wedding photographer for pre-wedding shoots, destination weddings and cinematic films — including couples flying in from Singapore, Malaysia and the US.",
+      "videoTitle": "Studio introduction video"
+    },
+    "portfolio": {
+      "eyebrow": "Portfolio",
+      "title": "Featured projects"
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "A package for every occasion",
+      "subtitle": "Professional photography packages tailored to your vision",
+      "items": [
+        {
+          "title": "Wedding Photography",
+          "description": "Capturing raw emotion and romantic moments through a cinematic lens"
+        },
+        {
+          "title": "Portrait Photography",
+          "description": "Defining your unique character and beauty with professional Studio lighting"
+        },
+        {
+          "title": "Event Photography",
+          "description": "Documenting the energy and key highlights of corporate events and parties"
+        }
+      ]
+    },
+    "behindScenes": {
+      "eyebrow": "Behind the Scenes",
+      "titleLine1": "The dedication behind",
+      "titleLine2": "every single frame",
+      "description": "A great shot requires precise lighting, composition, and posing guidance to make you feel confident and natural",
+      "stats": [
+        {
+          "value": "500+",
+          "label": "Shoots Completed"
+        },
+        {
+          "value": "15 years",
+          "label": "Photography Experience"
+        },
+        {
+          "value": "Refined Aesthetic",
+          "label": "Meticulous Composition"
+        }
+      ],
+      "shots": [
+        "Studio Lighting Setup",
+        "On-set Production",
+        "Framing and Posing Guidance",
+        "Retouching and photo selection with clients"
+      ]
+    },
+    "testimonials": {
+      "title": "What our clients say",
+      "items": [
+        {
+          "text": "Professional and dedicated team. Our wedding photos turned out better than expected—the colors are clean and natural. Thank you so much",
+          "name": "Lan Anh",
+          "role": "Pre-Wedding"
+        },
+        {
+          "text": "I booked a profile shoot for my CV and LinkedIn. The lighting was great and the photographer's posing tips helped me feel at ease. Great value",
+          "name": "Minh Tuấn",
+          "role": "Portrait"
+        },
+        {
+          "text": "Our company hired the studio for our year-end party. Fast turnaround and they captured all the best moments. We will definitely be back",
+          "name": "Thu Hà",
+          "role": "HR Manager"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for your close-up?",
+      "description": "Capture your most beautiful moments with a sophisticated, modern touch by PhatBo Photography"
+    }
+  },
+  "albums": {
+    "meta": {
+      "title": "Vietnam Pre-Wedding Portfolio | PhatBo Photography",
+      "description": "Browse {count} real photos shot in Saigon: {folders}. Studio and street-style pre-wedding work plus full wedding-day coverage in Vietnam.",
+      "keywords": [
+        "vietnam pre wedding portfolio",
+        "saigon pre wedding photos",
+        "pre wedding photoshoot vietnam",
+        "street style pre wedding saigon",
+        "vietnam wedding photography portfolio",
+        "couple photoshoot vietnam"
+      ]
+    },
+    "hero": {
+      "titleTop": "Real wedding photos",
+      "titleBottom": "shot in Saigon",
+      "subtitleLine1": "Studio and street-style pre-wedding work, plus full wedding-day coverage.",
+      "subtitleLine2": "Every frame here is a real client shoot, not a stock set."
+    },
+    "filters": {
+      "all": "All",
+      "folders": {
+        "studio": "Studio",
+        "outdoor": "Outdoor",
+        "couples": "Couples",
+        "T&K": "T&K",
+        "V&K": "Wedding Photojournalism",
+        "LindaNgo&PhongDat": "Linda Ngo & Phong Đạt"
+      }
+    },
+    "empty": "No photos found"
+  },
+  "pricing": {
+    "meta": {
+      "title": "Vietnam Pre-Wedding Package Prices | PhatBo",
+      "description": "Pre-wedding and destination wedding packages in Vietnam from 12,000,000 VND. Transparent pricing for overseas couples from Singapore, Malaysia and the US.",
+      "keywords": [
+        "vietnam pre wedding package price",
+        "destination wedding vietnam cost",
+        "overseas pre wedding photoshoot packages",
+        "pre wedding photoshoot vietnam price",
+        "wedding photography package vietnam",
+        "destination wedding photographer asia packages"
+      ]
+    },
+    "hero": {
+      "badge": "Professional Service",
+      "title": "Vietnam pre-wedding packages",
+      "description": "Four packages from 12,000,000 to 19,000,000 VND, with gowns, makeup, retouching and the album included. No hidden add-ons for overseas couples."
+    },
+    "cards": {
+      "title": "Choose your package",
+      "subtitle": "From Pre-Wedding to the big day, tailored options for every couple.",
+      "mostLoved": "Most Loved",
+      "packages": [
+        {
+          "name": "Pre-Wedding Studio Package",
+          "price": "15,000,000 VND",
+          "description": "2 Layouts shot in-Studio. Sophisticated and artistic style.",
+          "features": [
+            "2 Luxury gowns, 2 Suits",
+            "Fresh flowers, Makeup & Hair",
+            "Retouch 30 final images",
+            "Album 30x30 (30 pages) & Case",
+            "2 large 60x90 wooden prints",
+            "HD high-definition paper Album",
+            "Restaurant slideshow & All raw files"
+          ],
+          "buttonText": "Book Studio"
+        },
+        {
+          "name": "Pre-Wedding Studio & Street",
+          "price": "19,000,000 VND",
+          "description": "2 Layouts (Indoor & Outdoor Saigon), versatile styles",
+          "features": [
+            "2 Luxury gowns, 2 Suits",
+            "Studio & Streetstyle Saigon locations",
+            "Fresh flowers, Hair & Makeup changes",
+            "35 high-end Retouch photos",
+            "Album 30x30 (30 pages) & Premium box",
+            "2 Large prints 60x90cm",
+            "Restaurant slideshow & All raw files"
+          ],
+          "buttonText": "Book now"
+        },
+        {
+          "name": "Wedding Photojournalism",
+          "price": "12,000,000 VND",
+          "description": "Capturing authentic moments on your big day",
+          "features": [
+            "1 Documentary photographer + 1 Traditional photographer",
+            "Duration: Full Day",
+            "Traditional tea ceremony & guest welcome at 2 homes",
+            "Tea ceremony ritual guidance",
+            "Wedding banquet reportage",
+            "Unlimited files"
+          ],
+          "buttonText": "Get a quote"
+        },
+        {
+          "name": "Wedding Film Package",
+          "price": "12,000,000 VND",
+          "description": "High-end artistic wedding films",
+          "features": [
+            "2 high-end cinema cameras",
+            "Duration: Full Day",
+            "Coverage: 2 homes and Wedding party",
+            "2K Video quality",
+            "Optional upgrade to 4K"
+          ],
+          "buttonText": "Get a quote"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Pre-Wedding Package Comparison",
+      "subtitle": "Technical breakdown of our two most popular wedding packages",
+      "featureColumn": "Features",
+      "planA": "Pre-Wedding Studio",
+      "planB": "Pre-Wedding Studio & Street",
+      "rows": [
+        {
+          "feature": "Wardrobe",
+          "a": "2 Luxury gowns, 2 Suits",
+          "b": "2 Luxury gowns, 2 Suits"
+        },
+        {
+          "feature": "Location",
+          "a": "Studio (Indoor)",
+          "b": "Studio & Streetstyle Saigon"
+        },
+        {
+          "feature": "Layouts",
+          "a": "2 Layouts",
+          "b": "2 Layouts (Indoor & Outdoor)"
+        },
+        {
+          "feature": "Retouch photos",
+          "a": "30 photos",
+          "b": "35 photos"
+        },
+        {
+          "feature": "Photobook Album",
+          "a": "Size 30x30 (30 pages)",
+          "b": "Size 30x30 (30 pages)"
+        },
+        {
+          "feature": "Enlarged print",
+          "a": "Two 60x90 prints",
+          "b": "Two 60x90 prints"
+        },
+        {
+          "feature": "Included Extras",
+          "a": "Fresh flowers, Makeup & Hair, Slideshow",
+          "b": "Fresh flowers, Makeup & Hair, Slideshow"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Client reviews",
+      "items": [
+        {
+          "text": "The Pre-Wedding Studio & Street package is great value. The team was enthusiastic and helped with every pose. Photos turned out better than expected",
+          "name": "Minh Anh",
+          "role": "Private Client"
+        },
+        {
+          "text": "PhatBo Photography captured our wedding day perfectly with the Wedding Photojournalism package. The colors are elegant and artistic",
+          "name": "Tuấn & Lan",
+          "role": "Wedding Photojournalism"
+        },
+        {
+          "text": "Professional service and detailed consultation. I love how they handled the lighting for my Studio session; it added so much depth",
+          "name": "Hoàng Nam",
+          "role": "Business Portrait"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Need a custom package?",
+      "description": "We can design a bespoke photography package tailored to your specific needs and budget",
+      "button": "Get a Quote"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "What couples ask us before booking — including those flying in from abroad",
+      "items": [
+        {
+          "question": "How much does a pre-wedding shoot in Vietnam cost?",
+          "answer": "Our Pre-Wedding Studio package is 15,000,000 VND (around USD 590) and the Studio & Saigon street-style package is 19,000,000 VND (around USD 750). Wedding photojournalism and cinematic film coverage are 12,000,000 VND each for a full day. Gowns, makeup, retouching and the album are included."
+        },
+        {
+          "question": "Do you work with couples flying in from Singapore, Malaysia or the US?",
+          "answer": "Yes — a large share of our overseas pre-wedding shoots are couples from Singapore and Malaysia, plus Vietnamese-American couples coming home to shoot. We handle everything on the ground: gowns, suits, makeup, hair, locations and permits, so you only need to book flights and a hotel."
+        },
+        {
+          "question": "How many days do we need in Saigon for the shoot?",
+          "answer": "Three days is comfortable: one to arrive and try on outfits, one full shooting day, and one spare in case of rain. If your trip is tight we can compress the fitting and the shoot into two days."
+        },
+        {
+          "question": "When is the best time of year to shoot in Vietnam?",
+          "answer": "December to April is dry season in Saigon — the most reliable window and our busiest, so book two to three months ahead. May to November has short afternoon downpours; mornings still shoot beautifully and we plan indoor studio layouts as a backup."
+        },
+        {
+          "question": "Do you speak English on the shoot?",
+          "answer": "Yes. Direction, posing and all planning are done in English, and we send the concept board and shooting schedule in English before you fly out."
+        },
+        {
+          "question": "How and when do we receive the photos?",
+          "answer": "Previews arrive within 3-5 days, so you usually have them before flying home. Fully retouched images and the printed album are finished within 3-4 weeks and the album can be shipped internationally."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Book a Saigon Wedding Photographer | PhatBo",
+      "description": "Book your Vietnam pre-wedding or destination wedding shoot. English-speaking team in Saigon, used to working with couples flying in from Singapore and Malaysia.",
+      "keywords": [
+        "book vietnam wedding photographer",
+        "saigon wedding photographer contact",
+        "english speaking photographer vietnam",
+        "vietnam destination wedding photographer"
+      ]
+    },
+    "hero": {
+      "title": "Book your Saigon wedding shoot",
+      "subtitle": "Meet the team behind every frame: 15 years shooting weddings in Saigon, 500+ sessions, and an English-speaking crew used to overseas couples."
+    },
+    "contactSection": {
+      "label": "Get in touch",
+      "channels": {
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "hotline": "Hotline",
+        "email": "Email"
+      }
+    },
+    "team": {
+      "title": "The PhatBo Photography Team",
+      "intro": [
+        "My team and I are dedicated photographers committed to delivering creative, high-quality imagery for every client.",
+        "With a diverse range of skills and experience, we ensure every frame is aesthetically polished and emotionally resonant."
+      ],
+      "members": [
+        {
+          "name": "Lĩnh",
+          "role": "Videographer"
+        },
+        {
+          "name": "Phat Bo",
+          "role": "Lead Photographer"
+        },
+        {
+          "name": "Photography",
+          "role": "Traditional & Wedding Photojournalism"
+        },
+        {
+          "name": "Photography",
+          "role": "Traditional & Wedding Photojournalism"
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "description": "The page you are looking for doesn't exist",
+    "backHome": "Back to home"
+  }
+}

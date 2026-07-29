@@ -1,27 +1,31 @@
 import { Icon } from '@/components/Icon'
 import { Reveal } from '@/components/motion/Reveal'
+import { normalizeLocale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
 
-export function ContactSection() {
+export function ContactSection({ locale }) {
+  const t = getDictionary(normalizeLocale(locale)).contact.contactSection
+
   const contactItems = [
     {
       icon: 'mdi:instagram',
       href: 'https://www.instagram.com/scryer_bo',
-      label: 'Instagram',
+      label: t.channels.instagram,
     },
     {
       icon: 'mdi:facebook',
       href: 'https://www.facebook.com/PhatBo0905',
-      label: 'Facebook',
+      label: t.channels.facebook,
     },
     {
       icon: 'mdi:phone',
       href: 'tel:+84909383332',
-      label: 'Hotline',
+      label: t.channels.hotline,
     },
     {
       icon: 'mdi:email',
       href: 'mailto:phatchay95@gmail.com',
-      label: 'Email',
+      label: t.channels.email,
     },
   ]
 
@@ -31,7 +35,7 @@ export function ContactSection() {
         <Reveal className="flex flex-col items-center gap-8">
           <div className="text-center">
             <p className="text-text-secondary text-sm font-medium mb-2">
-              Liên hệ với chúng tôi
+              {t.label}
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-5">
@@ -48,6 +52,7 @@ export function ContactSection() {
                 })}
                 className="w-14 h-14 rounded-full bg-stone-800 border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                 title={item.label}
+                aria-label={item.label}
               >
                 <Icon name={item.icon} className="text-[22px]" />
               </a>

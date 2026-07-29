@@ -89,7 +89,26 @@ function getFolderFromKey(key) {
   return null;
 }
 
-export async function getAllImages() {
+// Gom các lần gọi getAllImages() gần nhau về cùng một promise. Từ khi có 2 ngôn
+// ngữ, mỗi lần build gọi hàm này 6 lần (home ×2, generateMetadata của albums ×2,
+// page albums ×2) — không gom thì mỗi lần lại quét lại toàn bộ bucket.
+// TTL đặt dưới `revalidate = 60` của page để ISR vẫn thấy ảnh mới upload.
+const LIST_TTL_MS = 50_000;
+let inFlight: { at: number; promise: Promise<any[]> } | null = null;
+
+export function getAllImages(): Promise<any[]> {
+  const now = Date.now();
+  if (inFlight && now - inFlight.at < LIST_TTL_MS) return inFlight.promise;
+
+  const promise = listAndMeasureImages().catch((error) => {
+    inFlight = null; // đừng cache lỗi, lần sau thử lại
+    throw error;
+  });
+  inFlight = { at: now, promise };
+  return promise;
+}
+
+async function listAndMeasureImages() {
   const [files, metadata] = await Promise.all([
     getAllImagesFromPhotos(),
     loadMetadata(),
@@ -126,14 +145,12 @@ export async function getAllImages() {
   });
 
   return images.sort((a, b) => {
-      // Sort by last modified date, newest first
-      const dateA = a.lastModified ? new Date(a.lastModified).getTime() : 0;
-      const dateB = b.lastModified ? new Date(b.lastModified).getTime() : 0;
-      if (dateA !== dateB) {
-        return dateB - dateA;
-      }
-      return a.fileName.localeCompare(b.fileName);
-    });
-
-  return images;
+    // Sort by last modified date, newest first
+    const dateA = a.lastModified ? new Date(a.lastModified).getTime() : 0;
+    const dateB = b.lastModified ? new Date(b.lastModified).getTime() : 0;
+    if (dateA !== dateB) {
+      return dateB - dateA;
+    }
+    return a.fileName.localeCompare(b.fileName);
+  });
 }

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n/I18nProvider';
 
 function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
   const [loaded, setLoaded] = useState(false);
@@ -122,11 +123,8 @@ function distributeIntoColumns(images, cols) {
   return columns;
 }
 
-export function PortfolioGrid({
-  images = [],
-  selectedFolder = 'Tất cả',
-  onImageClick = () => {},
-}) {
+export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
+  const { dict } = useI18n();
   const publicDomain =
     process.env.NEXT_PUBLIC_R2_DOMAIN ||
     'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev';
@@ -143,7 +141,7 @@ export function PortfolioGrid({
   if (!images || images.length === 0) {
     return (
       <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
-        <p className="text-stone-500 text-center">Không tìm thấy ảnh nào.</p>
+        <p className="text-stone-500 text-center">{dict.albums.empty}</p>
       </div>
     );
   }

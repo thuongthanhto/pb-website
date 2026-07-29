@@ -12,26 +12,13 @@ const publicDomain =
 
 const IMAGES_PER_PAGE = 20; // Load 20 images per batch
 
-// Map display label <-> URL slug for the ?category= param
-const folderMap = {
-  'Studio': 'studio',
-  'Ngoại cảnh': 'outdoor',
-  'Chụp couples': 'couples',
-  'T&K': 'T&K',
-  'Phóng sự ngày cưới': 'V&K',
-  'Linda Ngo & Phong Đạt': 'LindaNgo&PhongDat'
-};
-const slugToFolder = Object.fromEntries(
-  Object.entries(folderMap).map(([label, slug]) => [slug, label])
-);
-
-// Fall back to identity so newly added R2 folders (e.g. "LindaNgo&PhongDat")
-// work without having to be listed in folderMap.
-const labelToSlug = (label) => folderMap[label] || label;
-const slugToLabel = (slug) => slugToFolder[slug] || slug;
+// State + URL param dùng chính key folder của R2 ('studio', 'V&K'...) chứ không
+// dùng nhãn hiển thị — nhãn thay đổi theo ngôn ngữ, key thì không, nên link
+// ?category=... vẫn share được giữa 2 phiên bản tiếng Việt / tiếng Anh.
+const ALL = 'all';
 
 export function AlbumsSection({ images = [] }) {
-  const [selectedFolder, setSelectedFolder] = useState('Tất cả');
+  const [selectedFolder, setSelectedFolder] = useState(ALL);
   const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
@@ -43,8 +30,9 @@ export function AlbumsSection({ images = [] }) {
     const syncFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
 
-      const slug = params.get('category');
-      setSelectedFolder(slug ? slugToLabel(slug) : 'Tất cả');
+      const category = params.get('category');
+      const folder = category || ALL;
+      setSelectedFolder(folder);
 
       const photo = params.get('photo');
       const img = photo ? images.find((i) => i.fileName === photo) : null;
@@ -53,11 +41,8 @@ export function AlbumsSection({ images = [] }) {
         setViewerOpen(true);
 
         // Make sure the opened photo is within the paginated slice so next/prev work
-        const folderLabel = slug ? slugToLabel(slug) : 'Tất cả';
         const list =
-          folderLabel === 'Tất cả'
-            ? images
-            : images.filter((i) => i.folder === labelToSlug(folderLabel));
+          folder === ALL ? images : images.filter((i) => i.folder === folder);
         const idx = list.findIndex((i) => i.id === img.id);
         if (idx >= 0) {
           setLoadedCount((prev) =>
@@ -81,8 +66,8 @@ export function AlbumsSection({ images = [] }) {
     }
     const params = new URLSearchParams(window.location.search);
 
-    if (selectedFolder === 'Tất cả') params.delete('category');
-    else params.set('category', labelToSlug(selectedFolder));
+    if (selectedFolder === ALL) params.delete('category');
+    else params.set('category', selectedFolder);
 
     if (viewerOpen && currentImage) params.set('photo', currentImage.fileName);
     else params.delete('photo');
@@ -107,9 +92,9 @@ export function AlbumsSection({ images = [] }) {
 
   // Filter images by folder
   const filteredImages =
-    selectedFolder === 'Tất cả'
+    selectedFolder === ALL
       ? images
-      : images.filter((img) => img.folder === labelToSlug(selectedFolder));
+      : images.filter((img) => img.folder === selectedFolder);
 
   const paginatedImages = filteredImages.slice(0, loadedCount);
   const hasMoreImages = paginatedImages.length < filteredImages.length;
@@ -159,11 +144,7 @@ export function AlbumsSection({ images = [] }) {
         activeFolder={selectedFolder}
         onFilterChange={handleFolderChange}
       />
-      <PortfolioGrid
-        images={paginatedImages}
-        selectedFolder={selectedFolder}
-        onImageClick={handleImageClick}
-      />
+      <PortfolioGrid images={paginatedImages} onImageClick={handleImageClick} />
 
       {hasMoreImages && (
         <div

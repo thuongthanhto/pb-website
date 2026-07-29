@@ -5,17 +5,25 @@ import Image from 'next/image';
 import { Reveal } from '@/components/motion/Reveal';
 import { Lightbox } from '@/components/Lightbox';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n/I18nProvider';
 
 // Ảnh tác nghiệp (hậu trường) — đặt trong /public/work. Đều là ảnh dọc 9:16.
-const SHOTS = [
-  { src: '/work/work01.jpeg', caption: 'Set up ánh sáng tại studio' },
-  { src: '/work/work02.jpeg', caption: 'Ekip tác nghiệp tại hiện trường' },
-  { src: '/work/work03.jpeg', caption: 'Canh khung & chỉ đạo tạo dáng' },
-  { src: '/work/work04.webp', caption: 'Hậu kỳ & chọn ảnh cùng khách' },
+// Caption lấy từ dictionary (home.behindScenes.shots) theo cùng thứ tự.
+const SHOT_SOURCES = [
+  '/work/work01.jpeg',
+  '/work/work02.jpeg',
+  '/work/work03.jpeg',
+  '/work/work04.webp',
 ];
 
 export function BehindScenesGallery() {
+  const { dict } = useI18n();
   const [openIdx, setOpenIdx] = useState(null);
+
+  const shots = SHOT_SOURCES.map((src, idx) => ({
+    src,
+    caption: dict.home.behindScenes.shots[idx] ?? '',
+  }));
 
   return (
     <>
@@ -25,12 +33,12 @@ export function BehindScenesGallery() {
         delay={0.15}
         className="order-2 flex items-start gap-3 md:gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0"
       >
-        {SHOTS.map((shot, idx) => (
+        {shots.map((shot, idx) => (
           <button
-            key={idx}
+            key={shot.src}
             type="button"
             onClick={() => setOpenIdx(idx)}
-            aria-label={`Xem ảnh: ${shot.caption}`}
+            aria-label={`${dict.common.lightbox.viewImage}: ${shot.caption}`}
             className={`group relative shrink-0 md:shrink w-[72%] sm:w-[46%] md:w-auto md:flex-1 aspect-[9/16] overflow-hidden rounded-2xl shadow-md snap-start cursor-pointer ring-1 ring-white/5 transition-transform duration-300 hover:-translate-y-1 ${
               idx % 2 === 1 ? 'md:mt-10' : ''
             }`}
@@ -58,7 +66,7 @@ export function BehindScenesGallery() {
       </Reveal>
 
       <Lightbox
-        items={SHOTS}
+        items={shots}
         index={openIdx}
         onClose={() => setOpenIdx(null)}
         onNavigate={setOpenIdx}

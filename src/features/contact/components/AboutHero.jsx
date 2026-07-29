@@ -1,4 +1,12 @@
-export function AboutHero() {
+import Link from 'next/link'
+import { normalizeLocale, localePath } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+
+export function AboutHero({ locale }) {
+  const current = normalizeLocale(locale)
+  const dict = getDictionary(current)
+  const t = dict.contact.hero
+
   return (
     <div className="w-full">
       <div className="flex justify-center py-8">
@@ -11,15 +19,18 @@ export function AboutHero() {
           >
             <div className="flex flex-col gap-5 text-center max-w-3xl z-10">
               <h1 className="text-white text-5xl md:text-6xl font-display font-bold leading-tight tracking-tight drop-shadow-md">
-                Ghi lại những khoảnh khắc thực tế của cuộc đời
+                {t.title}
               </h1>
-              <h2 className="text-white/90 text-lg md:text-xl font-light leading-relaxed drop-shadow-sm max-w-2xl mx-auto">
-                Chụp ảnh chuyên nghiệp kể câu chuyện độc đáo của bạn thông qua những hình ảnh chân thực và vượt thời gian.
-              </h2>
+              <p className="text-white/90 text-lg md:text-xl font-light leading-relaxed drop-shadow-sm max-w-2xl mx-auto">
+                {t.subtitle}
+              </p>
             </div>
-            <a href="/albums" className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-stone-800 hover:bg-stone-700 text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg">
-              Xem bộ sưu tập
-            </a>
+            <Link
+              href={localePath(current, '/albums')}
+              className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-stone-800 hover:bg-stone-700 text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg"
+            >
+              {dict.common.cta.viewCollection}
+            </Link>
           </div>
         </div>
       </div>

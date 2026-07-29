@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { Reveal } from '@/components/motion/Reveal';
 import { Icon } from '@/components/Icon';
 import { BehindScenesGallery } from './BehindScenesGallery';
+import { normalizeLocale, localePath } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 
-const STATS = [
-  { value: '500+', label: 'Buổi chụp đã thực hiện' },
-  { value: '15 năm', label: 'Kinh nghiệm trong nghề' },
-  { value: 'Gu ảnh sang trọng', label: 'Chi tiết từng bức ảnh' },
-];
+export function BehindScenesSection({ locale }) {
+  const current = normalizeLocale(locale);
+  const dict = getDictionary(current);
+  const t = dict.home.behindScenes;
 
-export function BehindScenesSection() {
   return (
     <div
       className="w-full py-10 md:py-24 border-t border-stone-800"
@@ -19,22 +19,20 @@ export function BehindScenesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,440px)_1fr] gap-8 lg:gap-14 items-center">
           {/* Nội dung */}
           <Reveal className="flex flex-col gap-5 md:gap-6 order-1">
-            <h2 className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full self-start">
-              Hậu Trường
+            <p className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full self-start">
+              {t.eyebrow}
+            </p>
+            <h2 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight">
+              {t.titleLine1} <br className="hidden md:block" />
+              {t.titleLine2}
             </h2>
-            <h3 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight">
-              Sự tận tâm phía sau <br className="hidden md:block" />
-              mỗi khung hình
-            </h3>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[520px]">
-              Một bức ảnh đẹp không đến từ may mắn. Đó là cả ekip chuẩn bị ánh
-              sáng, canh từng góc máy và chỉ đạo tạo dáng để bạn luôn tự tin,
-              tự nhiên nhất trước ống kính.
+              {t.description}
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 md:gap-5 mt-2">
-              {STATS.map((stat, idx) => (
+              {t.stats.map((stat, idx) => (
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
@@ -51,10 +49,10 @@ export function BehindScenesSection() {
             </div>
 
             <Link
-              href="/contact"
+              href={localePath(current, '/contact')}
               className="inline-flex items-center justify-center self-start rounded-full h-12 md:h-14 px-7 md:px-8 mt-2 bg-primary hover:bg-primary-dark transition-all text-white text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
             >
-              Đặt lịch ngay
+              {dict.common.cta.book}
               <Icon name="arrow_forward" className="text-[20px] ml-1" />
             </Link>
           </Reveal>

@@ -6,11 +6,14 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import { Lightbox } from '@/components/Lightbox';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n/I18nProvider';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 export function AlbumsSwiper({ images = [] }) {
+  const { dict } = useI18n();
+  const labels = dict.common.lightbox;
   const publicDomain =
     process.env.NEXT_PUBLIC_R2_DOMAIN ||
     'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev';
@@ -34,7 +37,7 @@ export function AlbumsSwiper({ images = [] }) {
 
   const viewerItems = images.map((img, i) => ({
     src: `${publicDomain}/${img.key}`,
-    alt: img.title || img.folder || `Ảnh ${i + 1}`,
+    alt: img.title || img.folder || `${labels.image} ${i + 1}`,
   }));
 
   return (
@@ -77,12 +80,12 @@ export function AlbumsSwiper({ images = [] }) {
               <button
                 type="button"
                 onClick={() => setOpenIdx(idx)}
-                aria-label={`Xem ảnh ${idx + 1}`}
+                aria-label={`${labels.viewImage} ${idx + 1}`}
                 className="group relative block w-full overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
               >
                 <Image
                   src={imageUrl}
-                  alt={image.title || image.folder || `Ảnh ${idx + 1}`}
+                  alt={image.title || image.folder || `${labels.image} ${idx + 1}`}
                   fill
                   sizes="(max-width: 480px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 300px"
                   quality={85}
@@ -104,7 +107,7 @@ export function AlbumsSwiper({ images = [] }) {
       <button
         onClick={() => swiperRef.current?.slidePrev()}
         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 md:-translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-stone-800/90 backdrop-blur-sm border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
-        aria-label="Previous"
+        aria-label={labels.prev}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="15 18 9 12 15 6"></polyline>
@@ -113,7 +116,7 @@ export function AlbumsSwiper({ images = [] }) {
       <button
         onClick={() => swiperRef.current?.slideNext()}
         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 md:translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-stone-800/90 backdrop-blur-sm border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
-        aria-label="Next"
+        aria-label={labels.next}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="9 6 15 12 9 18"></polyline>

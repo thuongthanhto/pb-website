@@ -1,0 +1,410 @@
+{
+  "common": {
+    "brand": "PhatBo Photography",
+    "tagline": "Ghi dấu khoảnh khắc · Lưu giữ ký ức",
+    "nav": {
+      "home": "Trang chủ",
+      "albums": "Bộ sưu tập",
+      "pricing": "Bảng giá",
+      "contact": "Liên hệ"
+    },
+    "menu": {
+      "label": "Menu",
+      "open": "Mở menu",
+      "close": "Đóng menu"
+    },
+    "language": {
+      "label": "Ngôn ngữ",
+      "vi": "Tiếng Việt",
+      "en": "English",
+      "viShort": "VI",
+      "enShort": "EN"
+    },
+    "cta": {
+      "book": "Đặt lịch ngay",
+      "bookShoot": "Đặt lịch chụp",
+      "viewCollection": "Xem bộ sưu tập",
+      "viewPortfolio": "Xem Portfolio",
+      "consult": "Nhận tư vấn",
+      "consultNow": "Tư vấn ngay",
+      "viewAll": "Xem tất cả",
+      "viewAllProjects": "Xem toàn bộ dự án",
+      "viewDetails": "Xem chi tiết"
+    },
+    "lightbox": {
+      "close": "Đóng",
+      "prev": "Ảnh trước",
+      "next": "Ảnh sau",
+      "image": "Ảnh",
+      "viewImage": "Xem ảnh"
+    },
+    "footer": {
+      "rights": "© 2025 PhatBo Photography. Bảo lưu mọi quyền."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Chụp Ảnh Cưới TP.HCM | PhatBo Photography",
+      "description": "Studio chụp ảnh cưới & phóng sự cưới tại TP.HCM. Pre-Wedding studio và streetstyle Sài Gòn, phong cách cinematic. 15 năm kinh nghiệm, 500+ buổi chụp.",
+      "keywords": [
+        "chụp ảnh cưới tphcm",
+        "chụp ảnh cưới sài gòn",
+        "studio chụp ảnh cưới",
+        "chụp ảnh cưới studio",
+        "phóng sự cưới sài gòn",
+        "chụp ảnh cưới streetstyle",
+        "quay phim phóng sự cưới",
+        "chụp ảnh cưới phong cách cinematic"
+      ]
+    },
+    "hero": {
+      "titlePre": "Chụp ảnh cưới tại",
+      "titleHighlight": "Sài Gòn",
+      "titlePost": "lưu giữ cảm xúc thật",
+      "subtitle": "Studio chụp ảnh cưới, Pre-Wedding và phóng sự cưới tại TP.HCM. Phong cách cinematic, bối cảnh studio và streetstyle Sài Gòn.",
+      "videoTitle": "Video giới thiệu Studio"
+    },
+    "portfolio": {
+      "eyebrow": "Portfolio",
+      "title": "Dự án tiêu biểu"
+    },
+    "services": {
+      "eyebrow": "Dịch vụ của chúng tôi",
+      "title": "Gói chụp đa dạng",
+      "subtitle": "Các gói chụp chuyên nghiệp, thiết kế riêng theo nhu cầu của bạn",
+      "items": [
+        {
+          "title": "Chụp ảnh cưới",
+          "description": "Ghi lại cảm xúc chân thật và khoảnh khắc lãng mạn ngày cưới theo phong cách cinematic"
+        },
+        {
+          "title": "Chụp chân dung",
+          "description": "Khắc họa cá tính và vẻ đẹp riêng qua khung hình nghệ thuật với ánh sáng Studio chuyên nghiệp"
+        },
+        {
+          "title": "Chụp sự kiện",
+          "description": "Bắt trọn không khí và các điểm nhấn quan trọng của hội nghị, tiệc công ty hoặc tất niên"
+        }
+      ]
+    },
+    "behindScenes": {
+      "eyebrow": "Hậu trường",
+      "titleLine1": "Sự tận tâm đằng sau",
+      "titleLine2": "mỗi khung hình",
+      "description": "Một bức ảnh đẹp cần sự chuẩn bị kỹ lưỡng về ánh sáng, góc máy và chỉ đạo tạo dáng để bạn tự tin, tự nhiên nhất",
+      "stats": [
+        {
+          "value": "500+",
+          "label": "Số buổi chụp đã thực hiện"
+        },
+        {
+          "value": "15 năm",
+          "label": "Kinh nghiệm nhiếp ảnh"
+        },
+        {
+          "value": "Gu thẩm mỹ cao",
+          "label": "Chăm chút từng khung hình"
+        }
+      ],
+      "shots": [
+        "Setup ánh sáng Studio",
+        "Ekip tác nghiệp thực tế",
+        "Canh góc và hướng dẫn tạo dáng",
+        "Hậu kỳ và chọn ảnh cùng khách"
+      ]
+    },
+    "testimonials": {
+      "title": "Khách hàng nói gì về PhatBo Photography?",
+      "items": [
+        {
+          "text": "Ekip chuyên nghiệp, tận tâm. Bộ ảnh cưới đẹp hơn mình mong đợi, màu trong trẻo và tự nhiên. Cảm ơn studio nhiều",
+          "name": "Lan Anh",
+          "role": "Chụp Pre-Wedding"
+        },
+        {
+          "text": "Mình chụp profile làm CV và LinkedIn. Ánh sáng đẹp, thợ hướng dẫn tạo dáng nhiệt tình nên không bị ngại. Rất đáng tiền",
+          "name": "Minh Tuấn",
+          "role": "Chụp chân dung"
+        },
+        {
+          "text": "Công ty mình thuê studio chụp tiệc cuối năm. Ảnh trả nhanh, bắt trọn mọi khoảnh khắc vui vẻ. Sẽ ủng hộ dài dài",
+          "name": "Thu Hà",
+          "role": "Trưởng phòng Nhân sự"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Sẵn sàng tỏa sáng?",
+      "description": "Lưu giữ những khoảnh khắc đẹp nhất với phong cách tinh tế và hiện đại cùng PhatBo Photography"
+    }
+  },
+  "albums": {
+    "meta": {
+      "title": "Album Ảnh Cưới Đẹp TP.HCM | PhatBo Photography",
+      "description": "Xem {count} ảnh cưới thật của PhatBo Photography: {folders}. Pre-Wedding studio, streetstyle Sài Gòn và phóng sự ngày cưới tại TP.HCM.",
+      "keywords": [
+        "album ảnh cưới đẹp",
+        "ảnh cưới streetstyle sài gòn",
+        "portfolio ảnh cưới",
+        "mẫu ảnh cưới studio đẹp",
+        "ảnh phóng sự cưới",
+        "album ảnh cưới tphcm"
+      ]
+    },
+    "hero": {
+      "titleTop": "Album ảnh cưới thật",
+      "titleBottom": "chụp tại Sài Gòn",
+      "subtitleLine1": "Ảnh Pre-Wedding studio, streetstyle Sài Gòn và phóng sự ngày cưới.",
+      "subtitleLine2": "Toàn bộ là ảnh khách thật, không phải ảnh mẫu."
+    },
+    "filters": {
+      "all": "Tất cả",
+      "folders": {
+        "studio": "Studio",
+        "outdoor": "Ngoại cảnh",
+        "couples": "Chụp cặp đôi",
+        "T&K": "T&K",
+        "V&K": "Phóng sự cưới",
+        "LindaNgo&PhongDat": "Linda Ngo & Phong Đạt"
+      }
+    },
+    "empty": "Không tìm thấy ảnh nào"
+  },
+  "pricing": {
+    "meta": {
+      "title": "Bảng Giá Chụp Ảnh Cưới TP.HCM 2026 | PhatBo",
+      "description": "Bảng giá chụp ảnh cưới TP.HCM: Pre-Wedding studio 15tr, studio & streetstyle 19tr, phóng sự cưới 12tr, quay phóng sự 12tr. Chi phí minh bạch, không phụ phí.",
+      "keywords": [
+        "bảng giá chụp ảnh cưới tphcm",
+        "giá chụp ảnh cưới studio",
+        "chụp ảnh cưới bao nhiêu tiền",
+        "báo giá phóng sự cưới",
+        "giá quay phim phóng sự cưới",
+        "gói chụp ảnh cưới trọn gói tphcm"
+      ]
+    },
+    "hero": {
+      "badge": "Dịch vụ Chuyên nghiệp",
+      "title": "Bảng giá chụp ảnh cưới TP.HCM",
+      "description": "Bốn gói từ 12.000.000đ đến 19.000.000đ, đã gồm váy, makeup, retouch và album. Chi phí minh bạch, không phát sinh phụ phí."
+    },
+    "cards": {
+      "title": "Chọn gói chụp phù hợp",
+      "subtitle": "Từ Pre-Wedding đến ngày cưới với các lựa chọn tối ưu cho từng nhu cầu.",
+      "mostLoved": "Được yêu thích nhất",
+      "packages": [
+        {
+          "name": "Gói Pre-Wedding Studio",
+          "price": "15.000.000đ",
+          "description": "2 Layouts chụp tại Studio. Phong cách tinh tế, nghệ thuật.",
+          "features": [
+            "2 váy Luxury, 2 Vest",
+            "Hoa tươi, Make up & Hair",
+            "Retouch 30 ảnh hoàn chỉnh",
+            "Album 30x30 (30 trang) & Hộp đựng",
+            "2 hình lớn 60x90 ép gỗ",
+            "Album giấy HD siêu nét",
+            "Slide chiếu nhà hàng & Toàn bộ file gốc"
+          ],
+          "buttonText": "Đặt lịch Studio"
+        },
+        {
+          "name": "Pre-Wedding Studio & Street",
+          "price": "19.000.000đ",
+          "description": "2 Layouts (Indoor & Outdoor Sài Gòn), đa dạng phong cách",
+          "features": [
+            "2 váy Luxury, 2 Vest",
+            "Bối cảnh Studio & Streetstyle Sài Gòn",
+            "Hoa tươi, Make up & Hair thay đổi",
+            "Retouch 35 ảnh cao cấp",
+            "Album 30x30 (30 trang) & Hộp cao cấp",
+            "2 Ảnh lớn 60x90cm",
+            "Slide nhà hàng & Toàn bộ file gốc"
+          ],
+          "buttonText": "Đặt lịch ngay"
+        },
+        {
+          "name": "Gói Phóng Sự Cưới",
+          "price": "12.000.000đ",
+          "description": "Ghi lại khoảnh khắc chân thực ngày cưới",
+          "features": [
+            "1 Máy phóng sự + 1 Máy truyền thống",
+            "Thời gian: Full Day",
+            "Chụp Lễ gia tiên và Đón khách tại 2 nhà",
+            "Hướng dẫn nghi lễ gia tiên",
+            "Chụp phóng sự bàn tiệc",
+            "Không giới hạn số lượng file"
+          ],
+          "buttonText": "Liên hệ tư vấn"
+        },
+        {
+          "name": "Gói Quay Phóng Sự",
+          "price": "12.000.000đ",
+          "description": "Video nghệ thuật chất lượng cao",
+          "features": [
+            "2 Máy quay PS thiết bị cao cấp",
+            "Thời gian: Full Day",
+            "Quay tại 2 nhà và Tiệc cưới",
+            "Chất lượng Video 2K",
+            "Tùy chọn nâng cấp lên 4K"
+          ],
+          "buttonText": "Liên hệ tư vấn"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "So sánh các gói Pre-Wedding",
+      "subtitle": "Chi tiết kỹ thuật giữa 2 gói chụp ảnh cưới phổ biến nhất",
+      "featureColumn": "Tính năng",
+      "planA": "Pre-Wedding Studio",
+      "planB": "Pre-Wedding Studio & Street",
+      "rows": [
+        {
+          "feature": "Trang phục",
+          "a": "2 váy Luxury, 2 Vest",
+          "b": "2 váy Luxury, 2 Vest"
+        },
+        {
+          "feature": "Địa điểm chụp",
+          "a": "Studio (Indoor)",
+          "b": "Studio & Streetstyle Sài Gòn"
+        },
+        {
+          "feature": "Số lượng Layouts",
+          "a": "2 Layouts",
+          "b": "2 Layouts (Indoor & Outdoor)"
+        },
+        {
+          "feature": "Số lượng ảnh Retouch",
+          "a": "30 ảnh",
+          "b": "35 ảnh"
+        },
+        {
+          "feature": "Album Photobook",
+          "a": "Size 30x30 (30 trang)",
+          "b": "Size 30x30 (30 trang)"
+        },
+        {
+          "feature": "Ảnh phóng lớn",
+          "a": "2 ảnh 60x90",
+          "b": "2 ảnh 60x90"
+        },
+        {
+          "feature": "Tiện ích đi kèm",
+          "a": "Hoa tươi, Makeup & Hair, Slide chiếu",
+          "b": "Hoa tươi, Makeup & Hair, Slide chiếu"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Phản hồi từ khách hàng",
+      "items": [
+        {
+          "text": "Gói Pre-Wedding Studio & Street rất đáng tiền. Ekip nhiệt tình, hướng dẫn tạo dáng kỹ. Ảnh nhận về đẹp hơn mong đợi",
+          "name": "Minh Anh",
+          "role": "Khách hàng cá nhân"
+        },
+        {
+          "text": "Studio lưu giữ trọn vẹn ngày cưới với gói Phóng sự cưới. Màu ảnh sang và nghệ thuật",
+          "name": "Vợ chồng Tuấn & Lan",
+          "role": "Chụp phóng sự cưới"
+        },
+        {
+          "text": "Dịch vụ chuyên nghiệp, tư vấn kỹ. Mình thích cách studio setup ánh sáng trong gói Studio, nhìn rất có chiều sâu",
+          "name": "Hoàng Nam",
+          "role": "Chụp Profile Doanh nhân"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bạn cần một gói chụp riêng?",
+      "description": "Chúng tôi thiết kế gói chụp tùy chỉnh theo nhu cầu và ngân sách của bạn",
+      "button": "Liên hệ tư vấn"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Những điều các cặp đôi hay hỏi trước khi đặt lịch",
+      "items": [
+        {
+          "question": "Chụp ảnh cưới ở TP.HCM bao nhiêu tiền?",
+          "answer": "Gói Pre-Wedding Studio của chúng tôi là 15.000.000đ, gói Studio & Streetstyle Sài Gòn là 19.000.000đ. Gói phóng sự cưới và quay phóng sự đều 12.000.000đ cho cả ngày. Giá đã bao gồm váy, makeup, retouch và album — không phát sinh phụ phí."
+        },
+        {
+          "question": "Phóng sự cưới là gì, khác chụp truyền thống thế nào?",
+          "answer": "Phóng sự cưới là ghi lại diễn biến thật của ngày cưới: lễ gia tiên, đón khách, cảm xúc của hai gia đình, không dàn dựng tạo dáng. Chụp truyền thống thì có sắp đặt, chỉ đạo tư thế. Gói của chúng tôi đi 1 máy phóng sự + 1 máy truyền thống nên bạn có cả hai."
+        },
+        {
+          "question": "Chụp ảnh cưới bao lâu thì nhận được ảnh?",
+          "answer": "Ảnh xem trước (preview) gửi trong vòng 3-5 ngày. Bộ ảnh retouch hoàn chỉnh và album in xong trong 3-4 tuần. Với gói phóng sự cưới, toàn bộ file gốc được giao ngay sau buổi chụp."
+        },
+        {
+          "question": "Chụp Pre-Wedding nên chọn studio hay ngoại cảnh?",
+          "answer": "Studio cho ánh sáng kiểm soát hoàn toàn, ảnh sạch và sang, không phụ thuộc thời tiết. Streetstyle Sài Gòn cho bối cảnh thật, có chất riêng của thành phố. Gói 19.000.000đ có cả hai trong một buổi chụp nên phần lớn khách chọn gói này."
+        },
+        {
+          "question": "Cần chuẩn bị gì trước buổi chụp ảnh cưới?",
+          "answer": "Váy, vest, hoa tươi, makeup và hair chúng tôi lo hết. Bạn chỉ cần chuẩn bị nội y phù hợp với váy, giày quen chân, và ngủ đủ trước ngày chụp. Chúng tôi gửi trước bảng concept và lịch trình để hai bạn biết mình sẽ làm gì."
+        },
+        {
+          "question": "Có nhận chụp ngoài TP.HCM không?",
+          "answer": "Có. Chúng tôi nhận chụp ở các tỉnh lân cận và các điểm đến trong nước, chi phí di chuyển tính thêm theo thực tế. Liên hệ hotline 0909 383 332 để được báo giá cụ thể theo địa điểm của bạn."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Liên Hệ & Đặt Lịch Chụp Ảnh Cưới | PhatBo",
+      "description": "Đặt lịch chụp ảnh cưới tại TP.HCM cùng PhatBo Photography. Gặp đội ngũ nhiếp ảnh 15 năm kinh nghiệm, tư vấn gói chụp miễn phí qua hotline hoặc Instagram.",
+      "keywords": [
+        "đặt lịch chụp ảnh cưới sài gòn",
+        "liên hệ studio ảnh cưới tphcm",
+        "tư vấn gói chụp ảnh cưới",
+        "nhiếp ảnh gia phat bo"
+      ]
+    },
+    "hero": {
+      "title": "Đặt lịch chụp ảnh cưới tại TP.HCM",
+      "subtitle": "Gặp đội ngũ đứng sau mỗi bộ ảnh: 15 năm kinh nghiệm, hơn 500 buổi chụp cưới và phóng sự tại Sài Gòn."
+    },
+    "contactSection": {
+      "label": "Liên hệ với chúng tôi",
+      "channels": {
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "hotline": "Hotline",
+        "email": "Email"
+      }
+    },
+    "team": {
+      "title": "Đội ngũ PhatBo Photography",
+      "intro": [
+        "Tôi cùng các cộng sự là những nhiếp ảnh gia tận tâm, luôn nỗ lực mang đến những bộ ảnh sáng tạo và chất lượng nhất cho khách hàng.",
+        "Với kinh nghiệm và kỹ năng đa dạng, đội ngũ của tôi đảm bảo mỗi khung hình đều đạt độ thẩm mỹ cao và giàu cảm xúc."
+      ],
+      "members": [
+        {
+          "name": "Lĩnh",
+          "role": "Quay phim"
+        },
+        {
+          "name": "Phat Bo",
+          "role": "Nhiếp ảnh chính"
+        },
+        {
+          "name": "Photography",
+          "role": "Truyền thống - Phóng sự ngày cưới"
+        },
+        {
+          "name": "Photography",
+          "role": "Truyền thống - Phóng sự ngày cưới"
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Trang bạn tìm kiếm không tồn tại",
+    "backHome": "Về trang chủ"
+  }
+}

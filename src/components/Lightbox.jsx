@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n/I18nProvider';
 
 /**
  * Viewer ảnh toàn màn hình dùng chung (style giống phần Hậu trường).
@@ -13,6 +14,8 @@ import { Icon } from '@/components/Icon';
  * @param {(nextIndex: number) => void} onNavigate - đổi sang ảnh khác
  */
 export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
+  const { dict } = useI18n();
+  const labels = dict.common.lightbox;
   const isOpen = index !== null && index >= 0 && !!items[index];
   const many = items.length > 1;
 
@@ -54,7 +57,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
       <button
         type="button"
         onClick={onClose}
-        aria-label="Đóng"
+        aria-label={labels.close}
         className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
       >
         <Icon name="close" className="text-[24px]" />
@@ -67,7 +70,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
             e.stopPropagation();
             go(-1);
           }}
-          aria-label="Ảnh trước"
+          aria-label={labels.prev}
           className="absolute left-2 sm:left-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
         >
           <Icon name="chevron_left" className="text-[24px]" />
@@ -82,7 +85,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
         <img
           key={item.src}
           src={item.src}
-          alt={item.alt || item.caption || 'Ảnh'}
+          alt={item.alt || item.caption || labels.image}
           className="max-h-[80vh] max-w-[92vw] w-auto h-auto object-contain rounded-xl shadow-2xl"
         />
         {item.caption && (
@@ -99,7 +102,7 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
             e.stopPropagation();
             go(1);
           }}
-          aria-label="Ảnh tiếp theo"
+          aria-label={labels.next}
           className="absolute right-2 sm:right-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition"
         >
           <Icon name="chevron_right" className="text-[24px]" />
