@@ -199,10 +199,10 @@
           "description": "2 Layouts chụp tại Studio. Phong cách tinh tế, nghệ thuật.",
           "features": [
             "2 váy Luxury, 2 Vest",
-            "Hoa tươi, Make up & Hair",
+            "Hoa cưới, Make up & Hair",
             "Retouch 30 ảnh hoàn chỉnh",
             "Album 30x30 (30 trang) & Hộp đựng",
-            "2 hình lớn 60x90 ép gỗ",
+            "1 hình lớn ép gỗ",
             "Album giấy HD siêu nét",
             "Slide chiếu nhà hàng & Toàn bộ file gốc"
           ],
@@ -215,7 +215,7 @@
           "features": [
             "2 váy Luxury, 2 Vest",
             "Bối cảnh Studio & Streetstyle Sài Gòn",
-            "Hoa tươi, Make up & Hair thay đổi",
+            "Hoa cưới, Make up & Hair thay đổi",
             "Retouch 35 ảnh cao cấp",
             "Album 30x30 (30 trang) & Hộp cao cấp",
             "2 Ảnh lớn 60x90cm",
@@ -291,8 +291,8 @@
         },
         {
           "feature": "Tiện ích đi kèm",
-          "a": "Hoa tươi, Makeup & Hair, Slide chiếu",
-          "b": "Hoa tươi, Makeup & Hair, Slide chiếu"
+          "a": "Hoa cưới, Makeup & Hair, Slide chiếu",
+          "b": "Hoa cưới, Makeup & Hair, Slide chiếu"
         }
       ]
     },
@@ -343,7 +343,7 @@
         },
         {
           "question": "Cần chuẩn bị gì trước buổi chụp ảnh cưới?",
-          "answer": "Váy, vest, hoa tươi, makeup và hair chúng tôi lo hết. Bạn chỉ cần chuẩn bị nội y phù hợp với váy, giày quen chân, và ngủ đủ trước ngày chụp. Chúng tôi gửi trước bảng concept và lịch trình để hai bạn biết mình sẽ làm gì."
+          "answer": "Váy, vest, hoa cưới, makeup và hair chúng tôi lo hết. Bạn chỉ cần chuẩn bị nội y phù hợp với váy, giày quen chân, và ngủ đủ trước ngày chụp. Chúng tôi gửi trước bảng concept và lịch trình để hai bạn biết mình sẽ làm gì."
         },
         {
           "question": "Có nhận chụp ngoài TP.HCM không?",
