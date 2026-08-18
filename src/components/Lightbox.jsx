@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react';
 import { Icon } from '@/components/Icon';
+import { useDialog } from '@/components/useDialog';
 import { useI18n } from '@/i18n/I18nProvider';
 
 /**
@@ -27,28 +28,27 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
     [items.length, index, onNavigate]
   );
 
-  // Điều hướng bàn phím + khóa scroll nền khi mở
+  // Esc, khoá scroll nền, bẫy focus -> hook dùng chung với modal trả giá.
+  const dialogRef = useDialog(isOpen, onClose);
+
+  // Riêng phím mũi tên là đặc thù của viewer ảnh nên giữ ở đây.
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e) => {
-      if (e.key === 'Escape') onClose?.();
-      else if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowRight') go(1);
       else if (e.key === 'ArrowLeft') go(-1);
     };
     window.addEventListener('keydown', onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [isOpen, go, onClose]);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, go]);
 
   if (!isOpen) return null;
   const item = items[index];
 
   return (
     <div
+      ref={dialogRef}
+      tabIndex={-1}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-6"
       onClick={onClose}
       role="dialog"

@@ -1,4 +1,5 @@
 import { siteConfig, siteName, type Locale } from './seo-metadata';
+import { CONTACT } from './contact';
 // @ts-expect-error — config i18n là JS thuần, project không bật allowJs types
 import { localeMeta, localePath } from '@/i18n/config';
 
@@ -10,13 +11,6 @@ import { localeMeta, localePath } from '@/i18n/config';
  * Mọi con số/thông tin ở đây phải là thật; đừng thêm aggregateRating giả vì
  * Google phạt review schema không có review thật trên trang.
  */
-
-const CONTACT = {
-  phone: '+84909383332',
-  instagram: 'https://www.instagram.com/scryer_bo',
-  facebook: 'https://www.facebook.com/PhatBo0905',
-  email: 'phatchay95@gmail.com',
-};
 
 /** Thị trường studio nhận khách — khớp với hreflang en-SG/en-MY/en-US. */
 const AREA_SERVED = [
@@ -60,7 +54,7 @@ export function localBusinessSchema(locale: Locale) {
     areaServed: AREA_SERVED,
     knowsLanguage: ['vi', 'en'],
     founder: { '@type': 'Person', name: siteConfig.author },
-    sameAs: [CONTACT.instagram, CONTACT.facebook],
+    sameAs: [CONTACT.instagram, CONTACT.facebook, CONTACT.zalo],
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: CONTACT.phone,

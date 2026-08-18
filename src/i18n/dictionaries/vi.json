@@ -29,7 +29,8 @@
       "consultNow": "Tư vấn ngay",
       "viewAll": "Xem tất cả",
       "viewAllProjects": "Xem toàn bộ dự án",
-      "viewDetails": "Xem chi tiết"
+      "viewDetails": "Xem chi tiết",
+      "chatZalo": "Nhắn Zalo"
     },
     "lightbox": {
       "close": "Đóng",
@@ -255,6 +256,73 @@
         }
       ]
     },
+    "haggle": {
+      "trigger": "Bấm để trả giá",
+      "triggerHint": "vui thôi 😉",
+      "dealBadge": "Deal của bạn: {price}",
+      "expiresIn": "còn {hours}h",
+      "close": "Đóng",
+      "currency": "đ",
+      "slot": {
+        "title": "Anh/chị tính chụp ngày nào?",
+        "subtitle": "Ngày studio còn trống thì em dễ thương lượng hơn nhiều.",
+        "options": [
+          {
+            "id": "weekday",
+            "label": "Ngày thường (T2–T5)",
+            "note": "Lịch trống, giá dễ thở nhất"
+          },
+          {
+            "id": "weekend",
+            "label": "Cuối tuần / mùa cưới",
+            "note": "Lịch kín, giá cứng hơn"
+          },
+          {
+            "id": "unsure",
+            "label": "Chưa chốt ngày",
+            "note": "Cứ trả giá thử xem sao"
+          }
+        ]
+      },
+      "offer": {
+        "title": "Anh/chị trả bao nhiêu?",
+        "hint": "Kéo thanh trượt để ra giá của mình.",
+        "yourOffer": "Anh/chị trả",
+        "dragMore": "Kéo mạnh tay lên, em không giận đâu.",
+        "floorReached": "Sát quá rồi anh/chị ơi 😅 em lỗ mất!",
+        "submit": "Gửi lời trả giá",
+        "back": "Chọn lại ngày chụp"
+      },
+      "thinking": "Để em hỏi sếp chút xíu...",
+      "result": {
+        "accept": {
+          "title": "Chốt! 🎉",
+          "body": "Giá này em ok luôn, khỏi cần hỏi ai hết."
+        },
+        "counter": {
+          "title": "Em xin thêm chút xíu 🙏",
+          "body": "Sếp em duyệt tới đây thôi ạ:"
+        },
+        "gift": {
+          "title": "Mức đó thì em chịu thật...",
+          "body": "Nhưng em kéo về đây và tặng thêm cho anh/chị:"
+        },
+        "finalLabel": "Giá chốt",
+        "saved": "Tiết kiệm {amount}",
+        "validNote": "Deal giữ trong {hours} giờ tới, áp dụng khi đặt cọc.",
+        "cta": "Chốt deal qua Messenger",
+        "copied": "Đã copy lời nhắn — dán vào Messenger giúp em nhé!",
+        "copyFailed": "Máy không cho copy tự động — anh/chị nhắn giúp em con số {price} nhé.",
+        "retry": "Trả giá lại",
+        "ctaZalo": "Hoặc chốt qua Zalo"
+      },
+      "gifts": [
+        "Tặng thêm 1 khung ảnh ép gỗ 60x90",
+        "Edit thêm 5 ảnh cho album"
+      ],
+      "message": "Chào studio ạ! Mình vừa trả giá gói \"{package}\" trên web: mình đề nghị {offer}, studio chốt lại {counter}{gift}. Dự kiến chụp: {slot}. Mình muốn chốt gói này ạ.",
+      "messageGift": " kèm ưu đãi \"{gift}\""
+    },
     "comparison": {
       "title": "So sánh các gói Pre-Wedding",
       "subtitle": "Chi tiết kỹ thuật giữa 2 gói chụp ảnh cưới phổ biến nhất",
@@ -375,6 +443,7 @@
       "channels": {
         "instagram": "Instagram",
         "facebook": "Facebook",
+        "zalo": "Zalo",
         "hotline": "Hotline",
         "email": "Email"
       }

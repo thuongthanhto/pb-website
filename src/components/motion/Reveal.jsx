@@ -18,10 +18,12 @@ export function Reveal({
   once = true,
   className,
   style,
+  onTransitionEnd,
   ...props
 }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -33,6 +35,7 @@ export function Reveal({
           if (once) io.disconnect();
         } else if (!once) {
           setShown(false);
+          setSettled(false);
         }
       },
       { threshold: 0.2 }
@@ -41,17 +44,27 @@ export function Reveal({
     return () => io.disconnect();
   }, [once]);
 
+  // will-change chỉ là gợi ý cho lúc SẮP animate. Để nguyên sau khi animate
+  // xong thì trình duyệt giữ compositor layer sống mãi (tốn RAM ở trang nhiều
+  // ảnh) và — quan trọng hơn — biến phần tử thành containing block, khiến mọi
+  // position:fixed bên trong bị nhốt lại thay vì phủ toàn màn hình.
+  const handleTransitionEnd = (e) => {
+    if (e.target === e.currentTarget) setSettled(true);
+    onTransitionEnd?.(e);
+  };
+
   return createElement(
     as,
     {
       ref,
       className,
+      onTransitionEnd: handleTransitionEnd,
       style: {
         ...style,
         opacity: shown ? 1 : 0,
         transform: shown ? 'none' : `translateY(${y}px)`,
         transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-        willChange: 'opacity, transform',
+        ...(settled ? null : { willChange: 'opacity, transform' }),
       },
       ...props,
     },

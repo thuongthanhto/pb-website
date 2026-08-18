@@ -2,13 +2,33 @@ import { Reveal } from '@/components/motion/Reveal'
 import { Icon } from '@/components/Icon'
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
+import { HaggleButton } from './HaggleButton'
+import { telHref } from '@/lib/contact'
 
 // Gói nào được highlight là quyết định về layout, không phải nội dung -> để ở
 // code thay vì dictionary (tránh 2 bản dịch lệch nhau).
 const FEATURED_INDEX = 1
 
+// Chỉ 2 gói Pre-Wedding cho trả giá. 2 gói phóng sự 12tr đã sát đáy, mở mặc cả
+// ở đó chỉ ăn vào biên lợi nhuận chứ không đổi được quyết định của khách.
+const HAGGLE_INDEXES = [0, 1]
+
+// Sàn giảm giá theo ngày chụp: ngày trống thì nhả sâu hơn. Đây là bán capacity
+// còn dư (như vé máy bay), không phải phá giá niêm yết.
+const HAGGLE_FLOORS = { weekday: 0.85, weekend: 0.94, unsure: 0.9 }
+
+/** "15.000.000đ" / "15,000,000 VND" -> 15000000. Không parse được thì trả null. */
+function parsePrice(text) {
+  const digits = String(text).replace(/\D/g, '')
+  const value = Number(digits)
+  return digits && Number.isFinite(value) && value > 0 ? value : null
+}
+
 export function PricingCards({ locale }) {
-  const t = getDictionary(normalizeLocale(locale)).pricing.cards
+  const lang = normalizeLocale(locale)
+  const dict = getDictionary(lang).pricing
+  const t = dict.cards
+  const haggle = dict.haggle
 
   return (
     <section className="w-full pb-20 pt-8 flex justify-center">
@@ -24,6 +44,7 @@ export function PricingCards({ locale }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-stretch">
           {t.packages.map((pkg, idx) => {
             const featured = idx === FEATURED_INDEX
+            const basePrice = HAGGLE_INDEXES.includes(idx) ? parsePrice(pkg.price) : null
             return (
               <Reveal
                 key={idx}
@@ -60,16 +81,29 @@ export function PricingCards({ locale }) {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="tel:+84909383332"
-                  className={`w-full h-12 flex items-center justify-center rounded-xl text-base font-bold transition-all mt-auto ${
-                    featured
-                      ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
-                      : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
-                  }`}
-                >
-                  {pkg.buttonText}
-                </a>
+                <div className="mt-auto flex flex-col gap-2">
+                  <a
+                    href={telHref}
+                    className={`w-full h-12 flex items-center justify-center rounded-xl text-base font-bold transition-all ${
+                      featured
+                        ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
+                        : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
+                    }`}
+                  >
+                    {pkg.buttonText}
+                  </a>
+                  {basePrice && (
+                    <HaggleButton
+                      t={haggle}
+                      locale={lang}
+                      storageKey={String(idx)}
+                      packageName={pkg.name}
+                      basePrice={basePrice}
+                      floors={HAGGLE_FLOORS}
+                      gifts={haggle.gifts}
+                    />
+                  )}
+                </div>
               </Reveal>
             )
           })}

@@ -2,6 +2,7 @@ import { Icon } from '@/components/Icon'
 import { Reveal } from '@/components/motion/Reveal'
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
+import { CONTACT, mailtoHref, telHref } from '@/lib/contact'
 
 export function ContactSection({ locale }) {
   const t = getDictionary(normalizeLocale(locale)).contact.contactSection
@@ -9,22 +10,27 @@ export function ContactSection({ locale }) {
   const contactItems = [
     {
       icon: 'mdi:instagram',
-      href: 'https://www.instagram.com/scryer_bo',
+      href: CONTACT.instagram,
       label: t.channels.instagram,
     },
     {
       icon: 'mdi:facebook',
-      href: 'https://www.facebook.com/PhatBo0905',
+      href: CONTACT.facebook,
       label: t.channels.facebook,
     },
     {
+      icon: 'zalo',
+      href: CONTACT.zalo,
+      label: t.channels.zalo,
+    },
+    {
       icon: 'mdi:phone',
-      href: 'tel:+84909383332',
+      href: telHref,
       label: t.channels.hotline,
     },
     {
       icon: 'mdi:email',
-      href: 'mailto:phatchay95@gmail.com',
+      href: mailtoHref,
       label: t.channels.email,
     },
   ]

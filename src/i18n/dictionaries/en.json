@@ -29,7 +29,8 @@
       "consultNow": "Consult Now",
       "viewAll": "View All",
       "viewAllProjects": "View all projects",
-      "viewDetails": "View details"
+      "viewDetails": "View details",
+      "chatZalo": "Chat on Zalo"
     },
     "lightbox": {
       "close": "Close",
@@ -255,6 +256,73 @@
         }
       ]
     },
+    "haggle": {
+      "trigger": "Make us an offer",
+      "triggerHint": "just for fun 😉",
+      "dealBadge": "Your deal: {price}",
+      "expiresIn": "{hours}h left",
+      "close": "Close",
+      "currency": " VND",
+      "slot": {
+        "title": "When are you planning to shoot?",
+        "subtitle": "Open dates give us a lot more room to move.",
+        "options": [
+          {
+            "id": "weekday",
+            "label": "Weekday (Mon–Thu)",
+            "note": "Most room to negotiate"
+          },
+          {
+            "id": "weekend",
+            "label": "Weekend / peak season",
+            "note": "Books out fast, firmer price"
+          },
+          {
+            "id": "unsure",
+            "label": "Not decided yet",
+            "note": "Make an offer anyway"
+          }
+        ]
+      },
+      "offer": {
+        "title": "What would you pay?",
+        "hint": "Drag the slider to name your price.",
+        "yourOffer": "Your offer",
+        "dragMore": "Go on, push a little harder.",
+        "floorReached": "That is cutting it close 😅",
+        "submit": "Send my offer",
+        "back": "Pick another date"
+      },
+      "thinking": "Let us check with the boss...",
+      "result": {
+        "accept": {
+          "title": "Deal! 🎉",
+          "body": "We can do that price, no questions asked."
+        },
+        "counter": {
+          "title": "Let us meet you halfway 🙏",
+          "body": "This is as far as we can go:"
+        },
+        "gift": {
+          "title": "That one is a real stretch...",
+          "body": "So here is our best price, plus something extra:"
+        },
+        "finalLabel": "Final price",
+        "saved": "You save {amount}",
+        "validNote": "This deal is held for {hours} hours, valid on deposit.",
+        "cta": "Close the deal on Messenger",
+        "copied": "Message copied — paste it into Messenger!",
+        "copyFailed": "Copy is blocked here — just send us the {price} figure.",
+        "retry": "Try again",
+        "ctaZalo": "Or close it on Zalo"
+      },
+      "gifts": [
+        "One extra 60x90 wood-mounted print",
+        "5 extra edited photos in your album"
+      ],
+      "message": "Hi! I just made an offer on the \"{package}\" package on your website: I offered {offer} and you countered with {counter}{gift}. Planned shoot: {slot}. I would like to lock it in.",
+      "messageGift": " plus \"{gift}\""
+    },
     "comparison": {
       "title": "Pre-Wedding Package Comparison",
       "subtitle": "Technical breakdown of our two most popular wedding packages",
@@ -375,6 +443,7 @@
       "channels": {
         "instagram": "Instagram",
         "facebook": "Facebook",
+        "zalo": "Zalo",
         "hotline": "Hotline",
         "email": "Email"
       }

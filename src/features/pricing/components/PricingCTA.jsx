@@ -1,5 +1,6 @@
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
+import { telHref } from '@/lib/contact'
 
 export function PricingCTA({ locale }) {
   const t = getDictionary(normalizeLocale(locale)).pricing.cta
@@ -11,7 +12,7 @@ export function PricingCTA({ locale }) {
         <p className="text-text-secondary text-lg font-medium max-w-2xl">
           {t.description}
         </p>
-        <a href="tel:+84909383332" className="mt-4 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-xl shadow-primary/20 hover:bg-primary-dark hover:scale-105 transition-all">
+        <a href={telHref} className="mt-4 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-xl shadow-primary/20 hover:bg-primary-dark hover:scale-105 transition-all">
           <span className="truncate">{t.button}</span>
         </a>
       </div>

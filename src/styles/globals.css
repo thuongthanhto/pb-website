@@ -25,6 +25,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Tailwind v4 bỏ cursor:pointer mặc định của <button> -> trả lại cho toàn site
+   (trước đây phải dán class cursor-pointer thủ công từng nút). */
+button:not(:disabled),
+summary,
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* Focus ring rõ ràng cho điều hướng bằng bàn phím (yêu cầu a11y) */
 :focus-visible {
   outline: 2px solid var(--primary);
@@ -221,7 +233,8 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in,
-  .animate-fade-in-up {
+  .animate-fade-in-up,
+  .animate-bounce {
     animation: none;
   }
 }

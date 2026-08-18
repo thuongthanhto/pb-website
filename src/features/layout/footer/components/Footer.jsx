@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@/components/Icon'
 import { useI18n } from '@/i18n/I18nProvider'
+import { CONTACT } from '@/lib/contact'
 
 export default function Footer() {
   const { dict, path } = useI18n()
@@ -34,7 +35,7 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex gap-4">
             <a
-              href="https://www.instagram.com/scryer_bo"
+              href={CONTACT.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-300 hover:text-primary transition-colors"
@@ -43,13 +44,22 @@ export default function Footer() {
               <Icon name="mdi:instagram" className="text-[24px]" />
             </a>
             <a
-              href="https://www.facebook.com/PhatBo0905"
+              href={CONTACT.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-300 hover:text-primary transition-colors"
               aria-label="Facebook"
             >
               <Icon name="mdi:facebook" className="text-[24px]" />
+            </a>
+            <a
+              href={CONTACT.zalo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-300 hover:text-primary transition-colors"
+              aria-label="Zalo"
+            >
+              <Icon name="zalo" className="text-[24px]" />
             </a>
           </div>
 

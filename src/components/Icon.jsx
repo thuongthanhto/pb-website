@@ -19,8 +19,14 @@ import {
   MdCelebration,
   MdPhone,
   MdEmail,
+  MdHandshake,
+  MdLocalOffer,
+  MdRedeem,
+  MdArrowBack,
+  MdBolt,
 } from 'react-icons/md';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { SiZalo } from 'react-icons/si';
 
 const ICONS = {
   arrow_forward: MdArrowForward,
@@ -41,6 +47,12 @@ const ICONS = {
   celebration: MdCelebration,
   phone: MdPhone,
   email: MdEmail,
+  handshake: MdHandshake,
+  local_offer: MdLocalOffer,
+  redeem: MdRedeem,
+  arrow_back: MdArrowBack,
+  bolt: MdBolt,
+  zalo: SiZalo,
   // Tương thích tên cũ kiểu iconify (ContactSection / Footer)
   'mdi:instagram': FaInstagram,
   'mdi:facebook': FaFacebookF,
