@@ -32,6 +32,29 @@
       "viewDetails": "Xem chi tiết",
       "chatZalo": "Nhắn Zalo"
     },
+    "booking": {
+      "title": "Liên hệ studio",
+      "subtitle": "Anh/chị tiện kênh nào thì chọn kênh đó ạ.",
+      "close": "Đóng",
+      "channels": {
+        "zalo": {
+          "label": "Nhắn Zalo",
+          "note": "Phản hồi nhanh nhất"
+        },
+        "messenger": {
+          "label": "Chat Messenger",
+          "note": "Qua Fanpage PhatBo"
+        },
+        "phone": {
+          "label": "Gọi điện",
+          "note": "Hotline studio"
+        },
+        "email": {
+          "label": "Gửi email",
+          "note": "Trả lời trong ngày"
+        }
+      }
+    },
     "lightbox": {
       "close": "Đóng",
       "prev": "Ảnh trước",

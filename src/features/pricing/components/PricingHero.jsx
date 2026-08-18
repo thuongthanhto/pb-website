@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { normalizeLocale, localePath } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
-import { telHref } from '@/lib/contact'
+import { BookingButton } from '@/components/BookingButton'
 
 export function PricingHero({ locale }) {
   const current = normalizeLocale(locale)
@@ -33,9 +33,12 @@ export function PricingHero({ locale }) {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 mt-2">
-                <a href={telHref} className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-stone-800 text-primary text-base font-bold transition-all hover:bg-stone-700 shadow-lg">
-                  <span>{dict.common.cta.consultNow}</span>
-                </a>
+                <BookingButton
+                  t={dict.common.booking}
+                  label={dict.common.cta.consultNow}
+                  source="pricing-hero"
+                  className="flex h-12 px-6 lg:px-8 items-center justify-center whitespace-nowrap rounded-full bg-stone-800 text-primary text-base font-bold transition-all hover:bg-stone-700 shadow-lg"
+                />
                 <Link href={localePath(current, '/albums')} className="flex h-12 px-6 lg:px-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-base font-bold transition-all hover:bg-black/50 hover:border-white/50">
                   <span>{dict.common.cta.viewPortfolio}</span>
                 </Link>

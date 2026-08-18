@@ -32,6 +32,29 @@
       "viewDetails": "View details",
       "chatZalo": "Chat on Zalo"
     },
+    "booking": {
+      "title": "Contact the studio",
+      "subtitle": "Pick whichever channel suits you best.",
+      "close": "Close",
+      "channels": {
+        "zalo": {
+          "label": "Chat on Zalo",
+          "note": "Fastest reply"
+        },
+        "messenger": {
+          "label": "Messenger",
+          "note": "Via our Facebook page"
+        },
+        "phone": {
+          "label": "Call us",
+          "note": "Studio hotline"
+        },
+        "email": {
+          "label": "Email us",
+          "note": "Answered same day"
+        }
+      }
+    },
     "lightbox": {
       "close": "Close",
       "prev": "Previous",

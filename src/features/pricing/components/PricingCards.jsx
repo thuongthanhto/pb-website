@@ -2,8 +2,8 @@ import { Reveal } from '@/components/motion/Reveal'
 import { Icon } from '@/components/Icon'
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
+import { BookingButton } from '@/components/BookingButton'
 import { HaggleButton } from './HaggleButton'
-import { telHref } from '@/lib/contact'
 
 // Gói nào được highlight là quyết định về layout, không phải nội dung -> để ở
 // code thay vì dictionary (tránh 2 bản dịch lệch nhau).
@@ -26,9 +26,10 @@ function parsePrice(text) {
 
 export function PricingCards({ locale }) {
   const lang = normalizeLocale(locale)
-  const dict = getDictionary(lang).pricing
-  const t = dict.cards
-  const haggle = dict.haggle
+  const dict = getDictionary(lang)
+  const t = dict.pricing.cards
+  const haggle = dict.pricing.haggle
+  const booking = dict.common.booking
 
   return (
     <section className="w-full pb-20 pt-8 flex justify-center">
@@ -82,16 +83,17 @@ export function PricingCards({ locale }) {
                   ))}
                 </ul>
                 <div className="mt-auto flex flex-col gap-2">
-                  <a
-                    href={telHref}
+                  <BookingButton
+                    t={booking}
+                    label={pkg.buttonText}
+                    context={pkg.name}
+                    source={`pricing-card-${idx}`}
                     className={`w-full h-12 flex items-center justify-center rounded-xl text-base font-bold transition-all ${
                       featured
                         ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
                         : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
                     }`}
-                  >
-                    {pkg.buttonText}
-                  </a>
+                  />
                   {basePrice && (
                     <HaggleButton
                       t={haggle}
