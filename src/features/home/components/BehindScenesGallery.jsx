@@ -17,6 +17,10 @@ const SHOT_SOURCES = [
   '/work/work05.webp',
   '/work/work06.webp',
   '/work/work07.webp',
+  '/work/work08.webp',
+  '/work/work09.webp',
+  '/work/work10.webp',
+  '/work/work11.webp',
 ];
 
 export function BehindScenesGallery() {
