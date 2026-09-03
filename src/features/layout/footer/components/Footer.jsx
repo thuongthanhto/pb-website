@@ -16,11 +16,11 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="w-full border-t border-stone-800">
+    <footer className="w-full border-t border-border">
       <div className="max-w-[1280px] mx-auto px-4 md:px-10 pt-8 pb-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <Link
           href={path('/')}
-          className="flex items-center gap-2 text-stone-100 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 text-text-main hover:opacity-80 transition-opacity"
         >
           <Image
             src="/logo-pb.png"
@@ -38,7 +38,7 @@ export default function Footer() {
               href={CONTACT.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-300 hover:text-primary transition-colors"
+              className="text-text-secondary hover:text-primary transition-colors"
               aria-label="Instagram"
             >
               <Icon name="mdi:instagram" className="text-[24px]" />
@@ -47,7 +47,7 @@ export default function Footer() {
               href={CONTACT.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-300 hover:text-primary transition-colors"
+              className="text-text-secondary hover:text-primary transition-colors"
               aria-label="Facebook"
             >
               <Icon name="mdi:facebook" className="text-[24px]" />
@@ -56,7 +56,7 @@ export default function Footer() {
               href={CONTACT.zalo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-300 hover:text-primary transition-colors"
+              className="text-text-secondary hover:text-primary transition-colors"
               aria-label="Zalo"
             >
               <Icon name="zalo" className="text-[24px]" />
@@ -64,10 +64,10 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block h-4 w-px bg-stone-700"></div>
+          <div className="hidden md:block h-4 w-px bg-border-strong"></div>
 
           {/* Links */}
-          <nav className="flex gap-6 text-stone-300 text-sm">
+          <nav className="flex gap-6 text-text-secondary text-sm">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -80,7 +80,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <p className="text-stone-400 text-sm">{dict.common.footer.rights}</p>
+        <p className="text-text-muted text-sm">{dict.common.footer.rights}</p>
       </div>
     </footer>
   )

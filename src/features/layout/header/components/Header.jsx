@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useI18n } from '@/i18n/I18nProvider'
 import { stripLocale } from '@/i18n/config'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export default function Header() {
   const { dict, path } = useI18n()
@@ -36,7 +37,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full bg-stone-900/90 backdrop-blur-md border-b border-stone-800 sticky top-0 z-50">
+      <div className="w-full bg-background/90 backdrop-blur-md border-b border-border sticky top-0 z-50">
         <div className="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
           <Link
             href={path('/')}
@@ -70,7 +71,7 @@ export default function Header() {
                   className={`text-sm font-medium transition-colors ${
                     isActive(link.href)
                       ? 'text-primary border-b-2 border-primary pb-1'
-                      : 'text-stone-200 hover:text-primary'
+                      : 'text-text-secondary hover:text-primary'
                   }`}
                 >
                   {link.label}
@@ -78,12 +79,19 @@ export default function Header() {
               ))}
             </div>
 
-            <LanguageSwitcher className="hidden md:flex" />
+            <div className="hidden md:flex items-center gap-2">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+
+            {/* Mobile: đặt nút đổi theme ngay trên header cho dễ với tay,
+                không phải mở drawer mới đổi được. */}
+            <ThemeToggle className="md:hidden" />
 
             {/* Mobile Burger Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 text-stone-400 hover:text-primary transition-colors"
+              className="md:hidden p-2 text-text-muted hover:text-primary transition-colors"
               aria-label={
                 isMenuOpen ? dict.common.menu.close : dict.common.menu.open
               }
@@ -135,20 +143,20 @@ export default function Header() {
         onClick={closeMenu}
       >
         <div
-          className={`fixed right-0 top-0 h-full w-64 bg-stone-900 shadow-xl transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 h-full w-64 bg-background shadow-xl transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col h-full">
             {/* Drawer Header */}
-            <div className="flex items-center justify-between p-4 border-b border-stone-800">
-              <h3 className="text-lg font-bold text-stone-100">
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <h3 className="text-lg font-bold text-text-main">
                 {dict.common.menu.label}
               </h3>
               <button
                 onClick={closeMenu}
-                className="p-2 text-stone-400 hover:text-primary transition-colors"
+                className="p-2 text-text-muted hover:text-primary transition-colors"
                 aria-label={dict.common.menu.close}
               >
                 <svg
@@ -175,7 +183,7 @@ export default function Header() {
                 className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                   isActive('/')
                     ? 'bg-primary/10 text-primary'
-                    : 'text-stone-200 hover:bg-stone-800'
+                    : 'text-text-secondary hover:bg-surface-raised'
                 }`}
               >
                 {dict.common.nav.home}
@@ -188,7 +196,7 @@ export default function Header() {
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive(link.href)
                       ? 'bg-primary/10 text-primary'
-                      : 'text-stone-200 hover:bg-stone-800'
+                      : 'text-text-secondary hover:bg-surface-raised'
                   }`}
                 >
                   {link.label}
@@ -197,11 +205,19 @@ export default function Header() {
             </nav>
 
             {/* Đổi ngôn ngữ đặt cuối drawer để không chiếm chỗ của nav chính */}
-            <div className="mt-auto border-t border-stone-800 p-4">
-              <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-stone-500">
-                {dict.common.language.label}
-              </p>
-              <LanguageSwitcher variant="block" />
+            <div className="mt-auto space-y-4 border-t border-border p-4">
+              <div>
+                <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                  {dict.common.language.label}
+                </p>
+                <LanguageSwitcher variant="block" />
+              </div>
+              <div>
+                <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                  {dict.common.theme.label}
+                </p>
+                <ThemeToggle variant="block" />
+              </div>
             </div>
           </div>
         </div>

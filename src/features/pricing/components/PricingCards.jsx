@@ -52,12 +52,12 @@ export function PricingCards({ locale }) {
                 delay={idx * 0.1}
                 className={`relative flex flex-col gap-6 rounded-3xl p-8 transition-all duration-300 ${
                   featured
-                    ? 'border-2 border-primary bg-stone-800/50 shadow-xl shadow-primary/10 hover:-translate-y-1'
-                    : 'border border-border-light bg-stone-800/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1'
+                    ? 'border-2 border-primary bg-surface/50 shadow-xl shadow-primary/10 hover:-translate-y-1'
+                    : 'border border-border bg-surface/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1'
                 }`}
               >
                 {featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-lg shadow-primary/20 flex items-center gap-1">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1.5 rounded-full text-xs font-bold text-on-primary uppercase tracking-wider shadow-lg shadow-primary/20 flex items-center gap-1">
                     <Icon name="stars" className="text-[16px]" />
                     {t.mostLoved}
                   </div>
@@ -69,11 +69,11 @@ export function PricingCards({ locale }) {
                   <div className="flex items-baseline gap-1 text-text-main">
                     <span className="text-4xl font-extrabold tracking-tighter tabular-nums">{pkg.price}</span>
                   </div>
-                  <p className={`text-sm mt-2 leading-relaxed font-medium ${featured ? 'text-text-secondary' : 'text-stone-400'}`}>
+                  <p className={`text-sm mt-2 leading-relaxed font-medium ${featured ? 'text-text-secondary' : 'text-text-secondary'}`}>
                     {pkg.description}
                   </p>
                 </div>
-                <hr className={featured ? 'border-dashed border-border-light' : 'border-border-light'} />
+                <hr className={featured ? 'border-dashed border-border' : 'border-border'} />
                 <ul className="flex flex-col gap-3 flex-1">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className={`flex items-start gap-3 text-sm ${featured ? 'text-text-main font-semibold' : 'text-text-secondary'}`}>
@@ -90,8 +90,8 @@ export function PricingCards({ locale }) {
                     source={`pricing-card-${idx}`}
                     className={`w-full h-12 flex items-center justify-center rounded-xl text-base font-bold transition-all ${
                       featured
-                        ? 'bg-primary text-white h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
-                        : 'bg-stone-700 border border-stone-600 text-stone-200 hover:bg-stone-600 hover:text-white'
+                        ? 'bg-primary text-on-primary h-14 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30'
+                        : 'bg-surface-raised border border-border-strong text-text-main hover:bg-surface-strong'
                     }`}
                   />
                   {basePrice && (

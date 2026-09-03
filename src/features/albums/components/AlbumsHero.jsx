@@ -8,7 +8,7 @@ export function AlbumsHero({ locale }) {
     <div className="w-full max-w-[960px] px-4 pt-10 md:pt-16 pb-8 md:pb-10 text-center animate-fade-in-up mx-auto">
       <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 md:mb-6 text-text-main">
         {t.titleTop} <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
           {t.titleBottom}
         </span>
       </h1>

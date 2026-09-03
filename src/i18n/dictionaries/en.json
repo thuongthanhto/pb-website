@@ -20,6 +20,13 @@
       "viShort": "VI",
       "enShort": "EN"
     },
+    "theme": {
+      "label": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode"
+    },
     "cta": {
       "book": "Book Now",
       "bookShoot": "Book a Session",

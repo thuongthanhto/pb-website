@@ -106,7 +106,7 @@ export function AlbumsSwiper({ images = [] }) {
       {/* Custom Navigation Buttons */}
       <button
         onClick={() => swiperRef.current?.slidePrev()}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 md:-translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-stone-800/90 backdrop-blur-sm border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 md:-translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-surface-raised/90 backdrop-blur-sm border border-border flex items-center justify-center text-text-secondary hover:bg-primary hover:text-on-primary hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-on-primary active:scale-90 transition-all duration-300 cursor-pointer"
         aria-label={labels.prev}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -115,7 +115,7 @@ export function AlbumsSwiper({ images = [] }) {
       </button>
       <button
         onClick={() => swiperRef.current?.slideNext()}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 md:translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-stone-800/90 backdrop-blur-sm border border-stone-700 flex items-center justify-center text-stone-300 hover:bg-primary hover:text-white hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-white active:scale-90 transition-all duration-300 cursor-pointer"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 md:translate-x-3 z-10 w-9 h-9 md:w-12 md:h-12 rounded-full bg-surface-raised/90 backdrop-blur-sm border border-border flex items-center justify-center text-text-secondary hover:bg-primary hover:text-on-primary hover:border-primary shadow-lg opacity-70 md:opacity-0 group-hover/nav:opacity-100 active:bg-primary active:text-on-primary active:scale-90 transition-all duration-300 cursor-pointer"
         aria-label={labels.next}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -137,14 +137,14 @@ export function AlbumsSwiper({ images = [] }) {
           visibility: hidden;
         }
         .albums-swiper-wrapper .swiper-pagination-bullet {
-          background: #d1d5db;
+          background: var(--text-muted);
           opacity: 1;
           width: 8px;
           height: 8px;
           transition: all 0.3s ease;
         }
         .albums-swiper-wrapper .swiper-pagination-bullet-active {
-          background: #e8633b;
+          background: var(--primary);
           width: 24px;
           border-radius: 4px;
         }

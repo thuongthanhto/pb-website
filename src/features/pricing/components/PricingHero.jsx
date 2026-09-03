@@ -33,6 +33,8 @@ export function PricingHero({ locale }) {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 mt-2">
+                {/* Cặp nút này nằm trên ảnh hero: giữ màu tuyệt đối để ghép
+                    cặp với nút kính bên cạnh (xem ngoại lệ 1, docs/theming.md). */}
                 <BookingButton
                   t={dict.common.booking}
                   label={dict.common.cta.consultNow}

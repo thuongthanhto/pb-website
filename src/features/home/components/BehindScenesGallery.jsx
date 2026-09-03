@@ -97,13 +97,13 @@ export function BehindScenesGallery() {
         {/* Mép mờ chỉ hiện khi còn ảnh ở phía đó (desktop) */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 left-0 hidden md:block w-12 bg-gradient-to-r from-background-light to-transparent transition-opacity duration-300 ${
+          className={`pointer-events-none absolute inset-y-0 left-0 hidden md:block w-12 bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
             edge.atStart ? 'opacity-0' : 'opacity-100'
           }`}
         />
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 right-0 hidden md:block w-12 bg-gradient-to-l from-background-light to-transparent transition-opacity duration-300 ${
+          className={`pointer-events-none absolute inset-y-0 right-0 hidden md:block w-12 bg-gradient-to-l from-background to-transparent transition-opacity duration-300 ${
             edge.atEnd ? 'opacity-0' : 'opacity-100'
           }`}
         />

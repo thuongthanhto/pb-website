@@ -13,7 +13,7 @@ const AlbumsSwiper = dynamic(
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
-            className="aspect-[3/4] rounded-2xl bg-stone-800/60 animate-pulse"
+            className="aspect-[3/4] rounded-2xl bg-surface/60 animate-pulse"
           />
         ))}
       </div>

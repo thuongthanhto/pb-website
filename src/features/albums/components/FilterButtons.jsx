@@ -29,8 +29,8 @@ export function FilterButtons({ images = [], activeFolder = ALL, onFilterChange 
             aria-pressed={activeFolder === folder}
             className={`flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 transition-all whitespace-nowrap ${
               activeFolder === folder
-                ? 'bg-primary text-white hover:shadow-lg hover:shadow-primary/30 font-bold'
-                : 'bg-stone-800 border border-stone-700 hover:border-primary/40 hover:bg-stone-700 text-stone-300 hover:text-white font-semibold'
+                ? 'bg-primary text-on-primary hover:shadow-lg hover:shadow-primary/30 font-bold'
+                : 'bg-surface border border-border hover:border-primary/40 hover:bg-surface-raised text-text-secondary hover:text-text-main font-semibold'
             }`}
           >
             {label}

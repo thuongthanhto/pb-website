@@ -36,7 +36,7 @@ export function LanguageSwitcher({ variant = 'inline', className = '' }) {
       className={`flex items-center ${
         isBlock
           ? 'gap-2 w-full'
-          : 'gap-0.5 rounded-full border border-stone-700 bg-stone-800/60 p-0.5'
+          : 'gap-0.5 rounded-full border border-border bg-surface/60 p-0.5'
       } ${className}`}
       role="group"
       aria-label={labels.label}
@@ -56,12 +56,12 @@ export function LanguageSwitcher({ variant = 'inline', className = '' }) {
                 ? `flex-1 rounded-lg px-3 py-2 text-center text-sm font-semibold transition-colors ${
                     active
                       ? 'bg-primary/10 text-primary'
-                      : 'text-stone-300 hover:bg-stone-800'
+                      : 'text-text-secondary hover:bg-surface-raised'
                   }`
                 : `rounded-full px-2.5 py-1 text-xs font-bold tracking-wide transition-colors ${
                     active
-                      ? 'bg-primary text-white'
-                      : 'text-stone-400 hover:text-primary'
+                      ? 'bg-primary text-on-primary'
+                      : 'text-text-secondary hover:text-primary'
                   }`
             }
           >

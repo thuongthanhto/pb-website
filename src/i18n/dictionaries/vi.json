@@ -20,6 +20,13 @@
       "viShort": "VI",
       "enShort": "EN"
     },
+    "theme": {
+      "label": "Giao diện",
+      "light": "Sáng",
+      "dark": "Tối",
+      "switchToLight": "Chuyển sang giao diện sáng",
+      "switchToDark": "Chuyển sang giao diện tối"
+    },
     "cta": {
       "book": "Đặt lịch ngay",
       "bookShoot": "Đặt lịch chụp",

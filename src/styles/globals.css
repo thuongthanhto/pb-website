@@ -1,23 +1,99 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #ff6b6b;
-  --color-primary-dark: #e05050;
-  --color-background-light: #161210;
-  --color-surface-light: #221c19;
-  --color-border-light: #3a322d;
-  --color-text-main: #f5f0ec;
-  --color-text-secondary: #a8a29e;
+/* ==========================================================================
+   THEME TOKENS — xem docs/theming.md trước khi thêm màu mới.
+   Quy tắc: component KHÔNG dùng màu tuyệt đối (stone-800, text-white...),
+   chỉ dùng token dưới đây để tự đổi theo sáng/tối.
+   Ngoại lệ duy nhất: scrim/chữ đè trên ẢNH luôn giữ đen/trắng ở cả 2 theme.
+   ========================================================================== */
+
+/* dark: dùng cho vài trường hợp đặc thù không diễn tả được bằng token */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* `inline` để utility nhả ra var(--...) thay vì giá trị cứng -> đổi theme
+   chỉ cần ghi đè biến ở dưới, không cần sinh lại class. */
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-on-primary: var(--on-primary);
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-sunken: var(--surface-sunken);
+
+  --color-accent: var(--accent);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-main: var(--text-main);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
 }
 
-:root {
+/* Dark là mặc định: giữ đúng giao diện hiện tại, và là thứ hiện ra khi
+   người dùng tắt JS (script chọn theme không chạy được). */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
   --primary: #ff6b6b;
   --primary-dark: #e05050;
-  --background-light: #161210;
-  --surface-light: #221c19;
-  --border-light: #3a322d;
+  --on-primary: #ffffff;
+
+  --background: #161210;
+  --surface: #221c19;
+  --surface-raised: #2f2823;
+  --surface-strong: #3b332d;
+  --surface-sunken: #100d0b;
+
+  /* Sắc cam phụ, chỉ dùng cho gradient tiêu đề ở AlbumsHero. */
+  --accent: #fb923c;
+
+  --border: #3a322d;
+  --border-strong: #4d443e;
+
   --text-main: #f5f0ec;
-  --text-secondary: #a8a29e;
+  --text-secondary: #c4bdb7;
+  --text-muted: #a8a29e;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Coral đậm hơn bản dark: #ff6b6b trên nền sáng chỉ đạt 2.5:1. Giá trị dưới
+     đây đo được 4.69:1 khi làm chữ trên --background và 5.01:1 với chữ trắng
+     khi làm nền nút -> đạt WCAG AA cho cả text-primary và bg-primary. Đây là
+     sắc coral đậm ít nhất còn qua được cả hai ngưỡng. */
+  --primary: #c93c3c;
+  --primary-dark: #ad2f2f;
+  --on-primary: #ffffff;
+
+  --background: #faf7f5;
+  --surface: #ffffff;
+  --surface-raised: #f3eeea;
+  --surface-strong: #e7e0da;
+  --surface-sunken: #efe9e4;
+
+  /* Cam đậm hơn: orange-400 trên nền sáng gần như không đọc được. */
+  --accent: #c2410c;
+
+  --border: #e5ddd7;
+  --border-strong: #d2c7bf;
+
+  --text-main: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #736c66; /* 4.84:1 trên --background, 5.16:1 trên --surface */
+}
+
+/* Đổi theme mượt phần nền/chữ nền trang. Lần tải đầu không bị "nháy" vì
+   transition không chạy cho style khởi tạo. */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
 /* Cuộn mượt khi click anchor trong trang */
@@ -115,9 +191,14 @@ p {
   height: 100%;
 }
 
-/* Bông tuyết: thêm quầng sáng trắng cho nổi trên nền tối. */
+/* Bông tuyết: quầng sáng để nổi trên nền — trắng ở theme tối, và đổi sang
+   viền tối ở theme sáng (quầng trắng trên nền trắng thì tàng hình). */
 .falling-leaf.is-snow {
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.55));
+}
+
+[data-theme="light"] .falling-leaf.is-snow {
+  filter: drop-shadow(0 0 2px rgba(120, 113, 108, 0.45));
 }
 
 @keyframes falling-fall {
@@ -167,8 +248,8 @@ p {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-top: 2px solid #78716c;
-  border-color: #78716c;
+  border-top: 2px solid var(--border-strong);
+  border-color: var(--border-strong);
 }
 
 /* Enhanced responsive video styles */
@@ -198,16 +279,16 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background: #221c19;
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #57534e;
+  background: var(--border-strong);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #78716c;
+  background: var(--text-muted);
 }
 
 /* Smooth loading animation */

@@ -18,11 +18,11 @@ export function ComparisonTable({ locale }) {
       </section>
       <section className="w-full pb-16 flex justify-center">
         <div className="w-full max-w-[1280px] px-4 md:px-10">
-          <div className="w-full overflow-x-auto rounded-2xl border border-border-light bg-stone-800 shadow-lg">
+          <div className="w-full overflow-x-auto rounded-2xl border border-border bg-surface shadow-lg">
             <table className="w-full min-w-[800px] text-left border-collapse">
               <caption className="sr-only">{t.title}</caption>
               <thead>
-                <tr className="bg-stone-900 border-b border-border-light">
+                <tr className="bg-surface-sunken border-b border-border">
                   <th scope="col" className="p-6 text-base font-bold text-text-main w-1/3">
                     {t.featureColumn}
                   </th>
@@ -34,9 +34,9 @@ export function ComparisonTable({ locale }) {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border-light">
+              <tbody className="divide-y divide-border">
                 {t.rows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-stone-700/30 transition-colors">
+                  <tr key={idx} className="hover:bg-surface-raised/30 transition-colors">
                     <th scope="row" className="p-5 px-6 text-text-main font-medium text-sm text-left">
                       {row.feature}
                     </th>

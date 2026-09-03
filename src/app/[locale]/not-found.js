@@ -26,7 +26,7 @@ export default function NotFound() {
         </p>
         <Link
           href={localePath(locale, '/')}
-          className="mt-2 inline-flex items-center gap-2 rounded-full h-12 px-7 bg-primary hover:bg-primary-dark transition-all text-white text-base font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
+          className="mt-2 inline-flex items-center gap-2 rounded-full h-12 px-7 bg-primary hover:bg-primary-dark transition-all text-on-primary text-base font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
         >
           <Icon name="arrow_back" className="text-[20px]" />
           {t.backHome}

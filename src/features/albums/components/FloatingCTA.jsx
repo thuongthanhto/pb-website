@@ -22,14 +22,14 @@ export function FloatingCTA({ isHidden = false }) {
         rel="noopener noreferrer"
         title={dict.common.cta.chatZalo}
         aria-label={dict.common.cta.chatZalo}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-stone-800/95 backdrop-blur-sm border border-stone-700 text-stone-200 shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-105 transition-all duration-300"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-surface/95 backdrop-blur-sm border border-border text-text-main shadow-xl hover:bg-primary hover:text-on-primary hover:border-primary hover:scale-105 transition-all duration-300"
       >
         <Icon name="zalo" className="text-[24px]" />
       </a>
       <BookingButton
         t={dict.common.booking}
         source="albums-floating"
-        className="flex items-center justify-center gap-3 rounded-full h-14 pl-5 pr-7 bg-primary hover:bg-primary-dark text-white shadow-xl shadow-primary/40 hover:scale-105 transition-all duration-300 group"
+        className="flex items-center justify-center gap-3 rounded-full h-14 pl-5 pr-7 bg-primary hover:bg-primary-dark text-on-primary shadow-xl shadow-primary/40 hover:scale-105 transition-all duration-300 group"
       >
         <Icon name="calendar_today" className="text-[24px] group-hover:-rotate-12 transition-transform" />
         <span className="text-base font-bold tracking-wide">

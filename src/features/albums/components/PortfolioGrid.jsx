@@ -52,7 +52,7 @@ function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
       }`}
     >
       <div
-        className={`w-full h-full bg-stone-800 relative overflow-hidden ${
+        className={`w-full h-full bg-surface relative overflow-hidden ${
           square ? 'aspect-square' : ''
         }`}
         style={square ? undefined : { aspectRatio: ratio }}
@@ -141,7 +141,7 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
   if (!images || images.length === 0) {
     return (
       <div className="w-full max-w-[1280px] px-4 md:px-10 pb-24 mx-auto">
-        <p className="text-stone-500 text-center">{dict.albums.empty}</p>
+        <p className="text-text-muted text-center">{dict.albums.empty}</p>
       </div>
     );
   }

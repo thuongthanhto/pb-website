@@ -24,6 +24,8 @@ import {
   MdRedeem,
   MdArrowBack,
   MdBolt,
+  MdLightMode,
+  MdDarkMode,
 } from 'react-icons/md';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { SiZalo } from 'react-icons/si';
@@ -52,6 +54,8 @@ const ICONS = {
   redeem: MdRedeem,
   arrow_back: MdArrowBack,
   bolt: MdBolt,
+  light_mode: MdLightMode,
+  dark_mode: MdDarkMode,
   zalo: SiZalo,
   // Tương thích tên cũ kiểu iconify (ContactSection / Footer)
   'mdi:instagram': FaInstagram,

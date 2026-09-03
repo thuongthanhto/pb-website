@@ -10,6 +10,8 @@
 //   .falling-sway -> dạt ngang qua lại (translateX), thời lượng = swayDur (độc lập)
 //   .leaf (svg)   -> xoay/lật, thời lượng = spin
 
+import { useTheme } from '@/components/ThemeProvider'
+
 const SEEDS = [
   { left: 4, size: 22, fall: 11, delay: 0, opacity: 0.9, sway: 40, swayDur: 4.3, spin: 9 },
   { left: 11, size: 14, fall: 14, delay: 2.4, opacity: 0.7, sway: 55, swayDur: 6.1, spin: 12 },
@@ -41,15 +43,28 @@ const SEEDS = [
   { left: 99, size: 25, fall: 9, delay: 3.4, opacity: 0.88, sway: 36, swayDur: 5.7, spin: 8 },
 ]
 
-// Bảng màu hoa (hồng/đào, hợp tông primary của studio).
-const FLOWER_COLORS = ['#ffb3c1', '#ff8fab', '#ffd6dd', '#ff6b6b', '#ffc2d1']
+// Bảng màu hoa (hồng/đào, hợp tông primary của studio). Đây là màu "vật thể"
+// của cánh hoa, không phải chrome UI nên không có token tương ứng -> chọn
+// palette theo theme bằng useTheme().
+//
+// dark: giữ y nguyên bộ màu cũ (hồng nhạt nổi trên nền tối).
+// light: nền là #faf7f5, hồng nhạt gần như tàng hình -> đổi sang hồng/coral
+//        đậm hơn cùng hệ, giữ đúng thứ tự để mỗi hạt vẫn nhận màu cũ của nó.
+const FLOWER_COLORS = {
+  dark: ['#ffb3c1', '#ff8fab', '#ffd6dd', '#ff6b6b', '#ffc2d1'],
+  light: ['#dd5f7c', '#c94a68', '#e3809a', '#c93f3f', '#d76d86'],
+}
+
+// Nhị hoa: vàng nhạt nổi trên nền tối, nhưng biến mất trên nền sáng ->
+// dùng vàng hổ phách đậm hơn ở theme sáng.
+const FLOWER_CENTER = { dark: '#fff3b0', light: '#d9a021' }
 
 // Một cánh hoa hướng lên, gốc ở tâm (12,12), khía nhẹ ở đỉnh.
 const PETAL = 'M12 12 C9 9 8 4.5 10 2 C10.8 1 11.4 1.6 12 3.2 C12.6 1.6 13.2 1 14 2 C16 4.5 15 9 12 12 Z'
 // 5 cánh xoay đều quanh tâm -> bông hoa anh đào.
 const ANGLES = [0, 72, 144, 216, 288]
 
-function Blossom({ color }) {
+function Blossom({ color, center }) {
   return (
     <svg className="leaf" viewBox="0 0 24 24" width="100%" height="100%">
       <g>
@@ -57,7 +72,7 @@ function Blossom({ color }) {
           <path key={a} d={PETAL} fill={color} transform={`rotate(${a} 12 12)`} />
         ))}
       </g>
-      <circle cx="12" cy="12" r="2" fill="#fff3b0" />
+      <circle cx="12" cy="12" r="2" fill={center} />
     </svg>
   )
 }
@@ -67,6 +82,10 @@ const FLAKE_ARM = 'M12 12 L12 2 M12 4.6 L9.6 2.2 M12 4.6 L14.4 2.2 M12 7.5 L10.2
 // 6 nhánh xoay đều quanh tâm -> bông tuyết.
 const FLAKE_ANGLES = [0, 60, 120, 180, 240, 300]
 
+// Bông tuyết luôn TRẮNG ở cả hai theme: tuyết là màu trắng, và ở theme sáng
+// nó đã được `[data-theme="light"] .falling-leaf.is-snow` trong globals.css
+// viền lại bằng quầng xám ấm để không tàng hình trên nền sáng. Đổi stroke sang
+// màu xám sẽ làm quầng viền đó vô nghĩa -> giữ nguyên.
 function Snowflake() {
   return (
     <svg
@@ -88,8 +107,12 @@ function Snowflake() {
 }
 
 export default function FallingEffect({ variant = 'petals', count = 28 }) {
+  const { isDark } = useTheme()
   const isSnow = variant === 'snow'
   const seeds = SEEDS.slice(0, Math.min(count, SEEDS.length))
+  const themeKey = isDark ? 'dark' : 'light'
+  const flowerColors = FLOWER_COLORS[themeKey]
+  const flowerCenter = FLOWER_CENTER[themeKey]
 
   return (
     <div
@@ -130,7 +153,10 @@ export default function FallingEffect({ variant = 'petals', count = 28 }) {
               {isSnow ? (
                 <Snowflake />
               ) : (
-                <Blossom color={FLOWER_COLORS[i % FLOWER_COLORS.length]} />
+                <Blossom
+                  color={flowerColors[i % flowerColors.length]}
+                  center={flowerCenter}
+                />
               )}
             </span>
           </span>

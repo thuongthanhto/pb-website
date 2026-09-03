@@ -12,7 +12,7 @@ export function BehindScenesSection({ locale }) {
 
   return (
     <div
-      className="w-full py-10 md:py-24 border-t border-stone-800"
+      className="w-full py-10 md:py-24 border-t border-border"
       id="behind-the-scenes"
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-10">
@@ -22,7 +22,7 @@ export function BehindScenesSection({ locale }) {
             <p className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full self-start">
               {t.eyebrow}
             </p>
-            <h2 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight">
+            <h2 className="text-text-main text-2xl md:text-5xl font-bold leading-tight">
               {t.titleLine1} <br className="hidden md:block" />
               {t.titleLine2}
             </h2>
@@ -36,7 +36,7 @@ export function BehindScenesSection({ locale }) {
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
-                  className="flex flex-col gap-1 rounded-2xl border border-stone-800 bg-stone-800/50 p-3 md:p-5"
+                  className="flex flex-col gap-1 rounded-2xl border border-border bg-surface/50 p-3 md:p-5"
                 >
                   <span className="text-primary text-lg md:text-2xl font-black leading-tight text-balance">
                     {stat.value}
@@ -50,7 +50,7 @@ export function BehindScenesSection({ locale }) {
 
             <Link
               href={localePath(current, '/contact')}
-              className="inline-flex items-center justify-center self-start rounded-full h-12 md:h-14 px-7 md:px-8 mt-2 bg-primary hover:bg-primary-dark transition-all text-white text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center self-start rounded-full h-12 md:h-14 px-7 md:px-8 mt-2 bg-primary hover:bg-primary-dark transition-all text-on-primary text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
             >
               {dict.common.cta.book}
               <Icon name="arrow_forward" className="text-[20px] ml-1" />

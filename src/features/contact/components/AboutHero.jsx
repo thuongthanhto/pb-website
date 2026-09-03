@@ -27,7 +27,7 @@ export function AboutHero({ locale }) {
             </div>
             <Link
               href={localePath(current, '/albums')}
-              className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-stone-800 hover:bg-stone-700 text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg"
+              className="z-10 mt-2 flex min-w-[140px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-surface hover:bg-surface-raised text-primary text-base font-bold transition-transform hover:scale-105 shadow-lg"
             >
               {dict.common.cta.viewCollection}
             </Link>

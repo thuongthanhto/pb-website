@@ -16,7 +16,7 @@ export function PricingFAQ({ locale }) {
   return (
     <section
       id="faq"
-      className="w-full py-16 md:py-20 flex justify-center relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-stone-700/60 before:to-transparent"
+      className="w-full py-16 md:py-20 flex justify-center relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-border/60 before:to-transparent"
     >
       <div className="w-full max-w-[860px] px-4 md:px-10">
         <Reveal className="text-center mb-10">
@@ -31,7 +31,7 @@ export function PricingFAQ({ locale }) {
         <div className="flex flex-col gap-3">
           {t.items.map((item, idx) => (
             <Reveal key={idx} delay={idx * 0.05}>
-              <details className="group rounded-2xl border border-border-light bg-stone-800/40 open:bg-stone-800/60 transition-colors">
+              <details className="group rounded-2xl border border-border bg-surface/40 open:bg-surface/60 transition-colors">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 md:p-6 list-none [&::-webkit-details-marker]:hidden">
                   <h3 className="text-text-main text-base md:text-lg font-bold">
                     {item.question}

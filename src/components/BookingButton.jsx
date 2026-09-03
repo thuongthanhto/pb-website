@@ -55,13 +55,13 @@ export function BookingButton({ t, label, className, children, source, context }
             ref={dialogRef}
             tabIndex={-1}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl border border-border-light bg-stone-900 p-6 sm:p-8 shadow-2xl"
+            className="relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl border border-border bg-background p-6 sm:p-8 shadow-2xl"
           >
             <button
               type="button"
               onClick={close}
               aria-label={t.close}
-              className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full text-stone-400 hover:bg-white/10 hover:text-white transition"
+              className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full text-text-secondary hover:bg-surface-raised hover:text-text-main transition"
             >
               <Icon name="close" className="text-[20px]" />
             </button>
@@ -86,9 +86,9 @@ export function BookingButton({ t, label, className, children, source, context }
                       rel: 'noopener noreferrer',
                     })}
                     onClick={() => track('booking_channel', { source, channel: channel.id })}
-                    className="flex items-center gap-4 rounded-xl border border-border-light bg-stone-800/50 px-4 py-3.5 transition hover:border-primary hover:bg-stone-800 group"
+                    className="flex items-center gap-4 rounded-xl border border-border bg-surface/50 px-4 py-3.5 transition hover:border-primary hover:bg-surface group"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-900 text-stone-300 transition group-hover:bg-primary group-hover:text-white">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-sunken text-text-secondary transition group-hover:bg-primary group-hover:text-on-primary">
                       <Icon name={channel.icon} className="text-[20px]" />
                     </span>
                     <span className="min-w-0">
@@ -99,7 +99,7 @@ export function BookingButton({ t, label, className, children, source, context }
                     </span>
                     <Icon
                       name="chevron_right"
-                      className="ml-auto text-[20px] text-stone-500 shrink-0"
+                      className="ml-auto text-[20px] text-text-muted shrink-0"
                     />
                   </a>
                 )

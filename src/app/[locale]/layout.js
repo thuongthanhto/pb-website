@@ -17,6 +17,7 @@ import { localBusinessSchema, webSiteSchema, jsonLd } from '@/lib/structured-dat
 import { locales, localeMeta, normalizeLocale, localePath } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import { I18nProvider } from '@/i18n/I18nProvider'
+import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider'
 
 // Self-host fonts qua next/font: tự tải, subset (kèm tiếng Việt), preload,
 // và loại bỏ request CSS render-blocking từ Google Fonts.
@@ -74,9 +75,16 @@ export default function RootLayout({ children, params }) {
     <html
       lang={localeMeta[locale].htmlLang}
       className={`${jakarta.variable} ${noto.variable}`}
+      // Server luôn phát data-theme="dark"; script dưới có thể đổi sang light
+      // trước khi vẽ, nên bỏ qua cảnh báo lệch attribute khi hydrate.
+      data-theme="dark"
+      suppressHydrationWarning
     >
       <head>
         <link rel="icon" href="/logo-pb.png" type="image/png" />
+        <meta name="theme-color" content="#161210" />
+        {/* Phải đứng trong <head> và chạy đồng bộ để tránh nháy theme. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* Nhận diện doanh nghiệp: studio ảnh cưới ở TP.HCM, khoảng giá, ngôn
             ngữ phục vụ và các nước nhận khách. Đặt ở layout nên có trên mọi trang. */}
         <script
@@ -89,15 +97,17 @@ export default function RootLayout({ children, params }) {
           }}
         />
       </head>
-      <body className="bg-background-light font-display text-text-main antialiased selection:bg-primary selection:text-white">
+      <body className="bg-background font-display text-text-main antialiased selection:bg-primary selection:text-on-primary">
         <I18nProvider locale={locale} dictionary={dictionary}>
-          <BokehBackground />
-          <FallingEffect variant="petals" />
-          <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          <ThemeProvider>
+            <BokehBackground />
+            <FallingEffect variant="petals" />
+            <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </ThemeProvider>
         </I18nProvider>
         <Analytics />
         <SpeedInsights />

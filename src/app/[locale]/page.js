@@ -63,7 +63,7 @@ export default async function Home({ params }) {
                 <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
                   <Link
                     href={href('/contact')}
-                    className="inline-flex items-center justify-center rounded-full h-12 md:h-14 px-6 md:px-8 bg-primary hover:bg-primary-dark transition-all text-white text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
+                    className="inline-flex items-center justify-center rounded-full h-12 md:h-14 px-6 md:px-8 bg-primary hover:bg-primary-dark transition-all text-on-primary text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
                   >
                     {dict.common.cta.book}
                   </Link>
@@ -83,7 +83,7 @@ export default async function Home({ params }) {
       {/* Portfolio Section */}
       <div className="w-full py-8" id="portfolio">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10 flex flex-col gap-6 md:gap-10">
-          <div className="hidden md:flex justify-between items-end border-b border-stone-800 pb-6">
+          <div className="hidden md:flex justify-between items-end border-b border-border pb-6">
             <div className="flex flex-col gap-2">
               <span className="text-primary font-bold tracking-widest uppercase text-xs">
                 {t.portfolio.eyebrow}
@@ -121,7 +121,7 @@ export default async function Home({ params }) {
               <p className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm bg-primary/5 px-3 py-1 rounded-full">
                 {t.services.eyebrow}
               </p>
-              <h2 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
+              <h2 className="text-text-main text-2xl md:text-5xl font-bold leading-tight max-w-[720px]">
                 {t.services.title}
               </h2>
               <p className="text-text-secondary text-base md:text-lg font-normal leading-relaxed max-w-[600px]">
@@ -133,21 +133,21 @@ export default async function Home({ params }) {
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
-                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-stone-800 bg-stone-800/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 group active:border-primary/30"
+                  className="flex flex-col gap-4 md:gap-6 rounded-2xl border border-border bg-surface/50 p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 group active:border-primary/30"
                 >
                   <div className="flex items-start justify-between">
-                    <div className="size-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <div className="size-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
                       <Icon
                         name={SERVICE_ICONS[idx] ?? 'photo_camera'}
                         className="text-[36px]"
                       />
                     </div>
-                    <span className="tabular-nums text-5xl font-black leading-none text-stone-100/5 group-hover:text-primary/15 transition-colors duration-300 select-none">
+                    <span className="tabular-nums text-5xl font-black leading-none text-text-main/5 group-hover:text-primary/15 transition-colors duration-300 select-none">
                       0{idx + 1}
                     </span>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-stone-100 text-xl font-bold">
+                    <h3 className="text-text-main text-xl font-bold">
                       {service.title}
                     </h3>
                     <p className="text-text-secondary text-base leading-relaxed">
@@ -175,11 +175,11 @@ export default async function Home({ params }) {
       <BehindScenesSection locale={locale} />
 
       {/* Testimonials Section */}
-      <div className="w-full py-10 md:py-24 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-stone-700/60 before:to-transparent">
+      <div className="w-full py-10 md:py-24 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-border/60 before:to-transparent">
         <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <Reveal
             as="h2"
-            className="text-stone-100 text-xl md:text-4xl font-bold text-center mb-8 md:mb-16"
+            className="text-text-main text-xl md:text-4xl font-bold text-center mb-8 md:mb-16"
           >
             {t.testimonials.title}
           </Reveal>
@@ -188,9 +188,9 @@ export default async function Home({ params }) {
               <Reveal
                 key={idx}
                 delay={idx * 0.1}
-                className="bg-stone-800/50 border border-stone-700 shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
+                className="bg-surface/50 border border-border shadow-sm p-6 md:p-8 rounded-2xl flex flex-col gap-4 relative w-[82vw] max-w-[340px] md:w-auto md:max-w-none snap-center flex-shrink-0 md:flex-shrink"
               >
-                <div className="absolute top-6 right-6 text-stone-700">
+                <div className="absolute top-6 right-6 text-border">
                   <Icon name="format_quote" className="text-[48px]" />
                 </div>
                 <div className="flex gap-1 text-yellow-400">
@@ -198,10 +198,10 @@ export default async function Home({ params }) {
                     <Icon key={i} name="star" className="text-[20px]" />
                   ))}
                 </div>
-                <p className="text-stone-300 italic leading-relaxed relative z-10">
+                <p className="text-text-secondary italic leading-relaxed relative z-10">
                   &ldquo;{testimonial.text}&rdquo;
                 </p>
-                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-stone-700">
+                <div className="flex items-center gap-3 mt-auto pt-6 border-t border-border">
                   <div
                     className="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/20"
                     style={{
@@ -209,7 +209,7 @@ export default async function Home({ params }) {
                     }}
                   ></div>
                   <div>
-                    <h3 className="text-stone-100 font-bold text-sm">
+                    <h3 className="text-text-main font-bold text-sm">
                       {testimonial.name}
                     </h3>
                     <p className="text-primary text-xs font-medium">
@@ -236,8 +236,10 @@ export default async function Home({ params }) {
         {/* Center-weighted darkening so text stays legible while photo edges show through */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_75%_at_center,rgba(12,10,9,0.72),transparent_72%)]"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/30"></div>
-        {/* Soft fade at the very top so the banner blends into the section above */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-stone-950 to-transparent"></div>
+        {/* Soft fade at the very top so the banner blends into the section above.
+            Follows the page background (not the scrim) so the seam stays soft in
+            both themes — a hardcoded dark fade reads as a black bar on light. */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent"></div>
         <Reveal className="relative z-10 max-w-[960px] mx-auto px-4 md:px-10 flex flex-col items-center text-center gap-5 md:gap-6 pt-32 pb-10 md:pt-52 md:pb-16 mb-12 md:mb-20">
           <h2 className="text-white text-2xl md:text-5xl font-black tracking-tight drop-shadow-xl">
             {t.cta.title}
@@ -248,13 +250,13 @@ export default async function Home({ params }) {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-6 w-full sm:w-auto">
             <Link
               href={href('/contact')}
-              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-primary hover:bg-primary-dark transition-all text-white text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
+              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-primary hover:bg-primary-dark transition-all text-on-primary text-base md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95"
             >
               {dict.common.cta.book}
             </Link>
             <Link
               href={href('/contact')}
-              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-stone-800 border border-stone-700 hover:border-primary hover:text-primary transition-all text-stone-300 text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
+              className="flex w-full sm:w-auto sm:min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 md:h-14 px-8 bg-surface border border-border hover:border-primary hover:text-primary transition-all text-text-secondary text-base md:text-lg font-bold hover:shadow-lg active:scale-95"
             >
               {dict.common.cta.consult}
             </Link>
