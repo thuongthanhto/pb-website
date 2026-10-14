@@ -110,8 +110,10 @@ export function Lightbox({ items = [], index = null, onClose, onNavigate }) {
       )}
 
       {many && (
-        <div className="absolute bottom-4 left-0 right-0 text-center text-xs text-white/70 tabular-nums pointer-events-none">
-          {index + 1} / {items.length}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none">
+          <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-white/95 tabular-nums ring-1 ring-white/15">
+            {index + 1} / {items.length}
+          </span>
         </div>
       )}
     </div>

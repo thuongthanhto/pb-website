@@ -16,7 +16,7 @@ import {
   getLocationSlugsInUse,
   googleMapsUrl,
 } from '@/data/locations'
-import { LocationCard } from '@/components/LocationCard'
+import { LocationCard, LocationCardGrid } from '@/components/LocationCard'
 
 export const revalidate = 60
 
@@ -183,10 +183,10 @@ export default async function LocationPage({ params }) {
 
         {otherCards.length > 0 && (
           <section className="w-full max-w-[1280px] px-4 md:px-10 pb-16">
-            <h2 className="mb-4 text-xl md:text-2xl font-bold text-text-main">
+            <h2 className="mb-4 text-xl md:text-2xl font-bold text-text-main text-center">
               {t.otherLocations}
             </h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <LocationCardGrid>
               {otherCards.map(({ slug, location: other, count, cover }) => (
                 <LocationCard
                   key={slug}
@@ -194,10 +194,11 @@ export default async function LocationPage({ params }) {
                   location={other}
                   cover={cover}
                   locale={locale}
+                  cityLabel={CITIES[other.city]?.[locale]}
                   countLabel={interpolate(t.photoCount, { count })}
                 />
               ))}
-            </div>
+            </LocationCardGrid>
           </section>
         )}
       </main>

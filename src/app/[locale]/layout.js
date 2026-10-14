@@ -102,7 +102,7 @@ export default function RootLayout({ children, params }) {
           <ThemeProvider>
             <BokehBackground />
             <FallingEffect variant="petals" />
-            <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+            <div className="relative z-10 flex min-h-screen w-full flex-col overflow-x-hidden">
               <Header />
               {children}
               <Footer />

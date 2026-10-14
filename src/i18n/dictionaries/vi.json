@@ -519,12 +519,12 @@
       "title": "Chụp ảnh cưới tại {name} | PhatBo Photography",
       "description": "Album ảnh cưới thật chụp tại {name}, {city}. {count} ảnh pre-wedding và phóng sự cưới của PhatBo Photography.",
       "indexTitle": "Địa điểm chụp ảnh cưới | PhatBo Photography",
-      "indexDescription": "Các địa điểm PhatBo Photography đã chụp ảnh cưới: khách sạn, bảo tàng, ngoại cảnh ở Sài Gòn, Đà Lạt và các resort biển."
+      "indexDescription": "Các địa điểm PhatBo Photography đã chụp ảnh cưới: khách sạn, resort, studio và ngoại cảnh ở Sài Gòn, Đà Lạt và các bãi biển."
     },
     "nav": "Địa điểm",
     "indexTitleTop": "Chụp ảnh cưới",
     "indexTitleBottom": "theo địa điểm",
-    "indexSubtitle": "Ảnh khách thật tại từng khách sạn, bảo tàng và ngoại cảnh chúng tôi đã chụp.",
+    "indexSubtitle": "Ảnh khách thật theo từng nơi chụp: khách sạn, resort, studio và phố phường.",
     "photoCount": "{count} ảnh",
     "address": "Địa chỉ",
     "website": "Website",

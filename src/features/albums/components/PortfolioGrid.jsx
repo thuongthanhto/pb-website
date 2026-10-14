@@ -125,17 +125,98 @@ function distributeIntoColumns(images, cols) {
   return columns;
 }
 
+// Gallery nhỏ (<= 9 ảnh, không phân trang thêm) thì không cần order-stable:
+// thử mọi cách chia ảnh vào cột (tối đa 3^9 ≈ 20k phương án, rất nhanh) và
+// chọn cách có chênh lệch chiều cao giữa cột cao nhất và thấp nhất nhỏ nhất.
+// Thứ tự ảnh trong từng cột vẫn giữ theo thứ tự gốc.
+const SMALL_GALLERY = 9;
+const GAP_RATIO = 0.08; // gap 24px so với cột ~300px, tính theo đơn vị bề rộng cột
+
+function balanceSmallGallery(images, cols) {
+  const tileHeights = images.map((image) =>
+    image.width && image.height ? image.height / image.width : 4 / 3
+  );
+  const heights = new Array(cols).fill(0);
+  const counts = new Array(cols).fill(0);
+  const assign = new Array(images.length).fill(0);
+  let best = null;
+  let bestSpread = Infinity;
+
+  const visit = (i) => {
+    if (i === images.length) {
+      if (counts.some((c) => c === 0)) return;
+      const spread = Math.max(...heights) - Math.min(...heights);
+      if (spread < bestSpread) {
+        bestSpread = spread;
+        best = assign.slice();
+      }
+      return;
+    }
+    for (let c = 0; c < cols; c++) {
+      const add = tileHeights[i] + (counts[c] > 0 ? GAP_RATIO : 0);
+      heights[c] += add;
+      counts[c] += 1;
+      assign[i] = c;
+      visit(i + 1);
+      heights[c] -= add;
+      counts[c] -= 1;
+    }
+  };
+  visit(0);
+
+  const columns = Array.from({ length: cols }, () => []);
+  images.forEach((image, index) => columns[best[index]].push({ image, index }));
+  // Cột chứa ảnh đầu tiên đứng trái để thứ tự đọc vẫn tự nhiên.
+  columns.sort((a, b) => a[0].index - b[0].index);
+  return { columns, spread: bestSpread };
+}
+
+// Chênh lệch tối đa chấp nhận được giữa các cột (theo bề rộng cột). Vượt mức
+// này (vd 3 ảnh dọc + 4 ảnh ngang chia 3 cột luôn thừa một ảnh lẻ) thì bớt
+// một cột nếu cách đó cân hơn hẳn.
+const MAX_SPREAD = 0.5;
+
+function layoutColumns(images, maxCols) {
+  if (images.length > SMALL_GALLERY || maxCols <= 1) {
+    return distributeIntoColumns(images, maxCols);
+  }
+  let best = null;
+  for (let cols = Math.min(maxCols, images.length); cols >= 2; cols--) {
+    const result = balanceSmallGallery(images, cols);
+    if (!best || result.spread < best.spread) best = result;
+    if (result.spread <= MAX_SPREAD) return result.columns;
+  }
+  return best ? best.columns : distributeIntoColumns(images, maxCols);
+}
+
+// Ít ảnh thì giảm số cột: 7 ảnh / 4 cột để lại 1 ảnh lẻ và khoảng trống lớn
+// dưới các cột khác. Chỉ áp dụng cho gallery nhỏ; từ 10 ảnh trở lên giữ nguyên
+// số cột theo breakpoint (trang phân trang 20 ảnh/lần nên thêm ảnh không đổi cột).
+function fitColumnsToCount(cols, count) {
+  if (count <= 1) return 1;
+  if (count <= 4) return Math.min(cols, 2);
+  if (count <= 9) return Math.min(cols, 3);
+  return cols;
+}
+
+// Bề rộng tối đa của một cột khi gallery bị thu gọn, để lưới ít cột vẫn nằm
+// giữa trang thay vì kéo mỗi ảnh rộng cả nửa màn hình.
+const MAX_COLUMN_WIDTH = 360;
+const COLUMN_GAP = 24; // = gap-6
+
 export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
   const { dict } = useI18n();
   const publicDomain =
     process.env.NEXT_PUBLIC_R2_DOMAIN ||
     'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev';
 
-  const cols = useMasonryColumns();
+  const breakpointCols = useMasonryColumns();
+  const maxCols = fitColumnsToCount(breakpointCols, images.length);
   const columns = useMemo(
-    () => distributeIntoColumns(images, cols),
-    [images, cols]
+    () => layoutColumns(images, maxCols),
+    [images, maxCols]
   );
+  const cols = columns.length;
 
   const urlFor = (image) => `${publicDomain}/${image.key}`;
 
@@ -166,7 +247,14 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
 
       {/* sm+: fixed-column masonry. Items only ever append to the bottom of a
           column, so scrolling in more photos can't reshuffle existing tiles. */}
-      <div className="hidden sm:flex gap-6">
+      <div
+        className="hidden sm:flex gap-6 mx-auto"
+        style={
+          cols < breakpointCols
+            ? { maxWidth: cols * MAX_COLUMN_WIDTH + (cols - 1) * COLUMN_GAP }
+            : undefined
+        }
+      >
         {columns.map((column, ci) => (
           <div key={ci} className="flex-1 min-w-0 flex flex-col gap-6">
             {column.map(({ image, index }) => (

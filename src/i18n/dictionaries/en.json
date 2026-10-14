@@ -519,12 +519,12 @@
       "title": "Wedding Photography at {name} | PhatBo Photography",
       "description": "Real wedding photos shot at {name}, {city}. {count} pre-wedding and wedding-day images by PhatBo Photography.",
       "indexTitle": "Wedding Photo Locations in Vietnam | PhatBo Photography",
-      "indexDescription": "Hotels, museums and outdoor spots PhatBo Photography has shot weddings at in Saigon, Dalat and beach resorts across Vietnam."
+      "indexDescription": "Hotels, resorts, studios and outdoor spots PhatBo Photography has shot weddings at in Saigon, Dalat and along Vietnam's beaches."
     },
     "nav": "Locations",
     "indexTitleTop": "Wedding photos",
     "indexTitleBottom": "by location",
-    "indexSubtitle": "Real client shoots at each hotel, museum and outdoor spot we have worked at.",
+    "indexSubtitle": "Real client photos from every place we shoot: hotels, resorts, studios and city streets.",
     "photoCount": "{count} photos",
     "address": "Address",
     "website": "Website",

@@ -4,7 +4,7 @@ import { breadcrumbSchema, jsonLd } from '@/lib/structured-data'
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary, interpolate } from '@/i18n/dictionaries'
 import { CITIES, getLocationCards } from '@/data/locations'
-import { LocationCard } from '@/components/LocationCard'
+import { LocationCard, LocationCardGrid } from '@/components/LocationCard'
 
 export const revalidate = 60
 
@@ -27,10 +27,13 @@ export default async function LocationsIndexPage({ params }) {
 
   const images = await getAllImages()
   // Mỗi địa điểm: số ảnh + ảnh bìa (ảnh featured, không có thì ảnh mới nhất).
+  // Một lưới chung, xếp theo thứ tự thành phố trong CITIES; tên thành phố hiện
+  // trên từng thẻ. Không chia section theo thành phố nữa vì nhóm chỉ có 1–2
+  // thẻ để lại cả hàng trống trông như bị lỗi.
+  const cityOrder = Object.keys(CITIES)
   const cards = getLocationCards(images)
-  const groups = Object.keys(CITIES)
-    .map((city) => ({ city, cards: cards.filter((c) => c.location.city === city) }))
-    .filter((group) => group.cards.length > 0)
+    .filter((c) => cityOrder.includes(c.location.city))
+    .sort((a, b) => cityOrder.indexOf(a.location.city) - cityOrder.indexOf(b.location.city))
 
   const structuredData = jsonLd(
     breadcrumbSchema(locale, [
@@ -59,29 +62,25 @@ export default async function LocationsIndexPage({ params }) {
           </p>
         </div>
 
-        <div className="w-full max-w-[1280px] px-4 md:px-10 pb-16 flex flex-col gap-10">
-          {groups.length === 0 && (
+        <div className="w-full max-w-[1280px] px-4 md:px-10 pb-16">
+          {cards.length === 0 ? (
             <p className="text-text-muted text-center">{t.empty}</p>
+          ) : (
+            <LocationCardGrid>
+              {cards.map(({ slug, location, count, cover }) => (
+                <LocationCard
+                  key={slug}
+                  slug={slug}
+                  location={location}
+                  cover={cover}
+                  locale={locale}
+                  cityLabel={CITIES[location.city][locale]}
+                  headingLevel={2}
+                  countLabel={interpolate(t.photoCount, { count })}
+                />
+              ))}
+            </LocationCardGrid>
           )}
-          {groups.map(({ city, cards }) => (
-            <section key={city}>
-              <h2 className="mb-4 text-xl md:text-2xl font-bold text-text-main">
-                {CITIES[city][locale]}
-              </h2>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {cards.map(({ slug, location, count, cover }) => (
-                  <LocationCard
-                    key={slug}
-                    slug={slug}
-                    location={location}
-                    cover={cover}
-                    locale={locale}
-                    countLabel={interpolate(t.photoCount, { count })}
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
         </div>
       </main>
     </>

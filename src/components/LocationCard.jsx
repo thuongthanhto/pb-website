@@ -6,17 +6,43 @@ const publicDomain =
   'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev'
 
 /**
+ * Lưới thẻ địa điểm dùng chung cho /dia-diem và mục "Địa điểm khác".
+ * Dùng flex-wrap + justify-center thay vì grid: hàng cuối thiếu thẻ (vd 5 thẻ
+ * trên lưới 3 cột) sẽ nằm giữa thay vì dồn trái để lại 1/3–2/3 hàng trống.
+ * Mobile 2 thẻ/hàng, lg 3 thẻ/hàng.
+ */
+export function LocationCardGrid({ children }) {
+  return (
+    <div className="flex flex-wrap justify-center gap-3 sm:gap-6 [&>*]:w-[calc((100%-0.75rem)/2)] sm:[&>*]:w-[calc((100%-1.5rem)/2)] lg:[&>*]:w-[calc((100%-3rem)/3)]">
+      {children}
+    </div>
+  )
+}
+
+/**
  * Thẻ một địa điểm (ảnh bìa + tên + số ảnh), dùng ở trang /dia-diem và mục
  * "Địa điểm khác" cuối trang /dia-diem/<slug>.
  * `countLabel` là chuỗi đã dịch sẵn, vd "12 ảnh".
+ * `cityLabel` (tuỳ chọn) hiện tên thành phố nhỏ phía trên tên địa điểm.
+ * `headingLevel` để giữ thứ tự heading đúng theo trang dùng thẻ (h2 / h3).
  */
-export function LocationCard({ slug, location, cover, locale, countLabel }) {
+export function LocationCard({
+  slug,
+  location,
+  cover,
+  locale,
+  countLabel,
+  cityLabel,
+  headingLevel = 3,
+}) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3'
+
   return (
     <Link
       href={localePath(locale, `/dia-diem/${slug}`)}
-      className="group overflow-hidden rounded-2xl bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all"
+      className="group flex flex-col overflow-hidden rounded-xl sm:rounded-2xl bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all"
     >
-      <div className="aspect-[4/3] overflow-hidden bg-surface-raised">
+      <div className="aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-surface-raised">
         {cover && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -27,11 +53,16 @@ export function LocationCard({ slug, location, cover, locale, countLabel }) {
           />
         )}
       </div>
-      <div className="p-4">
-        <h3 className="font-bold text-text-main group-hover:text-primary transition-colors">
+      <div className="p-3 sm:p-4">
+        {cityLabel && (
+          <p className="mb-0.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-primary">
+            {cityLabel}
+          </p>
+        )}
+        <Heading className="text-sm sm:text-base font-bold leading-snug text-text-main group-hover:text-primary transition-colors">
           {location.name[locale]}
-        </h3>
-        <p className="text-sm text-text-muted">{countLabel}</p>
+        </Heading>
+        <p className="text-xs sm:text-sm text-text-muted">{countLabel}</p>
       </div>
     </Link>
   )

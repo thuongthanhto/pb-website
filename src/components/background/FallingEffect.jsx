@@ -1,7 +1,9 @@
 'use client'
 
 // Hiệu ứng rơi: tuyết (snow) hoặc hoa anh đào (petals) rơi nhẹ nhàng từ trên xuống.
-// Phủ toàn màn hình, cố định, không nhận tương tác chuột.
+// Phủ toàn màn hình, cố định, không nhận tương tác chuột. Nằm DƯỚI nội dung
+// trang (z-0, wrapper nội dung ở layout là z-10) nên không bao giờ che chữ,
+// ảnh hay thẻ — chỉ thấy ở các khoảng nền trống.
 // Các hạt khai báo tĩnh (seed cố định) để tránh lệch hydrate server/client.
 //
 // Mỗi hạt gồm 3 lớp lồng nhau, mỗi lớp một chu kỳ riêng (lệch nhau) nên
@@ -117,7 +119,7 @@ export default function FallingEffect({ variant = 'petals', count = 28 }) {
   return (
     <div
       aria-hidden="true"
-      className="falling-bg pointer-events-none fixed inset-0 z-30 overflow-hidden"
+      className="falling-bg pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
       {seeds.map((s, i) => (
         <span
