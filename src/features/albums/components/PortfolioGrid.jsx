@@ -1,24 +1,24 @@
 'use client';
 
 import { useState, useRef, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n/I18nProvider';
 import { photoAlt } from '@/lib/photo-alt';
 
-function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
+// Một ô ảnh dùng chung cho cả lưới vuông mobile lẫn masonry sm+ (chỉ đổi bằng
+// CSS, xem PortfolioGrid). Ảnh hiện ngay trong HTML server render — không còn
+// opacity-0/blur chờ JS — nền bg-surface làm placeholder trong lúc tải.
+// `reveal`: chỉ ô được thêm sau khi trang đã chạy (infinite scroll) mới có
+// hiệu ứng trồi lên khi cuộn tới; ô có sẵn từ SSR luôn hiển thị.
+function PhotoTile({ image, imageUrl, index, sizes, priority, reveal, onImageClick }) {
   const { dict, locale } = useI18n();
-  const [loaded, setLoaded] = useState(false);
-  const [shown, setShown] = useState(false);
-  const imgRef = useRef(null);
+  const [shown, setShown] = useState(!reveal);
   const tileRef = useRef(null);
-
-  // Ảnh đã cache có thể "complete" ngay khi mount -> onLoad không bắn, xử lý ở đây.
-  useEffect(() => {
-    if (imgRef.current?.complete) setLoaded(true);
-  }, []);
 
   // Reveal khi cuộn tới (thay framer-motion whileInView bằng IntersectionObserver)
   useEffect(() => {
+    if (!reveal) return;
     const el = tileRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
@@ -32,12 +32,12 @@ function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [reveal]);
 
   // Reserve the exact space before the image loads so tiles never resize on
   // load. Uses the real ratio measured on the server; falls back to 3:4.
-  const ratio =
-    image.width && image.height ? `${image.width} / ${image.height}` : '3 / 4';
+  const hasSize = image.width && image.height;
+  const ratio = hasSize ? `${image.width} / ${image.height}` : '3 / 4';
   const revealDelay = (index % 4) * 0.05;
 
   return (
@@ -45,29 +45,31 @@ function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
       ref={tileRef}
       onClick={() => onImageClick(image)}
       style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? 'none' : 'translateY(10px)',
-        transition: `opacity 0.8s ease-out ${revealDelay}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${revealDelay}s`,
+        // Lưới mobile: cột masonry là `display: contents` nên ô xếp theo
+        // `order` = thứ tự gốc. Trong masonry, ô trong cùng một cột vốn đã
+        // tăng dần theo index nên `order` không ảnh hưởng gì.
+        order: index,
+        ...(reveal && {
+          opacity: shown ? 1 : 0,
+          transform: shown ? 'none' : 'translateY(10px)',
+          transition: `opacity 0.8s ease-out ${revealDelay}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${revealDelay}s`,
+        }),
       }}
-      className={`group relative overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 ${
-        square ? 'rounded-none' : 'rounded-2xl'
-      }`}
+      className="group relative overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 rounded-none sm:rounded-2xl"
     >
       <div
-        className={`w-full h-full bg-surface relative overflow-hidden ${
-          square ? 'aspect-square' : ''
-        }`}
-        style={square ? undefined : { aspectRatio: ratio }}
+        className="w-full h-full bg-surface relative overflow-hidden aspect-square sm:aspect-[var(--ar)]"
+        style={{ '--ar': ratio }}
       >
-        <img
-          ref={imgRef}
+        <Image
           src={imageUrl}
           alt={photoAlt(image, locale, dict.albums)}
-          onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-[opacity,filter,transform] duration-700 ease-out group-hover:scale-105 ${
-            loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
-          }`}
-          loading="lazy"
+          width={hasSize ? image.width : 1200}
+          height={hasSize ? image.height : 1600}
+          sizes={sizes}
+          quality={75}
+          priority={priority}
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
         {/* Overlay hiện khi hover: lớp tối + icon phóng to gợi ý click */}
@@ -204,6 +206,43 @@ function fitColumnsToCount(cols, count) {
 const MAX_COLUMN_WIDTH = 360;
 const COLUMN_GAP = 24; // = gap-6
 
+// Số ảnh "ưu tiên" (preload, fetchpriority=high, không lazy): hàng đầu của
+// lưới mobile 3 cột / đầu các cột masonry — thường là ảnh LCP.
+const PRIORITY_COUNT = 3;
+
+// Thuộc tính `sizes` cho next/image, khớp bề rộng cột thật ở từng breakpoint
+// (container max 1280px, padding px-1 / sm:px-4 / md:px-10, gap-1 / gap-6).
+// Phần mobile (ô vuông, phụ thuộc tỉ lệ từng ảnh) do mobileSize() thêm vào.
+// `colsAt(b)` = số cột thực tế khi breakpoint cho b cột (gallery nhỏ có thể ít
+// hơn). Khi bị thu gọn (ít cột hơn breakpoint) mỗi cột đã bị chặn ở
+// MAX_COLUMN_WIDTH ở mọi viewport >= sm, nên dùng thẳng 360px.
+function buildSizes(colsAt) {
+  const col = (b, pad, vw = '100vw') => {
+    const c = colsAt(b);
+    if (c < b) return `${MAX_COLUMN_WIDTH}px`;
+    return `calc((${vw} - ${pad + (c - 1) * COLUMN_GAP}px) / ${c})`;
+  };
+  const c4 = colsAt(4);
+  const xl =
+    c4 < 4
+      ? `${MAX_COLUMN_WIDTH}px`
+      : `${Math.ceil((1280 - 80 - (c4 - 1) * COLUMN_GAP) / c4)}px`;
+  return [
+    `(max-width: 767px) ${col(2, 32)}`,
+    `(max-width: 1023px) ${col(2, 80)}`,
+    `(max-width: 1279px) ${col(3, 80)}`,
+    xl,
+  ].join(', ');
+}
+
+// Mobile: ô vuông 1/3 màn hình, object-cover. Ảnh ngang bị cắt hai bên nên
+// cần bản rộng hơn ô theo đúng tỉ lệ w/h, không thì ảnh bị phóng to, mờ.
+function mobileSize(image) {
+  const ar = image.width && image.height ? image.width / image.height : 3 / 4;
+  const factor = Math.max(1, ar) / 3;
+  return `(max-width: 639px) calc((100vw - 16px) * ${factor.toFixed(3)})`;
+}
+
 export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
   const { dict } = useI18n();
   const publicDomain =
@@ -218,6 +257,21 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
   );
   const cols = columns.length;
 
+  // Số cột thực tế ở từng breakpoint (chỉ đọc lại logic layout, không đổi nó)
+  // để `sizes` đúng ngay từ HTML server, trước khi biết bề rộng màn hình.
+  const sizes = useMemo(() => {
+    const memo = {};
+    const colsAt = (b) => {
+      const max = fitColumnsToCount(b, images.length);
+      if (!(max in memo)) memo[max] = layoutColumns(images, max).length;
+      return memo[max];
+    };
+    return buildSizes(colsAt);
+  }, [images]);
+
+  // Ô có từ lần render đầu (SSR) luôn hiển thị; ô nạp thêm khi cuộn mới reveal.
+  const initialCount = useRef(images.length);
+
   const urlFor = (image) => `${publicDomain}/${image.key}`;
 
   // No filtering needed here - AlbumsSection already filters the images
@@ -229,40 +283,31 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
     );
   }
 
+  // MỘT lưới duy nhất cho mọi kích thước (trước đây render 2 bản: lưới vuông
+  // mobile + masonry sm+, ẩn/hiện bằng CSS -> mỗi ảnh xuất hiện 2 lần trong
+  // HTML). Mobile: container là grid 3 cột, các cột masonry `display: contents`
+  // nên ô thành grid item, xếp theo `order`. sm+: flex các cột masonry.
   return (
     <div className="w-full max-w-[1280px] px-1 sm:px-4 md:px-10 pb-24 mx-auto">
-      {/* Mobile: uniform square grid (CSS grid never reflows on append) */}
-      <div className="grid grid-cols-3 gap-1 sm:hidden">
-        {images.map((image, index) => (
-          <PhotoTile
-            key={image.id}
-            image={image}
-            imageUrl={urlFor(image)}
-            index={index}
-            onImageClick={onImageClick}
-            square
-          />
-        ))}
-      </div>
-
-      {/* sm+: fixed-column masonry. Items only ever append to the bottom of a
-          column, so scrolling in more photos can't reshuffle existing tiles. */}
       <div
-        className="hidden sm:flex gap-6 mx-auto"
+        className="grid grid-cols-3 gap-1 sm:flex sm:gap-6 mx-auto sm:max-w-[var(--max-w)]"
         style={
           cols < breakpointCols
-            ? { maxWidth: cols * MAX_COLUMN_WIDTH + (cols - 1) * COLUMN_GAP }
+            ? { '--max-w': `${cols * MAX_COLUMN_WIDTH + (cols - 1) * COLUMN_GAP}px` }
             : undefined
         }
       >
         {columns.map((column, ci) => (
-          <div key={ci} className="flex-1 min-w-0 flex flex-col gap-6">
+          <div key={ci} className="contents sm:flex sm:flex-1 sm:min-w-0 sm:flex-col sm:gap-6">
             {column.map(({ image, index }) => (
               <PhotoTile
                 key={image.id}
                 image={image}
                 imageUrl={urlFor(image)}
                 index={index}
+                sizes={`${mobileSize(image)}, ${sizes}`}
+                priority={index < PRIORITY_COUNT}
+                reveal={index >= initialCount.current}
                 onImageClick={onImageClick}
               />
             ))}

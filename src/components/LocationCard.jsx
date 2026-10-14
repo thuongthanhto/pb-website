@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { localePath } from '@/i18n/config'
 
 const publicDomain =
@@ -25,6 +26,7 @@ export function LocationCardGrid({ children }) {
  * `countLabel` là chuỗi đã dịch sẵn, vd "12 ảnh".
  * `cityLabel` (tuỳ chọn) hiện tên thành phố nhỏ phía trên tên địa điểm.
  * `headingLevel` để giữ thứ tự heading đúng theo trang dùng thẻ (h2 / h3).
+ * `priority` cho vài thẻ đầu khi lưới nằm ngay màn hình đầu (trang /dia-diem).
  */
 export function LocationCard({
   slug,
@@ -34,6 +36,7 @@ export function LocationCard({
   countLabel,
   cityLabel,
   headingLevel = 3,
+  priority = false,
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3'
 
@@ -42,14 +45,18 @@ export function LocationCard({
       href={localePath(locale, `/dia-diem/${slug}`)}
       className="group flex flex-col overflow-hidden rounded-xl sm:rounded-2xl bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all"
     >
-      <div className="aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-surface-raised">
+      <div className="relative aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-surface-raised">
         {cover && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          // Ảnh bìa qua next/image (bản thu nhỏ). `sizes` khớp LocationCardGrid:
+          // 2 thẻ/hàng tới lg, 3 thẻ/hàng từ lg, container tối đa 1280px.
+          <Image
             src={`${publicDomain}/${cover.key}`}
             alt={location.name[locale]}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 384px"
+            quality={75}
+            priority={priority}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
       </div>

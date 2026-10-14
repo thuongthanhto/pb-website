@@ -67,7 +67,7 @@ export default async function LocationsIndexPage({ params }) {
             <p className="text-text-muted text-center">{t.empty}</p>
           ) : (
             <LocationCardGrid>
-              {cards.map(({ slug, location, count, cover }) => (
+              {cards.map(({ slug, location, count, cover }, i) => (
                 <LocationCard
                   key={slug}
                   slug={slug}
@@ -76,6 +76,7 @@ export default async function LocationsIndexPage({ params }) {
                   locale={locale}
                   cityLabel={CITIES[location.city][locale]}
                   headingLevel={2}
+                  priority={i < 2}
                   countLabel={interpolate(t.photoCount, { count })}
                 />
               ))}
