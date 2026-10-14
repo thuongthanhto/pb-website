@@ -8,6 +8,8 @@ import { LocationDropdown } from './LocationDropdown';
 import { FloatingCTA } from './FloatingCTA';
 import { ViewerContext } from './ViewerContext';
 import { Lightbox } from '@/components/Lightbox';
+import { getLocationSlugsInUse } from '@/data/locations';
+import { photoAlt, photoLocationName } from '@/lib/photo-alt';
 
 const publicDomain =
   process.env.NEXT_PUBLIC_R2_DOMAIN ||
@@ -24,9 +26,20 @@ const ALL = 'all';
 const matches = (img, location) =>
   location === ALL || img.locationSlug === location;
 
+// ?photo= dùng đường dẫn tương đối sau 'photos/' (vd 'Thuong&Phuong/grand-
+// mercure-da-lat/DSC05346.webp') vì tên file trùng nhau giữa các album.
+const PHOTO_PREFIX = 'photos/';
+const photoParam = (img) =>
+  img.key.startsWith(PHOTO_PREFIX) ? img.key.slice(PHOTO_PREFIX.length) : img.key;
+// Link cũ chỉ có tên file -> vẫn nhận, lấy ảnh đầu tiên trùng tên.
+const findPhoto = (images, value) =>
+  images.find((i) => i.key === PHOTO_PREFIX + value) ??
+  images.find((i) => i.fileName === value) ??
+  null;
+
 export function AlbumsSection({ images = [], showLocations = true }) {
   const [selectedLocation, setSelectedLocation] = useState(ALL);
-  const { dict, path } = useI18n();
+  const { dict, locale, path } = useI18n();
   const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
@@ -38,11 +51,17 @@ export function AlbumsSection({ images = [], showLocations = true }) {
     const syncFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
 
-      const location = (showLocations && params.get('location')) || ALL;
-      setSelectedLocation(location);
+      // Slug lạ / chưa có ảnh -> về 'all' thay vì hiện lưới rỗng.
+      const requested = showLocations ? params.get('location') : null;
+      let location =
+        requested && getLocationSlugsInUse(images).includes(requested) ? requested : ALL;
 
       const photo = params.get('photo');
-      const img = photo ? images.find((i) => i.fileName === photo) : null;
+      const img = photo ? findPhoto(images, photo) : null;
+      // Ảnh không thuộc địa điểm đang lọc -> bỏ lọc để ảnh nằm trong danh sách.
+      if (img && !matches(img, location)) location = ALL;
+      setSelectedLocation(location);
+
       if (img) {
         setCurrentImage(img);
         setViewerOpen(true);
@@ -77,7 +96,7 @@ export function AlbumsSection({ images = [], showLocations = true }) {
     if (selectedLocation === ALL) params.delete('location');
     else params.set('location', selectedLocation);
 
-    if (viewerOpen && currentImage) params.set('photo', currentImage.fileName);
+    if (viewerOpen && currentImage) params.set('photo', photoParam(currentImage));
     else params.delete('photo');
 
     const query = params.toString();
@@ -106,9 +125,10 @@ export function AlbumsSection({ images = [], showLocations = true }) {
   // Dữ liệu cho Lightbox dùng chung (điều hướng + phím tắt do Lightbox lo)
   const viewerItems = paginatedImages.map((img) => ({
     src: `${publicDomain}/${img.key}`,
-    alt: img.fileName,
+    alt: photoAlt(img, locale, dict.albums),
+    // Tên địa điểm dịch theo ngôn ngữ đang xem (img.location luôn là tiếng Việt).
     caption:
-      img.location ||
+      photoLocationName(img, locale) ||
       (img.title && img.title !== img.fileName ? img.title : undefined),
   }));
   const viewerIndex =

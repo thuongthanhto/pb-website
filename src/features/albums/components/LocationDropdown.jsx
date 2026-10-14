@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import { Icon } from '@/components/Icon';
+import { useOverlayFlag } from '@/components/useOverlayFlag';
 import { useI18n } from '@/i18n/I18nProvider';
 import { CITIES, LOCATIONS, getLocationName, getLocationSlugsInUse } from '@/data/locations';
 
@@ -16,14 +18,24 @@ const fold = (text) => text.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ
  * Bộ lọc địa điểm dạng dropdown: một nút duy nhất, mở ra danh sách nhóm theo
  * thành phố kèm số ảnh. Khác hàng pill của album, số địa điểm có thể lên tới
  * vài chục nên không xếp thành tab được.
+ *
+ * A11y: dùng mẫu disclosure (nút + aria-expanded/aria-controls, lựa chọn là
+ * button thường có aria-pressed) thay vì listbox — listbox đòi điều hướng
+ * bằng phím mũi tên mà ô tìm kiếm + link trong panel không hợp.
  */
 export function LocationDropdown({ images = [], active = ALL, onChange }) {
-  const { dict, locale } = useI18n();
+  const { dict, locale, path } = useI18n();
   const t = dict.albums.filters;
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const rootRef = useRef(null);
   const searchRef = useRef(null);
+  const triggerRef = useRef(null);
+  const panelRef = useRef(null);
+  const panelId = useId();
+
+  // Dropdown mở thì ẩn nút nổi Zalo / Đặt lịch để không che panel.
+  useOverlayFlag(open);
 
   const slugs = useMemo(() => getLocationSlugsInUse(images), [images]);
 
@@ -58,7 +70,10 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
       if (!rootRef.current?.contains(e.target)) setOpen(false);
     };
     const onKey = (e) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
     };
     document.addEventListener('pointerdown', onPointer);
     document.addEventListener('keydown', onKey);
@@ -68,17 +83,19 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
     };
   }, [open]);
 
+  // Mở ra thì đưa focus vào panel (ô tìm nếu có, không thì lựa chọn đầu tiên).
   useEffect(() => {
-    if (open) searchRef.current?.focus();
+    if (open) (searchRef.current ?? panelRef.current?.querySelector('button'))?.focus();
     else setQuery('');
   }, [open]);
 
   if (slugs.length === 0) return null;
 
-  const current = active in LOCATIONS ? active : ALL;
+  const current = Object.hasOwn(LOCATIONS, active) ? active : ALL;
   const select = (slug) => {
     onChange(slug);
     setOpen(false);
+    triggerRef.current?.focus();
   };
 
   const optionClass = (selected) =>
@@ -91,10 +108,11 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
   return (
     <div ref={rootRef} className="relative flex justify-center pt-2">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-haspopup="listbox"
         aria-expanded={open}
+        aria-controls={panelId}
         className={`flex h-10 items-center gap-2 rounded-full px-5 transition-all whitespace-nowrap ${
           current !== ALL
             ? 'bg-primary text-on-primary font-bold hover:shadow-lg hover:shadow-primary/30'
@@ -113,7 +131,9 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
 
       {open && (
         <div
-          role="listbox"
+          ref={panelRef}
+          id={panelId}
+          role="region"
           aria-label={t.locationsLabel}
           className="absolute top-full z-50 mt-2 w-[min(340px,calc(100vw-32px))] rounded-2xl border border-border bg-surface p-2 shadow-xl"
         >
@@ -138,8 +158,7 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
             {!query && (
               <button
                 type="button"
-                role="option"
-                aria-selected={current === ALL}
+                aria-pressed={current === ALL}
                 onClick={() => select(ALL)}
                 className={optionClass(current === ALL)}
               >
@@ -166,8 +185,7 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
                     <button
                       key={slug}
                       type="button"
-                      role="option"
-                      aria-selected={current === slug}
+                      aria-pressed={current === slug}
                       onClick={() => select(slug)}
                       className={optionClass(current === slug)}
                     >
@@ -183,6 +201,16 @@ export function LocationDropdown({ images = [], active = ALL, onChange }) {
             {groups.length === 0 && (
               <p className="px-3 py-4 text-center text-sm text-text-muted">{t.noLocationMatch}</p>
             )}
+          </div>
+
+          {/* Lối sang trang tổng hợp địa điểm (có mô tả, bản đồ từng nơi). */}
+          <div className="mt-2 border-t border-border pt-2">
+            <Link
+              href={path('/dia-diem')}
+              className="flex w-full items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold text-primary hover:bg-surface-raised transition-colors"
+            >
+              {t.viewAllLocations}
+            </Link>
           </div>
         </div>
       )}

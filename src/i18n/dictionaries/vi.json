@@ -6,7 +6,8 @@
       "home": "Trang chủ",
       "albums": "Bộ sưu tập",
       "pricing": "Bảng giá",
-      "contact": "Liên hệ"
+      "contact": "Liên hệ",
+      "locations": "Địa điểm"
     },
     "menu": {
       "label": "Menu",
@@ -200,9 +201,13 @@
       "locationsLabel": "Lọc theo địa điểm chụp",
       "locationButton": "Địa điểm",
       "searchLocations": "Tìm địa điểm…",
-      "noLocationMatch": "Không tìm thấy địa điểm"
+      "noLocationMatch": "Không tìm thấy địa điểm",
+      "viewAllLocations": "Xem tất cả địa điểm →"
     },
-    "empty": "Không tìm thấy ảnh nào"
+    "empty": "Không tìm thấy ảnh nào",
+    "photoAlt": "Ảnh cưới tại {location} – PhatBo Photography",
+    "photoAltGeneric": "Ảnh cưới PhatBo Photography",
+    "galleryDescription": "Ảnh cưới thật của PhatBo Photography: pre-wedding studio, ngoại cảnh và phóng sự ngày cưới."
   },
   "pricing": {
     "meta": {
@@ -529,6 +534,8 @@
     "galleryTitle": "Ảnh chụp tại {name}",
     "ctaPricing": "Xem bảng giá",
     "empty": "Chưa có địa điểm nào.",
-    "viewPage": "Xem trang địa điểm →"
+    "viewPage": "Xem trang địa điểm →",
+    "backToAll": "← Tất cả địa điểm",
+    "otherLocations": "Địa điểm khác"
   }
 }

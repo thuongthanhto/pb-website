@@ -6,7 +6,8 @@
       "home": "Home",
       "albums": "Albums",
       "pricing": "Pricing",
-      "contact": "Contact"
+      "contact": "Contact",
+      "locations": "Locations"
     },
     "menu": {
       "label": "Menu",
@@ -200,9 +201,13 @@
       "locationsLabel": "Filter by location",
       "locationButton": "Location",
       "searchLocations": "Search locations…",
-      "noLocationMatch": "No matching location"
+      "noLocationMatch": "No matching location",
+      "viewAllLocations": "All locations →"
     },
-    "empty": "No photos found"
+    "empty": "No photos found",
+    "photoAlt": "Wedding photo at {location} – PhatBo Photography",
+    "photoAltGeneric": "Wedding photo by PhatBo Photography",
+    "galleryDescription": "Real wedding photos by PhatBo Photography: studio and outdoor pre-wedding shoots plus wedding-day coverage."
   },
   "pricing": {
     "meta": {
@@ -529,6 +534,8 @@
     "galleryTitle": "Photos at {name}",
     "ctaPricing": "See pricing",
     "empty": "No locations yet.",
-    "viewPage": "View location page →"
+    "viewPage": "View location page →",
+    "backToAll": "← All locations",
+    "otherLocations": "Other locations"
   }
 }

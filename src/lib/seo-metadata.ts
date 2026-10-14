@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 // @ts-expect-error — config i18n là JS thuần, project không bật allowJs types
 import { locales, localeMeta, localePath, defaultLocale } from '@/i18n/config';
+// @ts-expect-error — dictionary i18n là JS thuần
+import { getDictionary } from '@/i18n/dictionaries';
+// @ts-expect-error — helper JS thuần
+import { photoAlt, photoLocationName } from './photo-alt';
 
 export type Locale = 'vi' | 'en';
 
@@ -168,12 +172,13 @@ export function generateImageGalleryStructuredData(
   // Landing page địa điểm dùng lại gallery này với URL/tên riêng.
   { path = '/albums', name = 'PhatBo Photography Photo Gallery' } = {}
 ) {
+  const t = getDictionary(locale).albums;
   return {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
     inLanguage: localeMeta[locale].hrefLang,
     name,
-    description: 'Professional photography portfolio',
+    description: t.galleryDescription,
     url: `${siteConfig.siteUrl}${localePath(locale, path)}`,
     author: {
       '@type': 'Person',
@@ -182,17 +187,19 @@ export function generateImageGalleryStructuredData(
     image: images.slice(0, 10).map((img) => ({
       '@type': 'ImageObject',
       contentUrl: `${process.env.NEXT_PUBLIC_R2_DOMAIN}/${img.key}`,
-      name: img.title || img.fileName,
+      // title tự đặt trong metadata.json (nếu có), không thì mô tả theo địa
+      // điểm — tên file kiểu "DSC05346.webp" vô nghĩa với Google.
+      name: img.title && img.title !== img.fileName ? img.title : photoAlt(img, locale, t),
       description: img.description || '',
       datePublished: img.date || img.lastModified,
       author: {
         '@type': 'Person',
         name: img.photographer || siteConfig.author,
       },
-      ...(img.location && {
+      ...(photoLocationName(img, locale) && {
         contentLocation: {
           '@type': 'Place',
-          name: img.location,
+          name: photoLocationName(img, locale),
         },
       }),
     })),

@@ -81,8 +81,11 @@ async function getAllImagesFromPhotos() {
     } while (ContinuationToken);
     return files;
   } catch (error) {
+    // Ném lỗi lên thay vì trả [] — trả mảng rỗng thì ISR sẽ cache một trang
+    // "không có ảnh" và sitemap mất hết trang địa điểm. Ném lỗi thì
+    // getAllImages() bỏ cache in-flight, còn ISR giữ nguyên bản tốt gần nhất.
     console.error("Lỗi lấy danh sách ảnh:", error);
-    return [];
+    throw error;
   }
 }
 

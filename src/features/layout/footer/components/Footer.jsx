@@ -12,6 +12,7 @@ export default function Footer() {
   const links = [
     { href: '/contact', label: dict.common.nav.contact },
     { href: '/albums', label: dict.common.nav.albums },
+    { href: '/dia-diem', label: dict.common.nav.locations },
     { href: '/pricing', label: dict.common.nav.pricing },
   ]
 
@@ -31,7 +32,9 @@ export default function Footer() {
           />
         </Link>
 
-        <div className="flex items-center gap-6">
+        {/* Mobile: mạng xã hội và link xếp 2 hàng — 4 link chung một hàng với
+            icon thì bị bẻ chữ ("Bộ sưu / tập"). */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           {/* Social Links */}
           <div className="flex gap-4">
             <a
@@ -67,7 +70,7 @@ export default function Footer() {
           <div className="hidden md:block h-4 w-px bg-border-strong"></div>
 
           {/* Links */}
-          <nav className="flex gap-6 text-text-secondary text-sm">
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 whitespace-nowrap text-text-secondary text-sm">
             {links.map((link) => (
               <Link
                 key={link.href}

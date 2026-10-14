@@ -61,10 +61,11 @@ export function enrichImageWithMetadata(
 
   // Ưu tiên: metadata.json theo ảnh -> thư mục con mang tên slug địa điểm
   // (photos/<album>/<slug>/<file>, cho album chụp ở nhiều nơi) -> địa điểm
-  // gắn cho cả thư mục album.
+  // gắn cho cả thư mục album. Slug gõ sai trong metadata.json thì bỏ qua để
+  // vẫn rơi xuống thư mục con / FOLDER_LOCATIONS.
   const subfolder = image.key.split("/").slice(2, -1)[0];
   const locationSlug =
-    meta?.locationSlug ||
+    (getLocation(meta?.locationSlug) ? meta?.locationSlug : "") ||
     (getLocation(subfolder) ? subfolder : "") ||
     FOLDER_LOCATIONS[image.folder] ||
     "";

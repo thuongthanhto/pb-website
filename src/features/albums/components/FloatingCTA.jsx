@@ -14,7 +14,7 @@ export function FloatingCTA({ isHidden = false }) {
   if (shouldHide) return null
 
   return (
-    <div className="fixed bottom-8 right-8 z-40 flex items-center gap-3 animate-fade-in-up" style={{ animationDelay: '1s', animationFillMode: 'backwards' }}>
+    <div data-floating-cta className="fixed bottom-8 right-8 z-40 flex items-center gap-3 animate-fade-in-up" style={{ animationDelay: '1s', animationFillMode: 'backwards' }}>
       {/* Nhiều khách ngại gọi -> để sẵn một đường nhắn tin ngay cạnh nút đặt lịch. */}
       <a
         href={CONTACT.zalo}

@@ -28,6 +28,11 @@ export const LOCATIONS = {
     name: { vi: 'Streetstyle Quận 2', en: 'Saigon Street Style – District 2' },
     city: 'sai-gon',
     type: 'ngoai-canh',
+    // Mẫu mặc định ra title tiếng Anh > 60 ký tự -> Google cắt mất brand.
+    title: {
+      vi: 'Chụp Pre-Wedding Streetstyle Quận 2 | PhatBo',
+      en: 'Saigon Street Style Pre-Wedding – District 2 | PhatBo',
+    },
     address: 'Quận 2 (nay thuộc TP. Thủ Đức), TP. Hồ Chí Minh',
     description: {
       vi: 'Bộ ảnh pre-wedding phong cách streetstyle giữa phố Sài Gòn ở khu Quận 2: thang cuốn, kính, bê tông và nắng xiên qua các toà nhà — hiện đại, cá tính, đậm chất thành thị.',
@@ -126,8 +131,10 @@ export const CITIES = {
   bien: { vi: 'Biển & Resort', en: 'Beach & Resort' },
 }
 
+// Object.hasOwn: slug đến từ URL / metadata.json, tránh khớp nhầm key của
+// prototype như 'constructor', 'toString'.
 export function getLocation(slug) {
-  return slug ? LOCATIONS[slug] ?? null : null
+  return slug && Object.hasOwn(LOCATIONS, slug) ? LOCATIONS[slug] : null
 }
 
 export function getLocationName(slug, locale = 'vi') {
@@ -139,6 +146,22 @@ export function getLocationName(slug, locale = 'vi') {
 export function getLocationSlugsInUse(images = []) {
   const used = new Set(images.map((img) => img.locationSlug).filter(Boolean))
   return Object.keys(LOCATIONS).filter((slug) => used.has(slug))
+}
+
+/**
+ * Thẻ địa điểm cho trang /dia-diem: số ảnh + ảnh bìa (ảnh featured, không có
+ * thì ảnh mới nhất), theo thứ tự trong LOCATIONS.
+ */
+export function getLocationCards(images = []) {
+  return getLocationSlugsInUse(images).map((slug) => {
+    const photos = images.filter((img) => img.locationSlug === slug)
+    return {
+      slug,
+      location: LOCATIONS[slug],
+      count: photos.length,
+      cover: photos.find((img) => img.featured) ?? photos[0],
+    }
+  })
 }
 
 export function googleMapsUrl(location) {

@@ -1,16 +1,12 @@
-import Link from 'next/link'
 import { getAllImages } from '@/lib/r2-albums'
 import { generateSEOMetadata } from '@/lib/seo-metadata'
 import { breadcrumbSchema, jsonLd } from '@/lib/structured-data'
-import { normalizeLocale, localePath } from '@/i18n/config'
+import { normalizeLocale } from '@/i18n/config'
 import { getDictionary, interpolate } from '@/i18n/dictionaries'
-import { CITIES, LOCATIONS, getLocationSlugsInUse } from '@/data/locations'
+import { CITIES, getLocationCards } from '@/data/locations'
+import { LocationCard } from '@/components/LocationCard'
 
 export const revalidate = 60
-
-const publicDomain =
-  process.env.NEXT_PUBLIC_R2_DOMAIN ||
-  'https://pub-4e35e8513e3c44399e73dd02c4b4447d.r2.dev'
 
 export function generateMetadata({ params }) {
   const locale = normalizeLocale(params.locale)
@@ -31,15 +27,7 @@ export default async function LocationsIndexPage({ params }) {
 
   const images = await getAllImages()
   // Mỗi địa điểm: số ảnh + ảnh bìa (ảnh featured, không có thì ảnh mới nhất).
-  const cards = getLocationSlugsInUse(images).map((slug) => {
-    const photos = images.filter((img) => img.locationSlug === slug)
-    return {
-      slug,
-      location: LOCATIONS[slug],
-      count: photos.length,
-      cover: photos.find((img) => img.featured) ?? photos[0],
-    }
-  })
+  const cards = getLocationCards(images)
   const groups = Object.keys(CITIES)
     .map((city) => ({ city, cards: cards.filter((c) => c.location.city === city) }))
     .filter((group) => group.cards.length > 0)
@@ -82,30 +70,14 @@ export default async function LocationsIndexPage({ params }) {
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {cards.map(({ slug, location, count, cover }) => (
-                  <Link
+                  <LocationCard
                     key={slug}
-                    href={localePath(locale, `/dia-diem/${slug}`)}
-                    className="group overflow-hidden rounded-2xl bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow-xl transition-all"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden bg-surface-raised">
-                      {cover && (
-                        <img
-                          src={`${publicDomain}/${cover.key}`}
-                          alt={location.name[locale]}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-bold text-text-main group-hover:text-primary transition-colors">
-                        {location.name[locale]}
-                      </h3>
-                      <p className="text-sm text-text-muted">
-                        {interpolate(t.photoCount, { count })}
-                      </p>
-                    </div>
-                  </Link>
+                    slug={slug}
+                    location={location}
+                    cover={cover}
+                    locale={locale}
+                    countLabel={interpolate(t.photoCount, { count })}
+                  />
                 ))}
               </div>
             </section>

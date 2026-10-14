@@ -12,13 +12,22 @@ const routes = [
   { path: '/contact', changeFrequency: 'yearly', priority: 0.6 },
 ]
 
+// Sitemap tự build lại mỗi giờ để có trang địa điểm mới.
+export const revalidate = 3600
+
 const absolute = (path) => `${siteConfig.siteUrl}${path === '/' ? '' : path}`
 
 export default async function sitemap() {
   const lastModified = new Date()
 
   // Landing page địa điểm: chỉ những địa điểm đã có ảnh (khớp generateStaticParams).
-  const locationSlugs = getLocationSlugsInUse(await getAllImages())
+  // R2 lỗi thì vẫn trả sitemap với các route tĩnh, đừng để cả sitemap 500.
+  let locationSlugs = []
+  try {
+    locationSlugs = getLocationSlugsInUse(await getAllImages())
+  } catch (error) {
+    console.error('Sitemap: không lấy được danh sách ảnh, chỉ dùng route tĩnh:', error)
+  }
   const allRoutes = [
     ...routes,
     ...(locationSlugs.length > 0

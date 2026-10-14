@@ -133,6 +133,22 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
+/* Nút nổi (Zalo / Đặt lịch) ẩn khi drawer mobile hoặc dropdown đang mở —
+   cờ data-overlay-open do hook useOverlayFlag bật trên <body>. */
+body[data-overlay-open] [data-floating-cta] {
+  display: none;
+}
+
+/* Trang có nút nổi: chừa thêm chỗ dưới footer để nút không che dòng bản quyền. */
+body:has([data-floating-cta]) footer > div {
+  padding-bottom: 7rem;
+}
+@media (min-width: 768px) {
+  body:has([data-floating-cta]) footer > div {
+    padding-bottom: 6rem;
+  }
+}
+
 /* Hiệu ứng nền bokeh: các đốm sáng mờ trôi nhẹ */
 .bokeh-dot {
   position: absolute;

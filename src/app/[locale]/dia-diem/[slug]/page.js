@@ -12,9 +12,11 @@ import { getDictionary, interpolate } from '@/i18n/dictionaries'
 import {
   CITIES,
   getLocation,
+  getLocationCards,
   getLocationSlugsInUse,
   googleMapsUrl,
 } from '@/data/locations'
+import { LocationCard } from '@/components/LocationCard'
 
 export const revalidate = 60
 
@@ -28,8 +30,9 @@ export async function generateStaticParams() {
 async function loadLocation(slug) {
   const location = getLocation(slug)
   if (!location) return null
-  const images = (await getAllImages()).filter((img) => img.locationSlug === slug)
-  return images.length > 0 ? { location, images } : null
+  const allImages = await getAllImages()
+  const images = allImages.filter((img) => img.locationSlug === slug)
+  return images.length > 0 ? { location, images, allImages } : null
 }
 
 export async function generateMetadata({ params }) {
@@ -62,26 +65,35 @@ export default async function LocationPage({ params }) {
   const data = await loadLocation(params.slug)
   if (!data) notFound()
 
-  const { location, images } = data
+  const { location, images, allImages } = data
   const name = location.name[locale]
   const city = CITIES[location.city]?.[locale]
   const path = `/dia-diem/${params.slug}`
   const galleryTitle =
     location.galleryTitle?.[locale] ?? interpolate(t.galleryTitle, { name })
 
+  // Mục "Địa điểm khác" cuối trang: mọi địa điểm đã có ảnh trừ trang hiện tại.
+  const otherCards = getLocationCards(allImages).filter((card) => card.slug !== params.slug)
+
   const structuredData = jsonLd(
     generateImageGalleryStructuredData(images, locale, {
       path,
       name: galleryTitle,
     }),
-    placeSchema(locale, {
-      slug: params.slug,
-      name,
-      description: location.description[locale],
-      address: location.address,
-      website: location.website,
-      geo: location.geo,
-    }),
+    // Place chỉ cho venue thật có địa chỉ; địa điểm dạng "nhóm" (Studio,
+    // Outdoor, Phóng sự...) không phải một nơi cụ thể nên bỏ qua.
+    ...(location.address
+      ? [
+          placeSchema(locale, {
+            slug: params.slug,
+            name,
+            description: location.description[locale],
+            address: location.address,
+            website: location.website,
+            geo: location.geo,
+          }),
+        ]
+      : []),
     breadcrumbSchema(locale, [
       { name: dict.common.nav.home, path: '/' },
       { name: t.nav, path: '/dia-diem' },
@@ -104,11 +116,14 @@ export default async function LocationPage({ params }) {
 
       <main className="flex-1 flex flex-col items-center w-full">
         <div className="w-full max-w-[960px] px-4 pt-10 md:pt-16 pb-8 md:pb-10 text-center animate-fade-in-up mx-auto">
-          <nav className="mb-4 text-sm font-semibold text-text-muted">
-            <Link href={localePath(locale, '/dia-diem')} className="hover:text-primary transition-colors">
-              {t.nav}
+          <nav className="mb-4 flex flex-wrap items-center justify-center gap-x-2 text-sm font-semibold text-text-muted">
+            <Link
+              href={localePath(locale, '/dia-diem')}
+              className="text-primary hover:underline"
+            >
+              {t.backToAll}
             </Link>
-            {city && <span> · {city}</span>}
+            {city && <span>· {city}</span>}
           </nav>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 md:mb-6 text-text-main">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
@@ -165,6 +180,26 @@ export default async function LocationPage({ params }) {
           </span>
         </h2>
         <AlbumsSection images={images} showLocations={false} />
+
+        {otherCards.length > 0 && (
+          <section className="w-full max-w-[1280px] px-4 md:px-10 pb-16">
+            <h2 className="mb-4 text-xl md:text-2xl font-bold text-text-main">
+              {t.otherLocations}
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {otherCards.map(({ slug, location: other, count, cover }) => (
+                <LocationCard
+                  key={slug}
+                  slug={slug}
+                  location={other}
+                  cover={cover}
+                  locale={locale}
+                  countLabel={interpolate(t.photoCount, { count })}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     </>
   )

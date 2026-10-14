@@ -8,14 +8,18 @@ import { useI18n } from '@/i18n/I18nProvider'
 import { stripLocale } from '@/i18n/config'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { useOverlayFlag } from '@/components/useOverlayFlag'
 
 export default function Header() {
   const { dict, path } = useI18n()
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // Drawer mở thì ẩn nút nổi Zalo / Đặt lịch (chúng nằm đè lên drawer).
+  useOverlayFlag(isMenuOpen)
 
   const navLinks = [
     { href: '/albums', label: dict.common.nav.albums },
+    { href: '/dia-diem', label: dict.common.nav.locations },
     { href: '/pricing', label: dict.common.nav.pricing },
     { href: '/contact', label: dict.common.nav.contact },
   ]

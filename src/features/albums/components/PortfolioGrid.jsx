@@ -3,8 +3,10 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n/I18nProvider';
+import { photoAlt } from '@/lib/photo-alt';
 
 function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
+  const { dict, locale } = useI18n();
   const [loaded, setLoaded] = useState(false);
   const [shown, setShown] = useState(false);
   const imgRef = useRef(null);
@@ -60,7 +62,7 @@ function PhotoTile({ image, imageUrl, index, onImageClick, square = false }) {
         <img
           ref={imgRef}
           src={imageUrl}
-          alt={image.fileName}
+          alt={photoAlt(image, locale, dict.albums)}
           onLoad={() => setLoaded(true)}
           className={`w-full h-full object-cover transition-[opacity,filter,transform] duration-700 ease-out group-hover:scale-105 ${
             loaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
