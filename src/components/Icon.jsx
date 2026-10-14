@@ -26,6 +26,10 @@ import {
   MdBolt,
   MdLightMode,
   MdDarkMode,
+  MdPlace,
+  MdExpandMore,
+  MdSearch,
+  MdCheck,
 } from 'react-icons/md';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { SiZalo } from 'react-icons/si';
@@ -56,6 +60,10 @@ const ICONS = {
   bolt: MdBolt,
   light_mode: MdLightMode,
   dark_mode: MdDarkMode,
+  place: MdPlace,
+  expand_more: MdExpandMore,
+  search: MdSearch,
+  check: MdCheck,
   zalo: SiZalo,
   // Tương thích tên cũ kiểu iconify (ContactSection / Footer)
   'mdi:instagram': FaInstagram,

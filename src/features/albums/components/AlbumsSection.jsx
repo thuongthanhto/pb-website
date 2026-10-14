@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FilterButtons, PortfolioGrid } from '.';
+import Link from 'next/link';
+import { useI18n } from '@/i18n/I18nProvider';
+import { PortfolioGrid } from '.';
+import { LocationDropdown } from './LocationDropdown';
 import { FloatingCTA } from './FloatingCTA';
 import { ViewerContext } from './ViewerContext';
 import { Lightbox } from '@/components/Lightbox';
@@ -12,13 +15,18 @@ const publicDomain =
 
 const IMAGES_PER_PAGE = 20; // Load 20 images per batch
 
-// State + URL param dùng chính key folder của R2 ('studio', 'V&K'...) chứ không
-// dùng nhãn hiển thị — nhãn thay đổi theo ngôn ngữ, key thì không, nên link
-// ?category=... vẫn share được giữa 2 phiên bản tiếng Việt / tiếng Anh.
+// Gallery chỉ lọc theo địa điểm chụp (slug trong src/data/locations.js) — đã
+// bỏ tab theo album/folder. State + URL param dùng slug chứ không dùng nhãn
+// hiển thị, nên link ?location=... share được giữa bản tiếng Việt / tiếng Anh.
+// Landing page /dia-diem/<slug> truyền ảnh đã lọc sẵn và tắt bộ lọc.
 const ALL = 'all';
 
-export function AlbumsSection({ images = [] }) {
-  const [selectedFolder, setSelectedFolder] = useState(ALL);
+const matches = (img, location) =>
+  location === ALL || img.locationSlug === location;
+
+export function AlbumsSection({ images = [], showLocations = true }) {
+  const [selectedLocation, setSelectedLocation] = useState(ALL);
+  const { dict, path } = useI18n();
   const [loadedCount, setLoadedCount] = useState(IMAGES_PER_PAGE);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
@@ -30,9 +38,8 @@ export function AlbumsSection({ images = [] }) {
     const syncFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
 
-      const category = params.get('category');
-      const folder = category || ALL;
-      setSelectedFolder(folder);
+      const location = (showLocations && params.get('location')) || ALL;
+      setSelectedLocation(location);
 
       const photo = params.get('photo');
       const img = photo ? images.find((i) => i.fileName === photo) : null;
@@ -41,8 +48,7 @@ export function AlbumsSection({ images = [] }) {
         setViewerOpen(true);
 
         // Make sure the opened photo is within the paginated slice so next/prev work
-        const list =
-          folder === ALL ? images : images.filter((i) => i.folder === folder);
+        const list = images.filter((i) => matches(i, location));
         const idx = list.findIndex((i) => i.id === img.id);
         if (idx >= 0) {
           setLoadedCount((prev) =>
@@ -56,7 +62,7 @@ export function AlbumsSection({ images = [] }) {
     syncFromUrl();
     window.addEventListener('popstate', syncFromUrl);
     return () => window.removeEventListener('popstate', syncFromUrl);
-  }, [images]);
+  }, [images, showLocations]);
 
   // Mirror the selected tab + opened photo into the URL so it can be reloaded/shared
   useEffect(() => {
@@ -66,19 +72,21 @@ export function AlbumsSection({ images = [] }) {
     }
     const params = new URLSearchParams(window.location.search);
 
-    if (selectedFolder === ALL) params.delete('category');
-    else params.set('category', selectedFolder);
+    params.delete('category'); // link cũ từ thời còn tab album
+
+    if (selectedLocation === ALL) params.delete('location');
+    else params.set('location', selectedLocation);
 
     if (viewerOpen && currentImage) params.set('photo', currentImage.fileName);
     else params.delete('photo');
 
     const query = params.toString();
     window.history.replaceState(null, '', query ? `?${query}` : window.location.pathname);
-  }, [selectedFolder, viewerOpen, currentImage]);
+  }, [selectedLocation, viewerOpen, currentImage]);
 
-  const handleFolderChange = (folder) => {
-    setSelectedFolder(folder);
-    setLoadedCount(IMAGES_PER_PAGE); // Reset pagination when changing folder
+  const handleLocationChange = (location) => {
+    setSelectedLocation(location);
+    setLoadedCount(IMAGES_PER_PAGE); // Reset pagination when changing filter
   };
 
   const handleImageClick = (image) => {
@@ -90,11 +98,7 @@ export function AlbumsSection({ images = [] }) {
     setViewerOpen(false);
   };
 
-  // Filter images by folder
-  const filteredImages =
-    selectedFolder === ALL
-      ? images
-      : images.filter((img) => img.folder === selectedFolder);
+  const filteredImages = images.filter((img) => matches(img, selectedLocation));
 
   const paginatedImages = filteredImages.slice(0, loadedCount);
   const hasMoreImages = paginatedImages.length < filteredImages.length;
@@ -135,15 +139,29 @@ export function AlbumsSection({ images = [] }) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [hasMoreImages, selectedFolder]);
+  }, [hasMoreImages, selectedLocation]);
 
   return (
     <ViewerContext.Provider value={{ viewerOpen }}>
-      <FilterButtons
-        images={images}
-        activeFolder={selectedFolder}
-        onFilterChange={handleFolderChange}
-      />
+      <div className="w-full max-w-[1280px] px-4 md:px-10 pb-4 md:pb-10 mx-auto">
+        {showLocations && (
+          <LocationDropdown
+            images={images}
+            active={selectedLocation}
+            onChange={handleLocationChange}
+          />
+        )}
+        {showLocations && selectedLocation !== ALL && filteredImages.length > 0 && (
+          <p className="mt-3 text-center">
+            <Link
+              href={path(`/dia-diem/${selectedLocation}`)}
+              className="text-sm font-semibold text-primary hover:underline"
+            >
+              {dict.locations.viewPage}
+            </Link>
+          </p>
+        )}
+      </div>
       <PortfolioGrid images={paginatedImages} onImageClick={handleImageClick} />
 
       {hasMoreImages && (

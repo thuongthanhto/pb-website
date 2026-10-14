@@ -7,41 +7,29 @@ import {
 import { breadcrumbSchema, jsonLd } from '@/lib/structured-data'
 import { normalizeLocale } from '@/i18n/config'
 import { getDictionary, interpolate } from '@/i18n/dictionaries'
+import { getLocationName, getLocationSlugsInUse } from '@/data/locations'
 
 // Re-fetch from R2 at most every 60s so newly uploaded photos show up
 // without needing a redeploy.
 export const revalidate = 60
-
-// Google cắt description quanh 160 ký tự. Số album trên R2 thì tăng dần, nên
-// chỉ chèn vừa đủ tên album để mô tả không bị cắt giữa câu.
-const DESCRIPTION_LIMIT = 160
-
-function fitFolders(template, count, labels) {
-  for (let take = labels.length; take > 0; take -= 1) {
-    const text = interpolate(template, {
-      count,
-      folders: labels.slice(0, take).join(', '),
-    })
-    if (text.length <= DESCRIPTION_LIMIT) return text
-  }
-  return interpolate(template, { count, folders: labels[0] ?? '' })
-}
 
 export async function generateMetadata({ params }) {
   const locale = normalizeLocale(params.locale)
   const t = getDictionary(locale).albums
 
   const images = await getAllImages()
-  const folderKeys = [...new Set(images.map((img) => img.folder))]
-  // Tên album trong description dùng nhãn đã dịch, không dùng key thô của R2.
-  const folderLabels = folderKeys.map((key) => t.filters.folders[key] || key)
+  // Tên địa điểm (đã dịch) chỉ đưa vào keywords: chèn vào description thì số
+  // địa điểm tăng dần sẽ vượt ~160 ký tự Google hiển thị.
+  const locationLabels = getLocationSlugsInUse(images).map((slug) =>
+    getLocationName(slug, locale)
+  )
 
   return generateSEOMetadata({
     locale,
     title: t.meta.title,
-    description: fitFolders(t.meta.description, images.length, folderLabels),
-    // keywords thì không bị giới hạn độ dài -> giữ đủ cả 6 nhãn album
-    keywords: [...t.meta.keywords, ...folderLabels],
+    description: interpolate(t.meta.description, { count: images.length }),
+    // keywords thì không bị giới hạn độ dài -> giữ đủ tên mọi địa điểm
+    keywords: [...t.meta.keywords, ...locationLabels],
     url: '/albums',
   })
 }

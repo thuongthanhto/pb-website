@@ -164,15 +164,17 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
  */
 export function generateImageGalleryStructuredData(
   images: any[],
-  locale: Locale = defaultLocale as Locale
+  locale: Locale = defaultLocale as Locale,
+  // Landing page địa điểm dùng lại gallery này với URL/tên riêng.
+  { path = '/albums', name = 'PhatBo Photography Photo Gallery' } = {}
 ) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
     inLanguage: localeMeta[locale].hrefLang,
-    name: 'PhatBo Photography Photo Gallery',
+    name,
     description: 'Professional photography portfolio',
-    url: `${siteConfig.siteUrl}${localePath(locale, '/albums')}`,
+    url: `${siteConfig.siteUrl}${localePath(locale, path)}`,
     author: {
       '@type': 'Person',
       name: siteConfig.author,

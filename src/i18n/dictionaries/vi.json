@@ -178,8 +178,8 @@
   },
   "albums": {
     "meta": {
-      "title": "Album Ảnh Cưới Đẹp TP.HCM | PhatBo Photography",
-      "description": "Xem {count} ảnh cưới thật của PhatBo Photography: {folders}. Pre-Wedding studio, streetstyle Sài Gòn và phóng sự ngày cưới tại TP.HCM.",
+      "title": "Album Ảnh Cưới Đẹp TP.HCM & Toàn Quốc | PhatBo",
+      "description": "Xem {count} ảnh cưới thật của PhatBo Photography: Pre-Wedding studio, ngoại cảnh, streetstyle và phóng sự cưới từ Sài Gòn, Đà Lạt đến khắp Việt Nam.",
       "keywords": [
         "album ảnh cưới đẹp",
         "ảnh cưới streetstyle sài gòn",
@@ -191,20 +191,16 @@
     },
     "hero": {
       "titleTop": "Album ảnh cưới thật",
-      "titleBottom": "chụp tại Sài Gòn",
-      "subtitleLine1": "Ảnh Pre-Wedding studio, streetstyle Sài Gòn và phóng sự ngày cưới.",
+      "titleBottom": "từ Sài Gòn đến khắp Việt Nam",
+      "subtitleLine1": "Ảnh Pre-Wedding studio, ngoại cảnh, streetstyle và phóng sự ngày cưới.",
       "subtitleLine2": "Toàn bộ là ảnh khách thật, không phải ảnh mẫu."
     },
     "filters": {
-      "all": "Tất cả",
-      "folders": {
-        "studio": "Studio",
-        "outdoor": "Ngoại cảnh",
-        "couples": "Chụp cặp đôi",
-        "T&K": "T&K",
-        "V&K": "Phóng sự cưới",
-        "LindaNgo&PhongDat": "Linda Ngo & Phong Đạt"
-      }
+      "allLocations": "Mọi địa điểm",
+      "locationsLabel": "Lọc theo địa điểm chụp",
+      "locationButton": "Địa điểm",
+      "searchLocations": "Tìm địa điểm…",
+      "noLocationMatch": "Không tìm thấy địa điểm"
     },
     "empty": "Không tìm thấy ảnh nào"
   },
@@ -512,5 +508,27 @@
     "title": "404",
     "description": "Trang bạn tìm kiếm không tồn tại",
     "backHome": "Về trang chủ"
+  },
+  "locations": {
+    "meta": {
+      "title": "Chụp ảnh cưới tại {name} | PhatBo Photography",
+      "description": "Album ảnh cưới thật chụp tại {name}, {city}. {count} ảnh pre-wedding và phóng sự cưới của PhatBo Photography.",
+      "indexTitle": "Địa điểm chụp ảnh cưới | PhatBo Photography",
+      "indexDescription": "Các địa điểm PhatBo Photography đã chụp ảnh cưới: khách sạn, bảo tàng, ngoại cảnh ở Sài Gòn, Đà Lạt và các resort biển."
+    },
+    "nav": "Địa điểm",
+    "indexTitleTop": "Chụp ảnh cưới",
+    "indexTitleBottom": "theo địa điểm",
+    "indexSubtitle": "Ảnh khách thật tại từng khách sạn, bảo tàng và ngoại cảnh chúng tôi đã chụp.",
+    "photoCount": "{count} ảnh",
+    "address": "Địa chỉ",
+    "website": "Website",
+    "map": "Xem bản đồ",
+    "bestTime": "Thời điểm đẹp",
+    "permit": "Phí & quy định chụp",
+    "galleryTitle": "Ảnh chụp tại {name}",
+    "ctaPricing": "Xem bảng giá",
+    "empty": "Chưa có địa điểm nào.",
+    "viewPage": "Xem trang địa điểm →"
   }
 }

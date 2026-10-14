@@ -152,6 +152,42 @@ export function breadcrumbSchema(
   };
 }
 
+/** Địa điểm chụp (khách sạn, bảo tàng...) cho landing page /dia-diem/<slug>. */
+export function placeSchema(
+  locale: Locale,
+  place: {
+    slug: string;
+    name: string;
+    description: string;
+    address?: string;
+    website?: string;
+    geo?: { lat: number; lng: number };
+  }
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: place.name,
+    description: place.description,
+    url: abs(localePath(locale, `/dia-diem/${place.slug}`)),
+    ...(place.address && {
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: place.address,
+        addressCountry: 'VN',
+      },
+    }),
+    ...(place.website && { sameAs: [place.website] }),
+    ...(place.geo && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: place.geo.lat,
+        longitude: place.geo.lng,
+      },
+    }),
+  };
+}
+
 /** Gộp nhiều schema vào một thẻ <script> duy nhất. */
 export function jsonLd(...nodes: unknown[]) {
   return JSON.stringify(nodes.length === 1 ? nodes[0] : nodes);

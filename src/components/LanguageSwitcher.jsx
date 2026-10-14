@@ -19,7 +19,7 @@ export function LanguageSwitcher({ variant = 'inline', className = '' }) {
   const neutralPath = stripLocale(pathname || '/')
   const labels = dict.common.language
 
-  // Giữ lại query (?category=&photo=) khi đổi ngôn ngữ. Không dùng
+  // Giữ lại query (?location=&photo=) khi đổi ngôn ngữ. Không dùng
   // useSearchParams để tránh bắt cả trang phải render động.
   const handleClick = (event, href) => {
     if (typeof window === 'undefined') return

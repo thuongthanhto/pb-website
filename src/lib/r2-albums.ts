@@ -63,13 +63,23 @@ async function mapWithConcurrency<T, R>(
 
 async function getAllImagesFromPhotos() {
   try {
-    const command = new ListObjectsV2Command({
-      Bucket: process.env.R2_BUCKET_NAME,
-      Prefix: "photos/",
-    });
-
-    const response = await r2Client.send(command);
-    return response.Contents || [];
+    // Mỗi lần list tối đa 1000 key -> phải đi hết các trang.
+    const files = [];
+    let ContinuationToken: string | undefined;
+    do {
+      const response = await r2Client.send(
+        new ListObjectsV2Command({
+          Bucket: process.env.R2_BUCKET_NAME,
+          Prefix: "photos/",
+          ContinuationToken,
+        })
+      );
+      files.push(...(response.Contents || []));
+      ContinuationToken = response.IsTruncated
+        ? response.NextContinuationToken
+        : undefined;
+    } while (ContinuationToken);
+    return files;
   } catch (error) {
     console.error("Lỗi lấy danh sách ảnh:", error);
     return [];

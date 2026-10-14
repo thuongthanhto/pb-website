@@ -1,5 +1,6 @@
 import { r2Client } from "./r2";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { FOLDER_LOCATIONS, getLocation } from "@/data/locations";
 
 export interface ImageMetadata {
   key: string;
@@ -8,6 +9,7 @@ export interface ImageMetadata {
   photographer?: string;
   tags?: string[];
   location?: string;
+  locationSlug?: string; // key trong src/data/locations.js
   date?: string;
   camera?: string;
   lens?: string;
@@ -57,6 +59,17 @@ export function enrichImageWithMetadata(
 ) {
   const meta = metadata[image.key];
 
+  // Ưu tiên: metadata.json theo ảnh -> thư mục con mang tên slug địa điểm
+  // (photos/<album>/<slug>/<file>, cho album chụp ở nhiều nơi) -> địa điểm
+  // gắn cho cả thư mục album.
+  const subfolder = image.key.split("/").slice(2, -1)[0];
+  const locationSlug =
+    meta?.locationSlug ||
+    (getLocation(subfolder) ? subfolder : "") ||
+    FOLDER_LOCATIONS[image.folder] ||
+    "";
+  const place = getLocation(locationSlug);
+
   // Convert lastModified Date to ISO string if it exists
   const formattedDate = image.lastModified
     ? image.lastModified instanceof Date
@@ -70,7 +83,8 @@ export function enrichImageWithMetadata(
     description: meta?.description || "",
     photographer: meta?.photographer || "",
     tags: meta?.tags || [],
-    location: meta?.location || "",
+    location: meta?.location || place?.name.vi || "",
+    locationSlug: place ? locationSlug : "",
     date: meta?.date || formattedDate,
     camera: meta?.camera || "",
     lens: meta?.lens || "",

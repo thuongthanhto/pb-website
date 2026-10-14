@@ -179,7 +179,7 @@
   "albums": {
     "meta": {
       "title": "Vietnam Pre-Wedding Portfolio | PhatBo Photography",
-      "description": "Browse {count} real photos shot in Saigon: {folders}. Studio and street-style pre-wedding work plus full wedding-day coverage in Vietnam.",
+      "description": "Browse {count} real photos by PhatBo Photography: studio, outdoor and street-style pre-wedding work plus wedding-day coverage from Saigon across Vietnam.",
       "keywords": [
         "vietnam pre wedding portfolio",
         "saigon pre wedding photos",
@@ -191,20 +191,16 @@
     },
     "hero": {
       "titleTop": "Real wedding photos",
-      "titleBottom": "shot in Saigon",
-      "subtitleLine1": "Studio and street-style pre-wedding work, plus full wedding-day coverage.",
+      "titleBottom": "from Saigon across Vietnam",
+      "subtitleLine1": "Studio, outdoor and street-style pre-wedding work, plus full wedding-day coverage.",
       "subtitleLine2": "Every frame here is a real client shoot, not a stock set."
     },
     "filters": {
-      "all": "All",
-      "folders": {
-        "studio": "Studio",
-        "outdoor": "Outdoor",
-        "couples": "Couples",
-        "T&K": "T&K",
-        "V&K": "Wedding Photojournalism",
-        "LindaNgo&PhongDat": "Linda Ngo & Phong Đạt"
-      }
+      "allLocations": "All locations",
+      "locationsLabel": "Filter by location",
+      "locationButton": "Location",
+      "searchLocations": "Search locations…",
+      "noLocationMatch": "No matching location"
     },
     "empty": "No photos found"
   },
@@ -512,5 +508,27 @@
     "title": "404",
     "description": "The page you are looking for doesn't exist",
     "backHome": "Back to home"
+  },
+  "locations": {
+    "meta": {
+      "title": "Wedding Photography at {name} | PhatBo Photography",
+      "description": "Real wedding photos shot at {name}, {city}. {count} pre-wedding and wedding-day images by PhatBo Photography.",
+      "indexTitle": "Wedding Photo Locations in Vietnam | PhatBo Photography",
+      "indexDescription": "Hotels, museums and outdoor spots PhatBo Photography has shot weddings at in Saigon, Dalat and beach resorts across Vietnam."
+    },
+    "nav": "Locations",
+    "indexTitleTop": "Wedding photos",
+    "indexTitleBottom": "by location",
+    "indexSubtitle": "Real client shoots at each hotel, museum and outdoor spot we have worked at.",
+    "photoCount": "{count} photos",
+    "address": "Address",
+    "website": "Website",
+    "map": "View map",
+    "bestTime": "Best time",
+    "permit": "Fees & rules",
+    "galleryTitle": "Photos at {name}",
+    "ctaPricing": "See pricing",
+    "empty": "No locations yet.",
+    "viewPage": "View location page →"
   }
 }
