@@ -49,8 +49,8 @@ export function LocationCard({
         {cover && (
           // Ảnh bìa qua next/image (bản thu nhỏ). `sizes` khớp LocationCardGrid:
           // 2 thẻ/hàng tới lg, 3 thẻ/hàng từ lg, container tối đa 1280px.
-          // object-top: ảnh bìa đa số là ảnh dọc, crop giữa vào khung 4:3 sẽ
-          // cắt mất mặt — giữ phần trên ảnh để luôn thấy mặt.
+          // Vị trí crop chỉnh theo từng địa điểm (coverPosition) để không
+          // cắt mất mặt — xem ghi chú đầu data/locations.js.
           <Image
             src={`${publicDomain}/${cover.key}`}
             alt={location.name[locale]}
@@ -58,7 +58,8 @@ export function LocationCard({
             sizes="(max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 384px"
             quality={75}
             priority={priority}
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            style={{ objectPosition: location.coverPosition ?? '50% 30%' }}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
       </div>

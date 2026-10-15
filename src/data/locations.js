@@ -10,11 +10,17 @@
 // thể nên mẫu tiêu đề mặc định "Chụp ảnh cưới tại {name}" đọc rất gượng. Khai
 // thêm để ghi đè: title {vi, en} (title trang + Google), metaDescription
 // {vi, en}, galleryTitle {vi, en} (heading phía trên lưới ảnh).
+//
+// coverPosition (tuỳ chọn): CSS object-position cho ảnh bìa trên thẻ địa điểm.
+// Ảnh bìa đa số là ảnh dọc bị crop vào khung 4:3 (chỉ còn ~1/2 chiều cao), nên
+// chỉnh theo vị trí mặt trong ảnh bìa hiện tại. Mặc định '50% 30%'. Đổi ảnh
+// bìa (featured) thì nhớ xem lại giá trị này.
 
 export const LOCATIONS = {
   'grand-mercure-da-lat': {
     name: { vi: 'Grand Mercure Đà Lạt', en: 'Grand Mercure Dalat' },
     city: 'da-lat',
+    coverPosition: '50% 50%',
     type: 'khach-san',
     address: '03 Nguyễn Du, phường Lâm Viên - Đà Lạt, Lâm Đồng',
     website: 'https://www.grandmercuredalat.com',
@@ -27,6 +33,7 @@ export const LOCATIONS = {
   'streetstyle-quan-2': {
     name: { vi: 'Streetstyle Quận 2', en: 'Saigon Street Style – District 2' },
     city: 'sai-gon',
+    coverPosition: '50% 5%',
     type: 'ngoai-canh',
     // Mẫu mặc định ra title tiếng Anh > 60 ký tự -> Google cắt mất brand.
     title: {
@@ -44,6 +51,7 @@ export const LOCATIONS = {
   studio: {
     name: { vi: 'Studio Sài Gòn', en: 'Saigon Studio' },
     city: 'sai-gon',
+    coverPosition: '50% 0%',
     type: 'studio',
     title: {
       vi: 'Chụp Ảnh Cưới Studio Sài Gòn | PhatBo',
@@ -64,6 +72,7 @@ export const LOCATIONS = {
   'pre-wedding-outdoor': {
     name: { vi: 'Pre-Wedding Outdoor', en: 'Pre-Wedding Outdoor' },
     city: 'sai-gon',
+    coverPosition: '50% 0%',
     type: 'ngoai-canh',
     title: {
       vi: 'Chụp Pre-Wedding Ngoại Cảnh Sài Gòn | PhatBo',
@@ -83,6 +92,7 @@ export const LOCATIONS = {
   'phong-su-cuoi': {
     name: { vi: 'Phóng sự cưới', en: 'Wedding Photojournalism' },
     city: 'sai-gon',
+    coverPosition: '50% 0%',
     type: 'phong-su',
     title: {
       vi: 'Phóng Sự Cưới TP.HCM – Ảnh Ngày Cưới Thật | PhatBo',
