@@ -36,9 +36,9 @@ export function BehindScenesSection({ locale }) {
                 <Reveal
                   key={idx}
                   delay={idx * 0.1}
-                  className="flex flex-col gap-1 rounded-2xl border border-border bg-surface/50 p-3 md:p-5"
+                  className="@container min-w-0 flex flex-col gap-1 rounded-2xl border border-border bg-surface/50 p-3 md:p-5"
                 >
-                  <span className="text-primary text-lg md:text-2xl font-black leading-tight text-balance">
+                  <span className="text-primary text-[min(1.5rem,18cqw)] font-black leading-tight text-balance">
                     {stat.value}
                   </span>
                   <span className="text-text-secondary text-[11px] md:text-sm leading-snug">
