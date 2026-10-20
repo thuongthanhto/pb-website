@@ -20,6 +20,26 @@ const TESTIMONIAL_AVATARS = [
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAAbwghWN5JKuS9col-X56CleCAWG8N1CoFNNArgYcAo2OE68PqIT0Zad_5EBGeq7qQklo_aHoLE3KnadYCCFMV1_U0olwtmpjHJF6wC-wwyXIRa--LDIvaf7w7JPZopM5WfBBzpDv-MzVY51A0ngLLBDnrgkAMoWic7o3Pp5MnJfZImEtgSbn1-OrJiIJ6iIfC67a9_nQ0oHgal5p5x59DzA4PUEpj5KgH0tQlt3kIH1rnsMeza_0r19fbi2qhtGBkfwNGuF3SHuM',
 ]
 
+// Lấy xoay vòng mỗi album 1 ảnh (album mới upload đứng trước), để một album
+// vừa up nhiều ảnh không chiếm hết carousel. `images` đã sort mới nhất trước,
+// nên mỗi lượt lấy ảnh mới nhất còn lại của từng album.
+function pickAcrossAlbums(images, limit) {
+  const byAlbum = new Map()
+  for (const img of images) {
+    if (!byAlbum.has(img.folder)) byAlbum.set(img.folder, [])
+    byAlbum.get(img.folder).push(img)
+  }
+  const queues = [...byAlbum.values()]
+  const picked = []
+  for (let round = 0; picked.length < limit && queues.some((q) => round < q.length); round++) {
+    for (const queue of queues) {
+      if (round < queue.length) picked.push(queue[round])
+      if (picked.length === limit) break
+    }
+  }
+  return picked
+}
+
 export default async function Home({ params }) {
   const locale = normalizeLocale(params.locale)
   const dict = getDictionary(locale)
@@ -28,7 +48,7 @@ export default async function Home({ params }) {
 
   // Fetch images from R2 and pick up to 10 for the carousel
   const allImages = await getAllImages()
-  const swiperImages = allImages.slice(0, 10)
+  const swiperImages = pickAcrossAlbums(allImages, 10)
 
   return (
     <>

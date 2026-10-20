@@ -90,6 +90,10 @@ export function AlbumsSwiper({ images = [] }) {
                   sizes="(max-width: 480px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 300px"
                   quality={85}
                   priority={idx < 4}
+                  // Ảnh dọc bị crop trên/dưới vào khung 3:4 -> lệch lên trên
+                  // để giữ đầu/mặt (thường nằm ở 1/3 trên). Ảnh ngang crop hai
+                  // bên nên giữ giữa.
+                  style={{ objectPosition: image.aspectRatio < 1 ? '50% 20%' : '50% 50%' }}
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
