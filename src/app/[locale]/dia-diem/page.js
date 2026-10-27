@@ -7,6 +7,9 @@ import { CITIES, getLocationCards } from '@/data/locations'
 import { LocationCard, LocationCardGrid } from '@/components/LocationCard'
 
 export const revalidate = 60
+// Revalidate phải đo kích thước ~200 ảnh trên R2 (~15s), dễ vượt mức 10s mặc
+// định của Vercel -> regenerate bị kill, ISR kẹt bản cũ.
+export const maxDuration = 60
 
 export function generateMetadata({ params }) {
   const locale = normalizeLocale(params.locale)

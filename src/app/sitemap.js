@@ -14,6 +14,9 @@ const routes = [
 
 // Sitemap tự build lại mỗi giờ để có trang địa điểm mới.
 export const revalidate = 3600
+// Revalidate phải đo kích thước ~200 ảnh trên R2 (~15s), dễ vượt mức 10s mặc
+// định của Vercel -> regenerate bị kill, ISR kẹt bản cũ.
+export const maxDuration = 60
 
 const absolute = (path) => `${siteConfig.siteUrl}${path === '/' ? '' : path}`
 

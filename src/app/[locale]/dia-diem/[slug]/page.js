@@ -19,6 +19,9 @@ import {
 import { LocationCard, LocationCardGrid } from '@/components/LocationCard'
 
 export const revalidate = 60
+// Revalidate phải đo kích thước ~200 ảnh trên R2 (~15s), dễ vượt mức 10s mặc
+// định của Vercel -> regenerate bị kill, ISR kẹt bản cũ.
+export const maxDuration = 60
 
 // Chỉ prerender địa điểm đã có ảnh. Slug có trong locations.js nhưng chưa có
 // ảnh vẫn trả 404 — trang rỗng chỉ làm loãng SEO.

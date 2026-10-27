@@ -12,6 +12,9 @@ import { getLocationName, getLocationSlugsInUse } from '@/data/locations'
 // Re-fetch from R2 at most every 60s so newly uploaded photos show up
 // without needing a redeploy.
 export const revalidate = 60
+// Revalidate phải đo kích thước ~200 ảnh trên R2 (~15s), dễ vượt mức 10s mặc
+// định của Vercel -> regenerate bị kill, ISR kẹt bản cũ.
+export const maxDuration = 60
 
 export async function generateMetadata({ params }) {
   const locale = normalizeLocale(params.locale)

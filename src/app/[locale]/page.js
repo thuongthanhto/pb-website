@@ -9,6 +9,9 @@ import { getDictionary } from '@/i18n/dictionaries'
 // Re-fetch from R2 at most every 60s so newly uploaded photos show up
 // without needing a redeploy.
 export const revalidate = 60
+// Revalidate phải đo kích thước ~200 ảnh trên R2 (~15s), dễ vượt mức 10s mặc
+// định của Vercel -> regenerate bị kill, ISR kẹt bản cũ.
+export const maxDuration = 60
 
 // Icon + avatar là asset, không phải nội dung dịch -> giữ ngoài dictionary,
 // ghép theo index với dict.home.services.items / testimonials.items.
