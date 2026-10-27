@@ -173,14 +173,78 @@ function balanceSmallGallery(images, cols) {
   return { columns, spread: bestSpread };
 }
 
+// Gallery vừa một trang (không infinite scroll) nhưng quá nhiều ảnh để thử hết:
+// greedy theo thứ tự hay để ảnh cao cuối cùng rơi vào một cột, cột kia hụt
+// hẳn. Không cần order-stable nên xếp ảnh cao trước vào cột thấp nhất (LPT),
+// rồi đổi / chuyển ảnh giữa cột cao nhất và thấp nhất tới khi hết cải thiện.
+function balanceLargeGallery(images, cols) {
+  const h = images.map((image) =>
+    image.width && image.height ? image.height / image.width : 4 / 3
+  );
+  const colOf = new Array(images.length);
+  const heights = new Array(cols).fill(0);
+  const counts = new Array(cols).fill(0);
+  const add = (i, c) => {
+    heights[c] += h[i] + (counts[c] > 0 ? GAP_RATIO : 0);
+    counts[c] += 1;
+    colOf[i] = c;
+  };
+  const remove = (i) => {
+    const c = colOf[i];
+    counts[c] -= 1;
+    heights[c] -= h[i] + (counts[c] > 0 ? GAP_RATIO : 0);
+  };
+  const spread = () => Math.max(...heights) - Math.min(...heights);
+
+  [...h.keys()]
+    .sort((a, b) => h[b] - h[a])
+    .forEach((i) => add(i, heights.indexOf(Math.min(...heights))));
+
+  for (let improved = true; improved; ) {
+    improved = false;
+    const tall = heights.indexOf(Math.max(...heights));
+    const short = heights.indexOf(Math.min(...heights));
+    const before = spread();
+    const inTall = [...h.keys()].filter((i) => colOf[i] === tall);
+    const inShort = [...h.keys()].filter((i) => colOf[i] === short);
+    // Thử chuyển một ảnh, rồi thử đổi chỗ từng cặp; giữ thay đổi đầu tiên có lợi.
+    const moves = [
+      ...inTall.filter(() => counts[tall] > 1).map((i) => [i, null]),
+      ...inTall.flatMap((i) => inShort.map((j) => [i, j])),
+    ];
+    for (const [i, j] of moves) {
+      remove(i);
+      if (j !== null) remove(j);
+      add(i, short);
+      if (j !== null) add(j, tall);
+      if (spread() < before - 1e-6) {
+        improved = true;
+        break;
+      }
+      remove(i);
+      if (j !== null) remove(j);
+      add(i, tall);
+      if (j !== null) add(j, short);
+    }
+  }
+
+  const columns = Array.from({ length: cols }, () => []);
+  images.forEach((image, index) => columns[colOf[index]].push({ image, index }));
+  columns.sort((a, b) => a[0].index - b[0].index);
+  return columns;
+}
+
 // Chênh lệch tối đa chấp nhận được giữa các cột (theo bề rộng cột). Vượt mức
 // này (vd 3 ảnh dọc + 4 ảnh ngang chia 3 cột luôn thừa một ảnh lẻ) thì bớt
 // một cột nếu cách đó cân hơn hẳn.
 const MAX_SPREAD = 0.5;
 
-function layoutColumns(images, maxCols) {
-  if (images.length > SMALL_GALLERY || maxCols <= 1) {
-    return distributeIntoColumns(images, maxCols);
+function layoutColumns(images, maxCols, singlePage) {
+  if (maxCols <= 1) return distributeIntoColumns(images, maxCols);
+  if (images.length > SMALL_GALLERY) {
+    return singlePage && images.length >= maxCols
+      ? balanceLargeGallery(images, maxCols)
+      : distributeIntoColumns(images, maxCols);
   }
   let best = null;
   for (let cols = Math.min(maxCols, images.length); cols >= 2; cols--) {
@@ -243,7 +307,7 @@ function mobileSize(image) {
   return `(max-width: 639px) calc((100vw - 16px) * ${factor.toFixed(3)})`;
 }
 
-export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
+export function PortfolioGrid({ images = [], singlePage = false, onImageClick = () => {} }) {
   const { dict } = useI18n();
   const publicDomain =
     process.env.NEXT_PUBLIC_R2_DOMAIN ||
@@ -252,8 +316,8 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
   const breakpointCols = useMasonryColumns();
   const maxCols = fitColumnsToCount(breakpointCols, images.length);
   const columns = useMemo(
-    () => layoutColumns(images, maxCols),
-    [images, maxCols]
+    () => layoutColumns(images, maxCols, singlePage),
+    [images, maxCols, singlePage]
   );
   const cols = columns.length;
 
@@ -263,11 +327,11 @@ export function PortfolioGrid({ images = [], onImageClick = () => {} }) {
     const memo = {};
     const colsAt = (b) => {
       const max = fitColumnsToCount(b, images.length);
-      if (!(max in memo)) memo[max] = layoutColumns(images, max).length;
+      if (!(max in memo)) memo[max] = layoutColumns(images, max, singlePage).length;
       return memo[max];
     };
     return buildSizes(colsAt);
-  }, [images]);
+  }, [images, singlePage]);
 
   // Ô có từ lần render đầu (SSR) luôn hiển thị; ô nạp thêm khi cuộn mới reveal.
   const initialCount = useRef(images.length);

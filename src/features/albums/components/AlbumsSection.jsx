@@ -182,7 +182,12 @@ export function AlbumsSection({ images = [], showLocations = true }) {
           </p>
         )}
       </div>
-      <PortfolioGrid images={paginatedImages} onImageClick={handleImageClick} />
+      <PortfolioGrid
+        images={paginatedImages}
+        // Vừa một trang thì không bao giờ nạp thêm -> được cân lại cả lưới.
+        singlePage={filteredImages.length <= IMAGES_PER_PAGE}
+        onImageClick={handleImageClick}
+      />
 
       {hasMoreImages && (
         <div
