@@ -112,7 +112,7 @@ export const LOCATIONS = {
   // không kèm tên cặp cho gọn dropdown; tên cặp chỉ nằm ở title / mô tả.
   // Chưa ghi address/website: các nguồn lệch nhau về phường, chờ xác nhận.
   'an-lam-resort': {
-    name: { vi: 'Ceremony An Lâm Resort', en: 'Ceremony An Lam Resort' },
+    name: { vi: 'An Lâm Resort', en: 'An Lam Resort' },
     city: 'sai-gon',
     coverPosition: '50% 50%',
     type: 'resort',
