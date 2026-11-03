@@ -108,6 +108,29 @@ export const LOCATIONS = {
       en: 'Full wedding-day coverage: from the bride getting ready and the family tea ceremony to the vows and the evening reception — real moments, never staged.',
     },
   },
+  // Tab riêng cho show VIP Erik & Kim (tách khỏi "Phóng sự cưới"). Tên tab
+  // gắn với cặp này theo yêu cầu; slug giữ chung là venue để sau này thêm cặp
+  // khác ở An Lâm thì chỉ cần đổi name/title.
+  // Chưa ghi address/website: các nguồn lệch nhau về phường, chờ xác nhận.
+  'an-lam-resort': {
+    name: { vi: 'Ceremony An Lâm Resort Erik & Kim', en: 'Ceremony An Lam Resort Erik & Kim' },
+    city: 'sai-gon',
+    coverPosition: '50% 50%',
+    type: 'resort',
+    title: {
+      vi: 'Phóng Sự Cưới An Lâm Resort – Erik & Kim | PhatBo',
+      en: 'An Lam Resort Wedding – Erik & Kim | PhatBo',
+    },
+    metaDescription: {
+      vi: '{count} ảnh phóng sự đám cưới Erik & Kim tại An Lâm Resort: lễ cưới ngoài trời giữa vườn xanh, khoảnh khắc chuẩn bị và tiệc tối bên sông Sài Gòn.',
+      en: '{count} wedding-day photos of Erik & Kim at An Lam Resort: an outdoor garden ceremony, getting-ready moments and an evening reception by the Saigon River.',
+    },
+    galleryTitle: { vi: 'Ceremony An Lâm Resort – Erik & Kim', en: 'Ceremony at An Lam Resort – Erik & Kim' },
+    description: {
+      vi: 'Trọn ngày cưới của Erik & Kim tại An Lâm Resort bên sông Sài Gòn: buổi sáng chuẩn bị giữa những căn villa gỗ, lễ cưới ngoài trời dưới cổng vòm trắng giữa vườn xanh, và bữa tiệc tối rộn ràng.',
+      en: 'Erik & Kim’s full wedding day at An Lam Resort on the Saigon River: getting ready among the wooden villas, an outdoor ceremony beneath a white arch in the garden, and a lively evening reception.',
+    },
+  },
   'the-anam-cam-ranh': {
     name: { vi: 'The Anam Cam Ranh', en: 'The Anam Cam Ranh' },
     city: 'bien',
@@ -126,12 +149,11 @@ export const LOCATIONS = {
 // Album chụp ở nhiều nơi thì chia thư mục con đặt tên đúng bằng slug:
 // photos/<album>/<slug>/<file> — không cần khai ở đây.
 // Thứ tự ưu tiên: metadata.json theo ảnh > thư mục con > FOLDER_LOCATIONS.
-// TODO: điền khi biết thư mục nào chụp ở đâu, vd { 'V&K': 'grand-mercure-da-lat' }
+// TODO: điền khi biết thư mục nào chụp ở đâu, vd { 'T&K': 'grand-mercure-da-lat' }
 export const FOLDER_LOCATIONS = {
   'LindaNgo&PhongDat': 'the-anam-cam-ranh',
   studio: 'studio',
   outdoor: 'pre-wedding-outdoor',
-  'V&K': 'phong-su-cuoi',
   'T&K': 'phong-su-cuoi',
 }
 

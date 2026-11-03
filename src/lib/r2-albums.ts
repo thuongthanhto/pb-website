@@ -97,7 +97,7 @@ function getFolderFromKey(key) {
   // Extract folder name from path like "photos/studio/image.jpg" or "photos/T&K/image.jpg"
   const parts = key.split("/");
   if (parts.length >= 3) {
-    return parts[1]; // Return "studio", "outdoor", "T&K", "V&K"
+    return parts[1]; // Return "studio", "outdoor", "T&K", "Erik&Kim"
   }
   return null;
 }
